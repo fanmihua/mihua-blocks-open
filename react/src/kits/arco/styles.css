@@ -1,0 +1,1173 @@
+/*
+ * Arco 的样式表带有 html / body / * 的全局重置。
+ * 放进单独的 cascade layer，宿主页面自己的样式永远优先，不会被它改掉。
+ */
+@import '@arco-design/web-react/dist/css/arco.css' layer(arco);
+
+/* 登录方式切换只需要 Tabs 的标签栏，不需要它的内容区。这是布局分配，不改变 Arco 的外观。 */
+.mh-kit-arco-tabs .arco-tabs-content {
+  display: none;
+}
+
+/* 按钮里的图标：图标和文字一起垂直居中（原生模式也需要，否则图标贴着文字、文字偏下） */
+.mh-kit-arco .arco-btn:has(> .mh-arco-btn-icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mh-kit-arco .mh-arco-btn-icon {
+  display: inline-flex;
+  margin-right: 8px;
+}
+
+/*
+ * 接上规范时（--aligned），把 Arco 的控件对齐到统一设计（控件规格见 @mihua/spec 的 controls.ts）。
+ * 所有取值都读 --mh-c-* 变量，这里只决定「Arco 的哪一处对应控件规格的哪一项」。
+ * Arco 的尺寸和底色写在按档位划分的固定样式里，没有对应的 CSS 变量，只能逐项改。
+ * 原生模式没有 --aligned，以下规则都不生效。
+ */
+
+/* 输入框、选择框：灰底无描边 → 白底 1px 描边；文字离外边框 inset（含 1px 描边） */
+.mh-kit-arco--aligned :is(.arco-input, .arco-input-inner-wrapper, .arco-select-view),
+.mh-kit-arco--aligned :is(.arco-input, .arco-input-inner-wrapper, .arco-select-view):hover {
+  border-color: var(--mh-c-field-border);
+  background-color: var(--mh-c-field-background);
+}
+.mh-kit-arco--aligned .arco-input-inner-wrapper .arco-input {
+  background: none;
+}
+.mh-kit-arco--aligned :is(.arco-input-inner-wrapper, .arco-select-view),
+.mh-kit-arco--aligned .arco-input:not(.arco-input-inner-wrapper .arco-input) {
+  padding-left: calc(var(--mh-c-field-inset) - 1px);
+  padding-right: calc(var(--mh-c-field-inset) - 1px);
+}
+.mh-kit-arco--aligned :is(.arco-input-focus, .arco-input:focus, .arco-input-inner-wrapper-focus),
+.mh-kit-arco--aligned .arco-select-focused .arco-select-view {
+  border-color: var(--mh-c-field-border-focus);
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 字号：Arco 按档位写死 14px（输入框、选择框、按钮、复选框），统一设计是规范里的正文字号 */
+.mh-kit-arco--aligned
+  :is(.arco-input, .arco-input-inner-wrapper, .arco-select-view, .arco-btn, .arco-checkbox) {
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-arco--aligned .arco-checkbox {
+  line-height: var(--mh-c-text-line);
+}
+
+/* 文字和占位符：Arco 用最深的文字色和次要灰，统一设计是正文色和占位色 */
+.mh-kit-arco--aligned :is(.arco-input, .arco-select-view-value) {
+  color: var(--mh-text-body);
+}
+.mh-kit-arco--aligned .arco-input::placeholder,
+.mh-kit-arco--aligned .arco-select-view-input::placeholder {
+  color: var(--mh-text-placeholder);
+}
+/* 出错：放在聚焦规则之后、选择器同样具体，出错时聚焦也保持红色 */
+.mh-kit-arco--aligned :is(.arco-input-error, .arco-input-inner-wrapper-error),
+.mh-kit-arco--aligned :is(.arco-input-error, .arco-input-inner-wrapper-error):hover,
+.mh-kit-arco--aligned :is(.arco-input-error, .arco-input-inner-wrapper-error):focus {
+  border-color: var(--mh-c-field-border-invalid);
+}
+.mh-kit-arco--aligned .arco-input-inner-wrapper .arco-input-error {
+  border-color: transparent;
+}
+
+/* 选择框高度：Arco 的选择框没有 height 属性，高度由套件写进 --mh-arco-h */
+.mh-kit-arco--aligned .mh-arco-sized.arco-select-single .arco-select-view {
+  height: var(--mh-arco-h);
+  line-height: calc(var(--mh-arco-h) - 2px);
+}
+
+/* 标签栏：高度、间距、2px 指示条、1px 分隔线、未选中与选中的颜色和字重 */
+.mh-kit-arco--aligned .mh-kit-arco-tabs .arco-tabs-header-nav::before {
+  background-color: var(--mh-c-tabs-divider);
+}
+.mh-kit-arco--aligned .mh-kit-arco-tabs .arco-tabs-header-ink {
+  height: var(--mh-c-tabs-indicator);
+  background-color: var(--mh-c-tabs-active-color);
+}
+.mh-kit-arco--aligned .mh-kit-arco-tabs .arco-tabs-header-nav-line .arco-tabs-header-title {
+  height: var(--mh-c-tabs-height);
+  line-height: var(--mh-c-text-line); /* Arco 写死 1.5715，15px 字会得到 23.57px */
+  margin: 0 var(--mh-c-tabs-gap) 0 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: var(--mh-c-text-size);
+  font-weight: var(--mh-c-tabs-weight);
+  color: var(--mh-c-tabs-color);
+}
+.mh-kit-arco--aligned .mh-kit-arco-tabs .arco-tabs-header-title:hover {
+  color: var(--mh-c-tabs-hover-color);
+}
+.mh-kit-arco--aligned .mh-kit-arco-tabs .arco-tabs-header-nav-line .arco-tabs-header-title-active {
+  font-weight: var(--mh-c-tabs-active-weight);
+  color: var(--mh-c-tabs-active-color);
+}
+
+/* 复选框：14px、2px 灰边 → 规格里的尺寸、1px 描边；圆角、勾选色、出错红边。
+ * Arco 的复选框左边有 5px 内边距（给悬停圆圈留的），文字是最深的文字色。 */
+.mh-kit-arco--aligned .arco-checkbox {
+  padding-left: 0;
+  color: var(--mh-text-body);
+}
+.mh-kit-arco--aligned .arco-checkbox-text {
+  color: var(--mh-text-body);
+}
+.mh-kit-arco--aligned .arco-checkbox-mask-wrapper {
+  width: var(--mh-c-checkbox-size);
+  height: var(--mh-c-checkbox-size);
+}
+.mh-kit-arco--aligned .arco-checkbox-mask {
+  width: var(--mh-c-checkbox-size);
+  height: var(--mh-c-checkbox-size);
+  border: 1px solid var(--mh-c-checkbox-border);
+  border-radius: var(--mh-c-checkbox-radius);
+  background-color: var(--mh-c-field-background);
+}
+.mh-kit-arco--aligned .arco-checkbox-checked .arco-checkbox-mask {
+  border-color: var(--mh-c-checkbox-checked);
+  background-color: var(--mh-c-checkbox-checked);
+}
+.mh-kit-arco--icons .arco-checkbox-mask-icon {
+  width: 10px;
+  color: var(--mh-c-checkbox-mark);
+}
+.mh-kit-arco--aligned .arco-checkbox[aria-invalid='true'] .arco-checkbox-mask {
+  border-color: var(--mh-c-checkbox-border-invalid);
+}
+.mh-kit-arco--aligned .arco-checkbox-text {
+  margin-left: var(--mh-c-checkbox-gap);
+}
+
+/* 按钮：字重、图标间距；次要按钮白底描边（Arco 的次要按钮是灰底无边），悬停浅灰 */
+.mh-kit-arco--aligned .arco-btn {
+  font-weight: var(--mh-c-button-weight);
+}
+.mh-kit-arco--aligned .mh-arco-btn-icon {
+  margin-right: var(--mh-c-button-icon-gap);
+}
+.mh-kit-arco--aligned .arco-btn-secondary:not(.arco-btn-disabled) {
+  border-color: var(--mh-c-button-secondary-border);
+  background-color: var(--mh-c-button-secondary-background);
+  color: var(--mh-c-button-secondary-color);
+}
+.mh-kit-arco--aligned .arco-btn-secondary:not(.arco-btn-disabled):hover {
+  border-color: var(--mh-c-button-secondary-border);
+  background-color: var(--mh-c-button-secondary-hover-background);
+  color: var(--mh-c-button-secondary-hover-color);
+}
+/* 文字链接：链接色（Arco 的文字按钮用主色）、字重；悬停换色、不加底色 */
+.mh-kit-arco--aligned .mh-arco-link {
+  font-weight: var(--mh-c-link-weight);
+  color: var(--mh-c-link-color);
+}
+.mh-kit-arco--aligned .mh-arco-link:hover {
+  background: none;
+  color: var(--mh-c-link-hover-color);
+}
+
+/* 下拉：圆角、描边、阴影；选项高度、内边距；选中浅底加粗，悬停浅灰 */
+.mh-kit-arco--aligned .arco-select-popup {
+  padding: 0;
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background-color: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-arco--aligned .arco-select-popup-inner {
+  padding: var(--mh-c-popup-padding);
+}
+.mh-kit-arco--aligned .arco-select-popup .arco-select-option {
+  background-color: transparent;
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  font-weight: 400;
+  line-height: var(--mh-c-popup-option-height);
+  color: var(--mh-c-popup-option-color);
+}
+.mh-kit-arco--aligned .arco-select-popup .arco-select-option-hover {
+  background-color: var(--mh-c-popup-hover-background);
+}
+.mh-kit-arco--aligned .arco-select-popup .arco-select-option-selected {
+  background-color: var(--mh-c-popup-selected-background);
+  font-weight: var(--mh-c-popup-selected-weight);
+  color: var(--mh-c-popup-selected-color);
+}
+
+/* 图标：复选框里的对勾换成规范图标集里的（套件通过 icon 属性传进来），大小和颜色取控件规格。
+   --icons：规范选了一套图标（icon.set 不是 native）时才换 */
+.mh-kit-arco--icons .arco-checkbox-mask-icon {
+  position: absolute;
+  inset: 0;
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  margin: auto;
+  color: var(--mh-c-checkbox-mark);
+  transform-origin: center;
+}
+/* 加载中：由套件画（见 index.tsx），整个按钮降低不透明度，不能再点 */
+.mh-kit-arco--aligned .arco-btn.mh-arco-loading {
+  opacity: var(--mh-c-button-loading-opacity);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* 图标：复选框里的对勾换成规范图标集里的（套件通过 icon 属性传进来），大小和颜色取控件规格。
+   --icons：规范选了一套图标（icon.set 不是 native）时才换 */
+.mh-kit-arco--icons .arco-checkbox-mask-icon {
+  position: absolute;
+  inset: 0;
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  margin: auto;
+  color: var(--mh-c-checkbox-mark);
+  transform-origin: center;
+}
+/* 加载中：由套件画（见 index.tsx），整个按钮降低不透明度，不能再点 */
+.mh-kit-arco--aligned .arco-btn.mh-arco-loading {
+  opacity: var(--mh-c-button-loading-opacity);
+  cursor: default;
+  pointer-events: none;
+}
+
+/*
+ * 开关：Arco 写死 40×24、圆点 16（离边 4px）；关是 --color-fill-4；
+ * 禁用不降不透明度，而是换成更浅的两种颜色；键盘聚焦是 2px 外圈（开时浅主色、关时灰）。
+ */
+.mh-kit-arco--aligned .arco-switch {
+  min-width: var(--mh-c-switch-width);
+  height: var(--mh-c-switch-height);
+  border-radius: calc(var(--mh-c-switch-height) / 2);
+  background-color: var(--mh-c-switch-off-background);
+}
+.mh-kit-arco--aligned .arco-switch-checked {
+  background-color: var(--mh-c-switch-on-background);
+}
+.mh-kit-arco--aligned .arco-switch .arco-switch-dot {
+  top: var(--mh-c-switch-thumb-inset);
+  left: var(--mh-c-switch-thumb-inset);
+  width: var(--mh-c-switch-thumb);
+  height: var(--mh-c-switch-thumb);
+  background-color: var(--mh-c-switch-thumb-color);
+  box-shadow: var(--mh-c-switch-thumb-shadow);
+}
+.mh-kit-arco--aligned .arco-switch-checked .arco-switch-dot {
+  left: calc(100% - var(--mh-c-switch-thumb) - var(--mh-c-switch-thumb-inset));
+}
+.mh-kit-arco--aligned .arco-switch[disabled] {
+  background-color: var(--mh-c-switch-off-background);
+  opacity: var(--mh-c-switch-disabled-opacity);
+}
+.mh-kit-arco--aligned .arco-switch[disabled].arco-switch-checked {
+  background-color: var(--mh-c-switch-on-background);
+}
+.mh-kit-arco--aligned .arco-switch:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 下拉菜单：Arco 的 Dropdown 没有分隔线、没有「危险操作」的样式。接口里有这两样（divided、danger），
+ * 原生模式也要画出来：用 Arco 自己的颜色变量（边框色、危险色），不算对齐。
+ */
+.mh-kit-arco .mh-arco-dropdown-divider {
+  height: 1px;
+  margin: 4px 0;
+  background-color: var(--color-border-2);
+}
+.mh-kit-arco .mh-arco-dropdown .mh-arco-dropdown-danger,
+.mh-kit-arco .mh-arco-dropdown .mh-arco-dropdown-danger:hover {
+  color: rgb(var(--danger-6));
+}
+
+/*
+ * 导航菜单（侧栏）。Arco 的竖排菜单：项 40px 高（line-height 40）、间隔 4、菜单留白上下 4 左右 8，
+ * 每一项都是白底（--color-menu-light-bg），图标 14px（1em）离文字 16px，子菜单里的项每级缩进 20px；
+ * 选中是浅灰底 fill-2 加主色字，子菜单里有选中项时标题也是主色、加粗；悬停只换浅灰底，字不变深；
+ * 键盘聚焦是 2px 主色内描边。收起后菜单 48px 宽、留白 4，项 40×40，文字靠图标 100vw 的右外边距推走。
+ */
+.mh-kit-arco--aligned .arco-menu {
+  background-color: transparent;
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-arco--aligned .arco-menu-collapse {
+  width: 100%;
+}
+.mh-kit-arco--aligned .arco-menu .arco-menu-inner {
+  padding: var(--mh-c-nav-padding);
+}
+.mh-kit-arco--aligned
+  .arco-menu
+  :is(.arco-menu-item, .arco-menu-inline-header, .arco-menu-pop-header) {
+  display: flex;
+  align-items: center;
+  height: var(--mh-c-nav-item-height);
+  margin-bottom: var(--mh-c-nav-item-gap);
+  padding: 0 var(--mh-c-nav-arrow-inset) 0 var(--mh-c-nav-item-inset);
+  border-radius: var(--mh-c-nav-radius);
+  line-height: var(--mh-c-text-line);
+  font-weight: var(--mh-c-nav-weight);
+  color: var(--mh-c-nav-color);
+  background-color: transparent;
+}
+.mh-kit-arco--aligned .mh-arco-nav-title {
+  display: flex;
+  align-items: center;
+  gap: var(--mh-c-nav-icon-gap);
+  min-width: 0;
+}
+.mh-kit-arco--aligned .arco-menu .mh-arco-nav-title > .arco-icon {
+  flex: none;
+  width: var(--mh-c-nav-icon-size);
+  height: var(--mh-c-nav-icon-size);
+  margin: 0;
+  color: var(--mh-c-nav-icon-color);
+}
+/* 子菜单的展开箭头：规范图标集的 chevron-down，大小、颜色取 icon 一组，离右边缘 arrowInset，展开时朝上（Arco 自己转） */
+.mh-kit-arco--aligned .arco-menu .arco-menu-icon-suffix {
+  display: flex;
+  right: var(--mh-c-nav-arrow-inset);
+}
+.mh-kit-arco--aligned .arco-menu .mh-arco-nav-arrow {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  color: var(--mh-c-icon-color);
+}
+/* 悬停：浅底、文字变深，图标颜色不变 */
+.mh-kit-arco--aligned
+  .arco-menu
+  :is(.arco-menu-item, .arco-menu-inline-header, .arco-menu-pop-header):hover {
+  background-color: var(--mh-c-nav-hover-background);
+  color: var(--mh-c-nav-hover-color);
+}
+/* 选中的项（收起后有选中子项的子菜单标题也画成这样）：选中底色、选中色，悬停不变 */
+.mh-kit-arco--aligned .arco-menu :is(.arco-menu-item, .arco-menu-pop-header).arco-menu-selected,
+.mh-kit-arco--aligned
+  .arco-menu
+  :is(.arco-menu-item, .arco-menu-pop-header).arco-menu-selected:hover {
+  background-color: var(--mh-c-nav-selected-background);
+  color: var(--mh-c-nav-selected-color);
+  font-weight: var(--mh-c-nav-selected-weight);
+}
+.mh-kit-arco--aligned
+  .arco-menu
+  :is(.arco-menu-item, .arco-menu-pop-header).arco-menu-selected
+  .mh-arco-nav-title
+  > .arco-icon {
+  color: var(--mh-c-nav-selected-color);
+}
+/* 展开的子菜单里有选中项：标题的字和图标换色，不加粗、不加底色（悬停照常） */
+.mh-kit-arco--aligned .arco-menu .arco-menu-inline-header.arco-menu-selected {
+  font-weight: var(--mh-c-nav-weight);
+  color: var(--mh-c-nav-parent-selected-color);
+}
+.mh-kit-arco--aligned .arco-menu .arco-menu-inline-header.arco-menu-selected:hover {
+  color: var(--mh-c-nav-hover-color);
+}
+.mh-kit-arco--aligned
+  .arco-menu
+  .arco-menu-inline-header.arco-menu-selected
+  .mh-arco-nav-title
+  > .arco-icon {
+  color: var(--mh-c-nav-parent-selected-color);
+}
+/* 键盘聚焦：控件规格的 3px 外圈（Arco 是 2px 主色内描边） */
+.mh-kit-arco--aligned
+  .arco-menu
+  :is(.arco-menu-item, .arco-menu-inline-header, .arco-menu-pop-header):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/*
+ * 展开的子菜单：Arco 的内容区一直是 overflow: hidden（给展开、收起的高度动画用），
+ * 子菜单里的项聚焦时，外圈左右两边被它裁掉。动画以外的时候放开。
+ */
+.mh-kit-arco--aligned
+  .arco-menu-inline-content:not(.arco-menu-inline-enter, .arco-menu-inline-exit) {
+  overflow: visible;
+}
+/* 收起：项和侧栏一样宽（减去留白），图标居中，不显示箭头；文字藏起来但读屏读得到 */
+.mh-kit-arco--aligned .arco-menu-collapse .arco-menu-icon-suffix {
+  display: none;
+}
+.mh-kit-arco--aligned .arco-menu-collapse :is(.arco-menu-item, .arco-menu-pop-header) {
+  justify-content: center;
+  padding: 0;
+}
+.mh-kit-arco--aligned .arco-menu-collapse .mh-arco-nav-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/*
+ * 收起后的子菜单弹层：Arco 用一个下拉菜单（Dropdown + Menu），弹层往右再挪 8px（transform），
+ * 外框 1px fill-3 描边、上下 4px 留白、阴影 0 4px 10px，项 36px 高、选中只加粗。
+ */
+.mh-kit-arco--aligned .arco-menu-pop-trigger.arco-trigger[trigger-placement='rt'] {
+  transform: none;
+}
+.mh-kit-arco--aligned .arco-menu-pop-trigger .arco-dropdown-menu {
+  min-width: var(--mh-c-nav-popup-min-width);
+  padding: var(--mh-c-popup-padding);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background-color: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-arco--aligned .arco-menu-pop-trigger .arco-dropdown-menu-item {
+  display: flex;
+  align-items: center;
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  font-weight: 400;
+  color: var(--mh-c-popup-option-color);
+  background-color: transparent;
+}
+.mh-kit-arco--aligned .arco-menu-pop-trigger .arco-dropdown-menu-item:is(:hover, :focus-visible) {
+  background-color: var(--mh-c-popup-hover-background);
+  color: var(--mh-c-popup-option-color);
+  box-shadow: none;
+}
+.mh-kit-arco--aligned .arco-menu-pop-trigger .arco-dropdown-menu-item.arco-dropdown-menu-selected {
+  background-color: var(--mh-c-popup-selected-background);
+  font-weight: var(--mh-c-popup-selected-weight);
+  color: var(--mh-c-popup-selected-color);
+}
+
+/*
+ * 收起后的文字提示（没有子菜单的项悬停显示名字）：Arco 的 Tooltip 是 gray-10 深色底、白字 14/22、
+ * 左右 12 上下 8、圆角 border-radius-small（原生 2px）、阴影 0 4px 10px，带 8px 的小箭头（箭头在 index.tsx 里关掉）。
+ */
+.mh-kit-arco--aligned .arco-menu-item-tooltip .arco-tooltip-content {
+  padding: var(--mh-c-tooltip-inset-y) var(--mh-c-tooltip-inset-x);
+  border: 0;
+  border-radius: var(--mh-c-tooltip-radius);
+  background-color: var(--mh-c-tooltip-background);
+  box-shadow: none;
+  font-size: var(--mh-c-tooltip-font-size);
+  line-height: var(--mh-c-tooltip-line);
+  font-weight: 400;
+  color: var(--mh-c-tooltip-color);
+}
+
+/*
+ * 面包屑：Arco 的分隔符是斜线图标（text-4 色），每项左右 4px 内边距、24px 行高；
+ * 能点的链接再加 4px 内边距（用负外边距抵消），悬停浅灰底、链接蓝，聚焦 2px 主色外圈；当前页加粗。
+ */
+.mh-kit-arco--aligned .arco-breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-breadcrumb-color);
+}
+.mh-kit-arco--aligned .arco-breadcrumb-item {
+  padding: 0;
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-breadcrumb-color);
+}
+.mh-kit-arco--aligned .arco-breadcrumb-item:last-child {
+  font-weight: var(--mh-c-breadcrumb-current-weight);
+  color: var(--mh-c-breadcrumb-current-color);
+}
+.mh-kit-arco--aligned .arco-breadcrumb-item a {
+  padding: 0;
+  margin: 0;
+  border-radius: var(--mh-c-breadcrumb-radius);
+  color: var(--mh-c-breadcrumb-color);
+}
+.mh-kit-arco--aligned .arco-breadcrumb-item a:hover {
+  background-color: transparent;
+  color: var(--mh-c-breadcrumb-hover-color);
+}
+.mh-kit-arco--aligned .arco-breadcrumb-item a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-arco--aligned .arco-breadcrumb-item-separator {
+  margin: 0 var(--mh-c-breadcrumb-separator-gap);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-breadcrumb-separator-color);
+}
+
+/*
+ * 下拉菜单（用户菜单）：Arco 的下拉菜单外框 1px fill-3 描边、上下 4px 留白、最高 200px，
+ * 项 36px 高、最深的文字色，图标是 1em 的 Arco 图标（右边没有间距）；键盘聚焦是 2px 主色内描边。
+ */
+.mh-kit-arco--aligned .mh-arco-dropdown.arco-dropdown-menu {
+  min-width: var(--mh-c-dropdown-min-width);
+  max-height: none;
+  padding: var(--mh-c-popup-padding);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background-color: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-arco--aligned .mh-arco-dropdown .arco-dropdown-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--mh-c-dropdown-icon-gap);
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-dropdown-color);
+  background-color: transparent;
+}
+.mh-kit-arco--aligned .mh-arco-dropdown .arco-dropdown-menu-item .arco-icon {
+  flex: none;
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  color: var(--mh-c-dropdown-icon-color);
+}
+.mh-kit-arco--aligned .mh-arco-dropdown .arco-dropdown-menu-item:is(:hover, :focus-visible) {
+  background-color: var(--mh-c-popup-hover-background);
+  color: var(--mh-c-dropdown-color);
+  box-shadow: none;
+  outline: none;
+}
+.mh-kit-arco--aligned .mh-arco-dropdown .mh-arco-dropdown-danger,
+.mh-kit-arco--aligned .mh-arco-dropdown .mh-arco-dropdown-danger:is(:hover, :focus-visible),
+.mh-kit-arco--aligned .mh-arco-dropdown .mh-arco-dropdown-danger .arco-icon {
+  color: var(--mh-c-dropdown-danger-color);
+}
+.mh-kit-arco--aligned .mh-arco-dropdown-divider {
+  margin: var(--mh-c-popup-padding) calc(-1 * var(--mh-c-popup-padding));
+  background-color: var(--mh-c-dropdown-divider);
+}
+
+/* 头像：Arco 默认 40px、灰底（fill-4）白字、字号是直径的一半；直径用 size 属性，颜色和字号在这里改 */
+.mh-kit-arco--aligned .arco-avatar {
+  background-color: var(--mh-c-avatar-background);
+  color: var(--mh-c-avatar-color);
+}
+.mh-kit-arco--aligned .arco-avatar-text {
+  font-size: var(--mh-c-avatar-font-size);
+  font-weight: var(--mh-c-avatar-weight);
+}
+
+/*
+ * 徽标：Arco 默认 20px 高、左右 6px、外面一圈 2px 白边；数字的中心位置用 offset 属性对到角上。
+ * Arco 的外层是 inline-block、行高 1，里面的图标按文字基线排，外层比图标高一截（15px 字时 17px），
+ * 数字跟着外层的角走、图标也被挤偏半个像素；改成 inline-flex，外层正好包住被标注的东西。
+ */
+.mh-kit-arco--aligned .arco-badge {
+  display: inline-flex;
+}
+.mh-kit-arco--aligned .arco-badge-number {
+  height: var(--mh-c-badge-height);
+  min-width: var(--mh-c-badge-min-width);
+  padding: 0 var(--mh-c-badge-inset);
+  border-radius: calc(var(--mh-c-badge-height) / 2);
+  font-size: var(--mh-c-badge-font-size);
+  font-weight: var(--mh-c-badge-weight);
+  line-height: var(--mh-c-badge-height);
+  color: var(--mh-c-badge-color);
+  background-color: var(--mh-c-badge-background);
+  box-shadow: none;
+}
+
+/*
+ * 表格（Table）。Arco 的表格：表头 40 高（th 里一层 th-item，上下 9、左右 16），行 41 高（格子上下 9 + 22 行高 + 1px 线），
+ * 表头灰底（neutral-2）、14px 500 深色字、左上右上圆角；格子白底，最后一行下面也有线；勾选列 40 宽、勾选的行不变色。
+ * 统一成控件规格：高度、留白、字、颜色、分隔线（最后一行不画），勾选的行换底色。
+ */
+.mh-kit-arco--aligned .arco-table table {
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-arco--aligned :is(.arco-table-container, .arco-table-header) {
+  border-radius: 0;
+}
+.mh-kit-arco--aligned .arco-table table thead tr:first-child :is(th:first-child, th:last-child) {
+  border-radius: 0;
+}
+.mh-kit-arco--aligned .arco-table-th {
+  height: var(--mh-c-table-head-height);
+  border-bottom: 1px solid var(--mh-c-table-divider);
+  background-color: var(--mh-c-table-head-background);
+  font-size: var(--mh-c-table-head-size);
+  font-weight: var(--mh-c-table-head-weight);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-table-head-color);
+}
+.mh-kit-arco--aligned .arco-table-th-item {
+  padding: 0 var(--mh-c-table-cell-inset);
+}
+.mh-kit-arco--aligned .arco-table-td {
+  height: var(--mh-c-table-row-height);
+  padding: 0 var(--mh-c-table-cell-inset);
+  border-bottom: 1px solid var(--mh-c-table-divider);
+  background-color: transparent;
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-table-color);
+}
+.mh-kit-arco--aligned .arco-table-tr:last-child > .arco-table-td {
+  border-bottom: 0;
+}
+.mh-kit-arco--aligned
+  .arco-table-tr:not(.arco-table-empty-row, .arco-table-row-checked):hover
+  > .arco-table-td {
+  background-color: var(--mh-c-table-hover-background);
+}
+.mh-kit-arco--aligned .arco-table-tr.arco-table-row-checked > .arco-table-td {
+  background-color: var(--mh-c-table-selected-background);
+}
+/* 勾选列：宽度用 rowSelection.columnWidth；复选框在格子正中（Arco 的复选框跟着一行文字的基线走，还往上提了 0.09em） */
+.mh-kit-arco--aligned :is(.arco-table-th, .arco-table-td).arco-table-operation {
+  padding: 0;
+}
+.mh-kit-arco--aligned
+  .arco-table-operation
+  :is(.arco-table-th-item, .arco-table-th-item > .arco-checkbox),
+.mh-kit-arco--aligned .arco-table-td.arco-table-operation > .arco-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mh-kit-arco--aligned .arco-table-operation .arco-checkbox-mask-wrapper {
+  top: 0;
+  display: block;
+}
+/* 排序：对齐时表头里是套件自己的按钮（文字 + 图标集的排序图标），不用 Arco 的 sorter */
+.mh-kit-arco--aligned .mh-arco-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mh-c-table-sort-gap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-c-table-sort-radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+.mh-kit-arco--aligned .mh-arco-table-sort:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-arco--aligned .mh-arco-table-sort > svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  color: var(--mh-c-table-sort-color);
+}
+.mh-kit-arco--aligned .mh-arco-table-sort > svg[data-sorted] {
+  color: var(--mh-c-table-sort-active-color);
+}
+/* 部分选中：Arco 是主色底里一道 6×2 的白横，统一成图标集的 minus（CSS 遮罩），大小和对勾一样 */
+.mh-kit-arco--aligned .arco-checkbox-indeterminate .arco-checkbox-mask {
+  border-color: var(--mh-c-checkbox-checked);
+  background-color: var(--mh-c-checkbox-checked);
+}
+.mh-kit-arco--icons .arco-checkbox-indeterminate .arco-checkbox-mask::after {
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  border-radius: 0;
+  background-color: var(--mh-c-checkbox-mark);
+  -webkit-mask: var(--mh-icon-minus) center / contain no-repeat;
+  mask: var(--mh-icon-minus) center / contain no-repeat;
+}
+/* 没有行时表头的复选框是禁用的：Arco 是灰边灰底（fill-3 / fill-2），底色取控件规格、边线不变 */
+.mh-kit-arco--aligned .arco-checkbox-disabled .arco-checkbox-mask,
+.mh-kit-arco--aligned .arco-checkbox.arco-checkbox-disabled:hover .arco-checkbox-mask {
+  border-color: var(--mh-c-checkbox-border);
+  background-color: var(--mh-c-checkbox-disabled-background);
+}
+/* 复选框的悬停、键盘聚焦：Arco 是复选框后面一个 24px 的灰色圆，统一成不画圆、聚焦时控件规格的外圈（登录框的复选框也一样） */
+.mh-kit-arco--aligned .arco-checkbox .arco-checkbox-icon-hover::before {
+  display: none;
+}
+.mh-kit-arco--aligned
+  .arco-checkbox
+  > input:focus-visible
+  + .arco-checkbox-mask-wrapper
+  .arco-checkbox-mask {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 加载中：Arco 盖一层 60% 的白（--color-spin-layer-bg），统一成只变浅；加载图标的大小、颜色取控件规格，在表格正中 */
+.mh-kit-arco--aligned .arco-table > .arco-spin-loading > .arco-spin-children {
+  opacity: var(--mh-c-table-loading-opacity);
+}
+.mh-kit-arco--aligned .arco-table > .arco-spin-loading > .arco-spin-children::after {
+  background: none;
+}
+.mh-kit-arco--aligned .arco-table .arco-spin-icon {
+  display: block;
+  font-size: var(--mh-c-table-loading-icon);
+  line-height: 0;
+  color: var(--mh-c-table-loading-color);
+}
+.mh-kit-arco--aligned .mh-arco-table-spinner {
+  width: var(--mh-c-table-loading-icon);
+  height: var(--mh-c-table-loading-icon);
+}
+/* 没有行：Arco 的格子上下 9、里面再包一层上下 20 留白、40 行高的 div；统一成不留白、不画线，内容由页面给 */
+.mh-kit-arco--aligned .arco-table-empty-row > .arco-table-td {
+  height: auto;
+  padding: 0;
+  border-bottom: 0;
+}
+.mh-kit-arco--aligned .arco-table-no-data {
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/*
+ * 分页（Pagination）：Arco 是 32 的方块、项之间 8、当前页浅主色底加主色字（没有描边），上一页、下一页是 12px 的箭头，
+ * 悬停时上一页、下一页变主色；「共 N 条」离页码 8、最深的文字色。
+ */
+.mh-kit-arco--aligned .arco-pagination {
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-arco--aligned .arco-pagination-total-text {
+  margin-right: var(--mh-c-pagination-total-gap);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-pagination-item-size);
+  color: var(--mh-c-pagination-total-color);
+}
+.mh-kit-arco--aligned .arco-pagination-list {
+  display: flex;
+  align-items: center;
+  gap: var(--mh-c-pagination-gap);
+}
+.mh-kit-arco--aligned .arco-pagination-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--mh-c-pagination-item-size);
+  height: var(--mh-c-pagination-item-size);
+  margin: 0;
+  padding: 0 var(--mh-c-pagination-item-inset);
+  border: 1px solid transparent;
+  border-radius: var(--mh-c-pagination-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-pagination-color);
+}
+.mh-kit-arco--aligned
+  .arco-pagination-item:not(.arco-pagination-item-disabled):not(
+    .arco-pagination-item-active
+  ):hover {
+  background-color: var(--mh-c-pagination-hover-background);
+  color: var(--mh-c-pagination-color);
+}
+.mh-kit-arco--aligned .arco-pagination-item.arco-pagination-item-active {
+  border-color: var(--mh-c-pagination-active-border);
+  background-color: var(--mh-c-pagination-active-background);
+  font-weight: var(--mh-c-pagination-active-weight);
+  color: var(--mh-c-pagination-active-color);
+}
+.mh-kit-arco--aligned .arco-pagination .arco-pagination-item.arco-pagination-item-disabled {
+  color: var(--mh-c-pagination-disabled-color);
+}
+.mh-kit-arco--aligned :is(.arco-pagination-item-prev, .arco-pagination-item-next)::after {
+  display: none;
+}
+.mh-kit-arco--aligned :is(.arco-pagination-item-prev, .arco-pagination-item-next) svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-kit-arco--aligned .arco-pagination-item:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/* 标签（Tag）：Arco 是 24 高、左右 8、1px 透明描边、12px 500，颜色是它自己的色板（green-1 / green-6……） */
+.mh-kit-arco--aligned .arco-tag {
+  height: var(--mh-c-tag-height);
+  padding: 0 var(--mh-c-tag-inset);
+  border: 0;
+  border-radius: var(--mh-c-tag-radius);
+  font-size: var(--mh-c-tag-font-size);
+  font-weight: var(--mh-c-tag-weight);
+  line-height: var(--mh-c-tag-height);
+}
+.mh-kit-arco--aligned .arco-tag.mh-arco-tag-default {
+  background-color: var(--mh-c-tag-background);
+  color: var(--mh-c-tag-color);
+}
+.mh-kit-arco--aligned .arco-tag.mh-arco-tag-success {
+  background-color: var(--mh-c-tag-success-background);
+  color: var(--mh-c-tag-success-color);
+}
+.mh-kit-arco--aligned .arco-tag.mh-arco-tag-warning {
+  background-color: var(--mh-c-tag-warning-background);
+  color: var(--mh-c-tag-warning-color);
+}
+.mh-kit-arco--aligned .arco-tag.mh-arco-tag-danger {
+  background-color: var(--mh-c-tag-danger-background);
+  color: var(--mh-c-tag-danger-color);
+}
+
+/*
+ * 日期范围（RangePicker）的触发框：Arco 是灰底无描边、左 4 右 11 的内边距，聚焦时正在填的那个框是浅主色底，
+ * 有「清空」，图标 14px。统一成和输入框同一组（field）：白底描边、文字离外边框 inset，聚焦或面板开着时外圈。
+ */
+.mh-kit-arco--aligned .arco-picker.arco-picker-range,
+.mh-kit-arco--aligned .arco-picker.arco-picker-range:hover {
+  padding: 0 calc(var(--mh-c-field-inset) - 1px);
+  border-color: var(--mh-c-field-border);
+  background-color: var(--mh-c-field-background);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-arco--aligned .arco-picker.arco-picker-range.arco-picker-focused {
+  border-color: var(--mh-c-field-border-focus);
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-arco--aligned .arco-picker-range input,
+.mh-kit-arco--aligned .arco-picker-focused .arco-picker-input-active input {
+  padding: 0;
+  background: none;
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-text-body);
+}
+.mh-kit-arco--aligned .arco-picker-range input::placeholder,
+.mh-kit-arco--aligned .arco-picker-range .arco-picker-input-placeholder input {
+  color: var(--mh-text-placeholder);
+}
+.mh-kit-arco--aligned .arco-picker-range .arco-picker-separator {
+  min-width: 0;
+  padding: 0 var(--mh-c-date-range-separator-gap);
+  color: var(--mh-c-date-range-separator-color);
+}
+.mh-kit-arco--aligned .arco-picker-range .arco-picker-suffix {
+  display: flex;
+  width: auto;
+  margin-left: var(--mh-c-date-range-icon-gap);
+}
+.mh-kit-arco--aligned .arco-picker-range .arco-picker-suffix-icon {
+  display: flex;
+  color: var(--mh-c-icon-color);
+}
+.mh-kit-arco--aligned .arco-picker-range .arco-picker-suffix-icon svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+
+/*
+ * 日期面板（.mh-arco-date-popup）：Arco 每个月 265 宽，标题行上下 8、下面一道线，按年翻和按月翻的箭头各一对，
+ * 「2026年」「10月」两段能点（切到选年、选月），星期一行 500 字重；日子是 32 高的格子里一个 24 的圆，
+ * 范围的浅色带画在格子上，今天是下面一个主色小圆点。统一成 32 的方块紧挨着，范围的浅底画在方块上。
+ */
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-range-container {
+  padding: var(--mh-c-date-panel-padding);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background-color: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+  min-height: 0;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-range-wrapper {
+  gap: var(--mh-c-date-panel-month-gap);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-panel-date-inner {
+  width: calc(var(--mh-c-date-panel-cell-size) * 7);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-header {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: var(--mh-c-date-panel-header-height);
+  padding: 0;
+  border-bottom: 0;
+}
+/* 只按月翻：左边月份第一个、右边月份最后一个箭头是按年翻的，藏掉；占位的空格子也不要 */
+.mh-kit-arco--aligned
+  .mh-arco-date-popup
+  .arco-panel-date:first-child
+  .arco-picker-header-icon:first-child,
+.mh-kit-arco--aligned
+  .mh-arco-date-popup
+  .arco-panel-date:last-child
+  .arco-picker-header-icon:last-child,
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-header-icon-hidden {
+  display: none;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-header-icon {
+  position: absolute;
+  top: calc((var(--mh-c-date-panel-header-height) - var(--mh-c-date-panel-nav-size)) / 2);
+  display: grid;
+  place-items: center;
+  width: var(--mh-c-date-panel-nav-size);
+  height: var(--mh-c-date-panel-nav-size);
+  margin: 0;
+  border-radius: var(--mh-c-popup-option-radius);
+  background: none;
+  line-height: 1;
+  color: var(--mh-c-icon-color);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-panel-date:first-child .arco-picker-header-icon {
+  left: 0;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-panel-date:last-child .arco-picker-header-icon {
+  right: 0;
+}
+.mh-kit-arco--aligned
+  .mh-arco-date-popup
+  .arco-picker-header-icon:not(.arco-picker-header-icon-hidden):hover {
+  background-color: var(--mh-c-date-panel-hover-background);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-header-icon svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+/* 标题「2026年10月」：一段文字，不能点（统一设计不切到选年、选月） */
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-header-value {
+  flex: none;
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-date-panel-header-height);
+  font-weight: var(--mh-c-date-panel-title-weight);
+  color: var(--mh-c-date-panel-title-color);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-header-label {
+  padding: 0;
+  pointer-events: none;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-week-list {
+  padding: 0;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-week-list-item {
+  flex: none;
+  width: var(--mh-c-date-panel-cell-size);
+  height: var(--mh-c-date-panel-week-height);
+  font-size: var(--mh-c-date-panel-week-size);
+  font-weight: 400;
+  line-height: var(--mh-c-date-panel-week-height);
+  color: var(--mh-c-date-panel-week-color);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-body {
+  padding: 0;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell {
+  flex: none;
+  width: var(--mh-c-date-panel-cell-size);
+  padding: 0;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell-today::after {
+  display: none;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell .arco-picker-date {
+  align-items: center;
+  width: var(--mh-c-date-panel-cell-size);
+  height: var(--mh-c-date-panel-cell-size);
+  padding: 0;
+  border-radius: var(--mh-c-date-panel-cell-radius);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-date-value,
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell:hover .arco-picker-date-value,
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell-selected .arco-picker-date-value {
+  min-width: 0;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  font-size: var(--mh-c-text-size);
+  font-weight: 400;
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-date-panel-color);
+}
+.mh-kit-arco--aligned
+  .mh-arco-date-popup
+  .arco-picker-cell:not(.arco-picker-cell-in-view)
+  .arco-picker-date-value {
+  color: var(--mh-c-date-panel-outside-color);
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell:hover .arco-picker-date {
+  background-color: var(--mh-c-date-panel-hover-background);
+}
+/* 今天：1px 主色描边，画在方块上 */
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell-today .arco-picker-date {
+  border: 1px solid var(--mh-c-date-panel-today-border);
+}
+/* 选中的范围：浅底连成一条；开始、结束那天主色底白字、带圆角。选第二天时 Arco 的悬停预览（浅主色带）不画 */
+.mh-kit-arco--aligned
+  .mh-arco-date-popup
+  :is(
+    .arco-picker-cell-hover-in-range,
+    .arco-picker-cell-hover-range-start,
+    .arco-picker-cell-hover-range-end
+  )
+  .arco-picker-date {
+  border-radius: var(--mh-c-date-panel-cell-radius);
+  background: none;
+}
+.mh-kit-arco--aligned .mh-arco-date-popup .arco-picker-cell-in-range .arco-picker-date {
+  border-radius: 0;
+  background-color: var(--mh-c-date-panel-range-background);
+}
+.mh-kit-arco--aligned
+  .mh-arco-date-popup
+  :is(.arco-picker-cell-range-start, .arco-picker-cell-range-end, .arco-picker-cell-selected)
+  .arco-picker-date {
+  border-radius: var(--mh-c-date-panel-cell-radius);
+  background-color: var(--mh-c-date-panel-selected-background);
+}
+.mh-kit-arco--aligned
+  .mh-arco-date-popup
+  :is(.arco-picker-cell-range-start, .arco-picker-cell-range-end, .arco-picker-cell-selected)
+  .arco-picker-date-value {
+  color: var(--mh-c-date-panel-selected-color);
+}
+
+/*
+ * 对话框（Modal）：Arco 是 520 宽、标题栏 48 高（左右 20、居中的 16px 500 标题、下面一道线），内容上下 24 左右 20，
+ * 底部按钮上下 16、上面一道线；没有投影；关闭按钮是 12px 的叉、离上 18 右 20，键盘到不了。
+ * 对齐时关闭按钮是套件自己的（.mh-arco-dialog-close），放在内容最前面，定位到右上角。
+ */
+.mh-kit-arco--aligned .arco-modal {
+  padding: var(--mh-c-dialog-padding);
+  border-radius: var(--mh-c-dialog-radius);
+  background-color: var(--mh-c-dialog-background);
+  box-shadow: var(--mh-c-dialog-shadow);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-arco--aligned .arco-modal-header {
+  height: auto;
+  padding: 0 var(--mh-c-dialog-close-size) 0 0;
+  border-bottom: 0;
+}
+.mh-kit-arco--aligned .arco-modal-header .arco-modal-title {
+  text-align: left;
+  font-size: var(--mh-c-dialog-title-size);
+  font-weight: var(--mh-c-dialog-title-weight);
+  line-height: var(--mh-c-dialog-title-line);
+  color: var(--mh-c-dialog-title-color);
+}
+.mh-kit-arco--aligned .arco-modal-content {
+  position: static;
+  margin-top: var(--mh-c-dialog-header-gap);
+  padding: 0;
+  font-size: var(--mh-c-text-size);
+  color: inherit;
+}
+.mh-kit-arco--aligned .arco-modal-footer {
+  margin-top: var(--mh-c-dialog-footer-gap);
+  padding: 0;
+  border-top: 0;
+}
+.mh-kit-arco--aligned .mh-arco-dialog-close {
+  position: absolute;
+  top: var(--mh-c-dialog-close-inset);
+  right: var(--mh-c-dialog-close-inset);
+  display: grid;
+  place-items: center;
+  width: var(--mh-c-dialog-close-size);
+  height: var(--mh-c-dialog-close-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-c-popup-option-radius);
+  background: none;
+  color: var(--mh-c-dialog-close-color);
+  cursor: pointer;
+  outline: none;
+}
+.mh-kit-arco--aligned .mh-arco-dialog-close:hover {
+  background-color: var(--mh-c-dialog-close-hover-background);
+}
+.mh-kit-arco--aligned .mh-arco-dialog-close:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-arco--aligned .mh-arco-dialog-close svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-kit-arco--aligned .arco-modal-mask {
+  background-color: var(--mh-c-dialog-mask);
+}
+
+/*
+ * 单选（Radio）：Arco 是 14px 的圆、2px 灰边，选中是主色底里一个 4px 的白点；圆的左边有 5px 内边距，
+ * 两项隔 20，悬停、聚焦时后面一个 24px 的灰色圆。统一成规格的大小、1px 描边、6 的白点，一行、两项隔 optionGap。
+ */
+.mh-kit-arco--aligned .arco-radio-group {
+  display: flex;
+  gap: var(--mh-c-radio-option-gap);
+}
+.mh-kit-arco--aligned .arco-radio-group .arco-radio {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-arco--aligned .arco-radio-mask-wrapper {
+  top: 0;
+  display: block;
+}
+.mh-kit-arco--aligned .arco-radio .arco-radio-icon-hover::before {
+  display: none;
+}
+.mh-kit-arco--aligned .arco-radio-mask,
+.mh-kit-arco--aligned .arco-radio:hover .arco-radio-mask {
+  width: var(--mh-c-radio-size);
+  height: var(--mh-c-radio-size);
+  border: 1px solid var(--mh-c-radio-border);
+  background-color: var(--mh-c-field-background);
+}
+.mh-kit-arco--aligned .arco-radio-mask::after {
+  inset: 0;
+  width: var(--mh-c-radio-dot);
+  height: var(--mh-c-radio-dot);
+  margin: auto;
+  transform: scale(0);
+}
+.mh-kit-arco--aligned .arco-radio-checked .arco-radio-mask,
+.mh-kit-arco--aligned .arco-radio-checked:hover .arco-radio-mask {
+  border-color: var(--mh-c-radio-checked);
+  background-color: var(--mh-c-radio-checked);
+}
+.mh-kit-arco--aligned .arco-radio-checked .arco-radio-mask::after {
+  background-color: var(--mh-c-radio-dot-color);
+  transform: scale(1);
+}
+.mh-kit-arco--aligned
+  .arco-radio
+  > input:focus-visible
+  + .arco-radio-mask-wrapper
+  .arco-radio-mask {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-arco--aligned .arco-radio-text {
+  margin-left: var(--mh-c-radio-gap);
+  color: var(--mh-text-body);
+}
+
+/* 多行输入（TextArea）：灰底无描边、上下 4 → 和输入框一样的白底描边，文字离上下边缘 insetBlock；能往下拖，不能拖宽 */
+.mh-kit-arco--aligned textarea.arco-textarea,
+.mh-kit-arco--aligned textarea.arco-textarea:hover {
+  min-height: 0;
+  padding: calc(var(--mh-c-textarea-inset-block) - 1px) calc(var(--mh-c-field-inset) - 1px);
+  border-color: var(--mh-c-field-border);
+  background-color: var(--mh-c-field-background);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-text-body);
+  resize: vertical;
+}
+.mh-kit-arco--aligned textarea.arco-textarea::placeholder {
+  color: var(--mh-text-placeholder);
+}
+.mh-kit-arco--aligned textarea.arco-textarea:focus {
+  border-color: var(--mh-c-field-border-focus);
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-arco--aligned textarea.arco-textarea[aria-invalid='true'] {
+  border-color: var(--mh-c-field-border-invalid);
+}

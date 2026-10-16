@@ -1,0 +1,19 @@
+/* 插画（assets/ill.js 画的）：黑白灰，照幕后协作那期片场的规格 */
+.ill { margin: 0; }
+.ill-svg { display: block; width: 100%; height: auto; }
+.ill-svg .s { stroke: #161616; stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+.ill-svg .th { stroke-width: 2.4; }
+.ill-svg .n { fill: none; }
+.ill-svg .w { fill: #f7f7f5; }
+.ill-svg .l { fill: #c4c4c2; }
+.ill-svg .m { fill: #a2a2a0; }
+.ill-svg .k { fill: #161616; }
+.ill-svg .sh { fill: #c3c3c1; }
+.ill-svg .tape { font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; font-weight: 700; font-size: 17px; fill: #161616; letter-spacing: 0.03em; }
+.ill-svg .tape-n { fill: #8a8a88; }
+.ill-svg .sign { font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif; font-weight: 700; fill: #f7f7f5; }
+.ill-svg .mono { font: 600 12px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #3a3a38; }
+.ill-svg .q, .ill-svg .eq { font: 800 46px "PingFang SC", sans-serif; fill: #161616; }
+.ill-svg .beam { stroke: #161616; stroke-width: 2.4; stroke-dasharray: 3 9; stroke-linecap: round; fill: none; }
+.ill-svg .link { fill: none; stroke: #161616; stroke-width: 5.5; stroke-dasharray: 10 12; stroke-linecap: round; opacity: 0.85; }
+.ill + figcaption { text-align: center; }

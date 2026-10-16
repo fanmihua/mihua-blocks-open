@@ -1,0 +1,43 @@
+{
+  "name": "mihua-blocks-open",
+  "version": "0.1.0",
+  "private": true,
+  "description": "一份设计，适配不同组件库：规范层、套件接口、自动检查和范例。",
+  "license": "Apache-2.0",
+  "type": "module",
+  "workspaces": [
+    "spec",
+    "core",
+    "react",
+    "vue",
+    "audit",
+    "examples"
+  ],
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @mihua/examples",
+    "build": "npm run build -w @mihua/examples",
+    "typecheck": "tsc -p tsconfig.json && vue-tsc -p vue/tsconfig.json",
+    "test": "vitest run",
+    "audit:kits": "node audit/run.mjs",
+    "check": "npm run typecheck && npm test && npm run build && npm run audit:kits",
+    "format": "prettier --write \"{spec,core,react,vue,examples,audit}/**/*.{ts,tsx,vue,css,mjs}\" \"docs/**/*.md\" \"*.md\""
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.20.5",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "4.7.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^27.0.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "vitest": "^4.0.0",
+    "vue-tsc": "^3.1.0"
+  }
+}

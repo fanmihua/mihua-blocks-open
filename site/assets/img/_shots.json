@@ -1,0 +1,2571 @@
+{
+  "02-antd-theme-mono-selected": {
+    "id": "02-antd-theme-mono-selected",
+    "url": "/audit.html?scene=customers&spec=mono&mode=theme&kits=antd&state=selected",
+    "width": 1200,
+    "height": 920,
+    "scale": 2
+  },
+  "02-antd-theme-mono-selected-table": {
+    "id": "02-antd-theme-mono-selected-table",
+    "url": "/audit.html?scene=customers&spec=mono&mode=theme&kits=antd&state=selected",
+    "width": 927,
+    "height": 705,
+    "scale": 2
+  },
+  "02-controls-native-mono": {
+    "id": "02-controls-native-mono",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native",
+    "width": 2488,
+    "height": 583,
+    "scale": 2
+  },
+  "02-antd-theme-blue-selected-table": {
+    "id": "02-antd-theme-blue-selected-table",
+    "url": "/audit.html?scene=customers&spec=blue&mode=theme&kits=antd&state=selected",
+    "width": 927,
+    "height": 705,
+    "scale": 2
+  },
+  "02-antd-aligned-mono-selected-table": {
+    "id": "02-antd-aligned-mono-selected-table",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=selected",
+    "width": 927,
+    "height": 480,
+    "scale": 2
+  },
+  "02-controls-theme-mono": {
+    "id": "02-controls-theme-mono",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme",
+    "width": 2488,
+    "height": 583,
+    "scale": 2
+  },
+  "02-controls-aligned-mono": {
+    "id": "02-controls-aligned-mono",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned",
+    "width": 2488,
+    "height": 563,
+    "scale": 2
+  },
+  "02-controls-theme-stress": {
+    "id": "02-controls-theme-stress",
+    "url": "/audit.html?scene=controls&spec=stress&mode=theme",
+    "width": 2488,
+    "height": 595,
+    "scale": 2
+  },
+  "02-controls-aligned-stress": {
+    "id": "02-controls-aligned-stress",
+    "url": "/audit.html?scene=controls&spec=stress&mode=aligned",
+    "width": 2488,
+    "height": 585,
+    "scale": 2
+  },
+  "02-element-native-black": {
+    "id": "02-element-native-black",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 374,
+    "height": 32,
+    "scale": 2
+  },
+  "02-element-native-black-hover": {
+    "id": "02-element-native-black-hover",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 374,
+    "height": 32,
+    "scale": 2
+  },
+  "02-login-native-mono": {
+    "id": "02-login-native-mono",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&state=initial&variant=centered",
+    "width": 2288,
+    "height": 761,
+    "scale": 2
+  },
+  "02-login-aligned-mono": {
+    "id": "02-login-aligned-mono",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&state=initial&variant=centered",
+    "width": 2288,
+    "height": 737,
+    "scale": 2
+  },
+  "02-login-aligned-stress": {
+    "id": "02-login-aligned-stress",
+    "url": "/audit.html?scene=login&spec=stress&mode=aligned&state=initial&variant=centered",
+    "width": 2288,
+    "height": 773,
+    "scale": 2
+  },
+  "02-login-native-mono-account": {
+    "id": "02-login-native-mono-account",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&state=account&variant=centered",
+    "width": 2288,
+    "height": 765,
+    "scale": 2
+  },
+  "02-login-native-mono-loading": {
+    "id": "02-login-native-mono-loading",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&state=loading&variant=centered",
+    "width": 2288,
+    "height": 761,
+    "scale": 2
+  },
+  "02-controls-native-stress": {
+    "id": "02-controls-native-stress",
+    "url": "/audit.html?scene=controls&spec=stress&mode=native",
+    "width": 2488,
+    "height": 587,
+    "scale": 2
+  },
+  "02-login-theme-mono": {
+    "id": "02-login-theme-mono",
+    "url": "/audit.html?scene=login&spec=mono&mode=theme&state=initial&variant=centered",
+    "width": 2288,
+    "height": 761,
+    "scale": 2
+  },
+  "02-controls-mono-native-antd": {
+    "id": "02-controls-mono-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-mono-native-element": {
+    "id": "02-controls-mono-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 440,
+    "height": 458,
+    "scale": 2
+  },
+  "02-controls-mono-native-shadcn": {
+    "id": "02-controls-mono-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 440,
+    "height": 440,
+    "scale": 2
+  },
+  "02-controls-mono-native-arco": {
+    "id": "02-controls-mono-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 440,
+    "height": 432,
+    "scale": 2
+  },
+  "02-controls-mono-native-tdesign": {
+    "id": "02-controls-mono-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 440,
+    "height": 436,
+    "scale": 2
+  },
+  "02-controls-mono-theme-antd": {
+    "id": "02-controls-mono-theme-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=antd",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-mono-theme-element": {
+    "id": "02-controls-mono-theme-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=element",
+    "width": 440,
+    "height": 458,
+    "scale": 2
+  },
+  "02-controls-mono-theme-shadcn": {
+    "id": "02-controls-mono-theme-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=shadcn",
+    "width": 440,
+    "height": 432,
+    "scale": 2
+  },
+  "02-controls-mono-theme-arco": {
+    "id": "02-controls-mono-theme-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=arco",
+    "width": 440,
+    "height": 432,
+    "scale": 2
+  },
+  "02-controls-mono-theme-tdesign": {
+    "id": "02-controls-mono-theme-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=tdesign",
+    "width": 440,
+    "height": 436,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-antd": {
+    "id": "02-controls-mono-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-element": {
+    "id": "02-controls-mono-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-shadcn": {
+    "id": "02-controls-mono-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-arco": {
+    "id": "02-controls-mono-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-tdesign": {
+    "id": "02-controls-mono-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-stress-native-antd": {
+    "id": "02-controls-stress-native-antd",
+    "url": "/audit.html?scene=controls&spec=stress&mode=native&kits=antd",
+    "width": 440,
+    "height": 442,
+    "scale": 2
+  },
+  "02-controls-stress-native-element": {
+    "id": "02-controls-stress-native-element",
+    "url": "/audit.html?scene=controls&spec=stress&mode=native&kits=element",
+    "width": 440,
+    "height": 462,
+    "scale": 2
+  },
+  "02-controls-stress-native-shadcn": {
+    "id": "02-controls-stress-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=stress&mode=native&kits=shadcn",
+    "width": 440,
+    "height": 444,
+    "scale": 2
+  },
+  "02-controls-stress-native-arco": {
+    "id": "02-controls-stress-native-arco",
+    "url": "/audit.html?scene=controls&spec=stress&mode=native&kits=arco",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-stress-native-tdesign": {
+    "id": "02-controls-stress-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=stress&mode=native&kits=tdesign",
+    "width": 440,
+    "height": 440,
+    "scale": 2
+  },
+  "02-controls-stress-theme-antd": {
+    "id": "02-controls-stress-theme-antd",
+    "url": "/audit.html?scene=controls&spec=stress&mode=theme&kits=antd",
+    "width": 440,
+    "height": 460,
+    "scale": 2
+  },
+  "02-controls-stress-theme-element": {
+    "id": "02-controls-stress-theme-element",
+    "url": "/audit.html?scene=controls&spec=stress&mode=theme&kits=element",
+    "width": 440,
+    "height": 470,
+    "scale": 2
+  },
+  "02-controls-stress-theme-shadcn": {
+    "id": "02-controls-stress-theme-shadcn",
+    "url": "/audit.html?scene=controls&spec=stress&mode=theme&kits=shadcn",
+    "width": 440,
+    "height": 452,
+    "scale": 2
+  },
+  "02-controls-stress-theme-arco": {
+    "id": "02-controls-stress-theme-arco",
+    "url": "/audit.html?scene=controls&spec=stress&mode=theme&kits=arco",
+    "width": 440,
+    "height": 438,
+    "scale": 2
+  },
+  "02-controls-stress-theme-tdesign": {
+    "id": "02-controls-stress-theme-tdesign",
+    "url": "/audit.html?scene=controls&spec=stress&mode=theme&kits=tdesign",
+    "width": 440,
+    "height": 456,
+    "scale": 2
+  },
+  "02-controls-stress-aligned-antd": {
+    "id": "02-controls-stress-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=stress&mode=aligned&kits=antd",
+    "width": 440,
+    "height": 460,
+    "scale": 2
+  },
+  "02-controls-stress-aligned-element": {
+    "id": "02-controls-stress-aligned-element",
+    "url": "/audit.html?scene=controls&spec=stress&mode=aligned&kits=element",
+    "width": 440,
+    "height": 460,
+    "scale": 2
+  },
+  "02-controls-stress-aligned-shadcn": {
+    "id": "02-controls-stress-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=stress&mode=aligned&kits=shadcn",
+    "width": 440,
+    "height": 460,
+    "scale": 2
+  },
+  "02-controls-stress-aligned-arco": {
+    "id": "02-controls-stress-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=stress&mode=aligned&kits=arco",
+    "width": 440,
+    "height": 460,
+    "scale": 2
+  },
+  "02-controls-stress-aligned-tdesign": {
+    "id": "02-controls-stress-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=stress&mode=aligned&kits=tdesign",
+    "width": 440,
+    "height": 460,
+    "scale": 2
+  },
+  "02-login-mono-native-antd": {
+    "id": "02-login-mono-native-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=antd&state=initial&variant=centered",
+    "width": 400,
+    "height": 636,
+    "scale": 2
+  },
+  "02-login-mono-native-element": {
+    "id": "02-login-mono-native-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=element&state=initial&variant=centered",
+    "width": 400,
+    "height": 631,
+    "scale": 2
+  },
+  "02-login-mono-native-shadcn": {
+    "id": "02-login-mono-native-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=shadcn&state=initial&variant=centered",
+    "width": 400,
+    "height": 606,
+    "scale": 2
+  },
+  "02-login-mono-native-arco": {
+    "id": "02-login-mono-native-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=arco&state=initial&variant=centered",
+    "width": 400,
+    "height": 602,
+    "scale": 2
+  },
+  "02-login-mono-native-tdesign": {
+    "id": "02-login-mono-native-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=tdesign&state=initial&variant=centered",
+    "width": 400,
+    "height": 630,
+    "scale": 2
+  },
+  "02-login-mono-theme-antd": {
+    "id": "02-login-mono-theme-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=theme&kits=antd&state=initial&variant=centered",
+    "width": 400,
+    "height": 636,
+    "scale": 2
+  },
+  "02-login-mono-theme-element": {
+    "id": "02-login-mono-theme-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=theme&kits=element&state=initial&variant=centered",
+    "width": 400,
+    "height": 631,
+    "scale": 2
+  },
+  "02-login-mono-theme-shadcn": {
+    "id": "02-login-mono-theme-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=theme&kits=shadcn&state=initial&variant=centered",
+    "width": 400,
+    "height": 606,
+    "scale": 2
+  },
+  "02-login-mono-theme-arco": {
+    "id": "02-login-mono-theme-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=theme&kits=arco&state=initial&variant=centered",
+    "width": 400,
+    "height": 602,
+    "scale": 2
+  },
+  "02-login-mono-theme-tdesign": {
+    "id": "02-login-mono-theme-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=theme&kits=tdesign&state=initial&variant=centered",
+    "width": 400,
+    "height": 630,
+    "scale": 2
+  },
+  "02-login-mono-aligned-antd": {
+    "id": "02-login-mono-aligned-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=antd&state=initial&variant=centered",
+    "width": 400,
+    "height": 612,
+    "scale": 2
+  },
+  "02-login-mono-aligned-element": {
+    "id": "02-login-mono-aligned-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=element&state=initial&variant=centered",
+    "width": 400,
+    "height": 612,
+    "scale": 2
+  },
+  "02-login-mono-aligned-shadcn": {
+    "id": "02-login-mono-aligned-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=shadcn&state=initial&variant=centered",
+    "width": 400,
+    "height": 612,
+    "scale": 2
+  },
+  "02-login-mono-aligned-arco": {
+    "id": "02-login-mono-aligned-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=arco&state=initial&variant=centered",
+    "width": 400,
+    "height": 612,
+    "scale": 2
+  },
+  "02-login-mono-aligned-tdesign": {
+    "id": "02-login-mono-aligned-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=tdesign&state=initial&variant=centered",
+    "width": 400,
+    "height": 612,
+    "scale": 2
+  },
+  "02-login-stress-aligned-antd": {
+    "id": "02-login-stress-aligned-antd",
+    "url": "/audit.html?scene=login&spec=stress&mode=aligned&kits=antd&state=initial&variant=centered",
+    "width": 400,
+    "height": 648,
+    "scale": 2
+  },
+  "02-login-stress-aligned-element": {
+    "id": "02-login-stress-aligned-element",
+    "url": "/audit.html?scene=login&spec=stress&mode=aligned&kits=element&state=initial&variant=centered",
+    "width": 400,
+    "height": 648,
+    "scale": 2
+  },
+  "02-login-stress-aligned-shadcn": {
+    "id": "02-login-stress-aligned-shadcn",
+    "url": "/audit.html?scene=login&spec=stress&mode=aligned&kits=shadcn&state=initial&variant=centered",
+    "width": 400,
+    "height": 648,
+    "scale": 2
+  },
+  "02-login-stress-aligned-arco": {
+    "id": "02-login-stress-aligned-arco",
+    "url": "/audit.html?scene=login&spec=stress&mode=aligned&kits=arco&state=initial&variant=centered",
+    "width": 400,
+    "height": 648,
+    "scale": 2
+  },
+  "02-login-stress-aligned-tdesign": {
+    "id": "02-login-stress-aligned-tdesign",
+    "url": "/audit.html?scene=login&spec=stress&mode=aligned&kits=tdesign&state=initial&variant=centered",
+    "width": 400,
+    "height": 648,
+    "scale": 2
+  },
+  "02-login-mono-native-account-antd": {
+    "id": "02-login-mono-native-account-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=antd&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-account-element": {
+    "id": "02-login-mono-native-account-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=element&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-account-shadcn": {
+    "id": "02-login-mono-native-account-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=shadcn&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-account-arco": {
+    "id": "02-login-mono-native-account-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=arco&state=account&variant=centered",
+    "width": 334,
+    "height": 36,
+    "scale": 2
+  },
+  "02-login-mono-native-account-tdesign": {
+    "id": "02-login-mono-native-account-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=tdesign&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-antd": {
+    "id": "02-login-mono-aligned-account-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=antd&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-element": {
+    "id": "02-login-mono-aligned-account-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=element&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-shadcn": {
+    "id": "02-login-mono-aligned-account-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=shadcn&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-arco": {
+    "id": "02-login-mono-aligned-account-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=arco&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-tdesign": {
+    "id": "02-login-mono-aligned-account-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=tdesign&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-loading-antd": {
+    "id": "02-login-mono-native-loading-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=antd&state=loading&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-loading-element": {
+    "id": "02-login-mono-native-loading-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=element&state=loading&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-loading-shadcn": {
+    "id": "02-login-mono-native-loading-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=shadcn&state=loading&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-loading-arco": {
+    "id": "02-login-mono-native-loading-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=arco&state=loading&variant=centered",
+    "width": 334,
+    "height": 36,
+    "scale": 2
+  },
+  "02-login-mono-native-loading-tdesign": {
+    "id": "02-login-mono-native-loading-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=tdesign&state=loading&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-account-typed-antd": {
+    "id": "02-login-mono-native-account-typed-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=antd&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-account-typed-element": {
+    "id": "02-login-mono-native-account-typed-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=element&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-account-typed-shadcn": {
+    "id": "02-login-mono-native-account-typed-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=shadcn&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-native-account-typed-arco": {
+    "id": "02-login-mono-native-account-typed-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=arco&state=account&variant=centered",
+    "width": 334,
+    "height": 36,
+    "scale": 2
+  },
+  "02-login-mono-native-account-typed-tdesign": {
+    "id": "02-login-mono-native-account-typed-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=tdesign&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-typed-antd": {
+    "id": "02-login-mono-aligned-account-typed-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=antd&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-typed-element": {
+    "id": "02-login-mono-aligned-account-typed-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=element&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-typed-shadcn": {
+    "id": "02-login-mono-aligned-account-typed-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=shadcn&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-typed-arco": {
+    "id": "02-login-mono-aligned-account-typed-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=arco&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-login-mono-aligned-account-typed-tdesign": {
+    "id": "02-login-mono-aligned-account-typed-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=tdesign&state=account&variant=centered",
+    "width": 334,
+    "height": 40,
+    "scale": 2
+  },
+  "02-controls-aligned-mono-36": {
+    "id": "02-controls-aligned-mono-36",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned",
+    "width": 2488,
+    "height": 571,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-36-antd": {
+    "id": "02-controls-mono-aligned-36-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 440,
+    "height": 446,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-36-element": {
+    "id": "02-controls-mono-aligned-36-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 440,
+    "height": 446,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-36-shadcn": {
+    "id": "02-controls-mono-aligned-36-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 440,
+    "height": 446,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-36-arco": {
+    "id": "02-controls-mono-aligned-36-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 440,
+    "height": 446,
+    "scale": 2
+  },
+  "02-controls-mono-aligned-36-tdesign": {
+    "id": "02-controls-mono-aligned-36-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 440,
+    "height": 446,
+    "scale": 2
+  },
+  "03-switch-native-antd": {
+    "id": "03-switch-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-theme-antd": {
+    "id": "03-switch-theme-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=antd",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-aligned-antd": {
+    "id": "03-switch-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-native-element": {
+    "id": "03-switch-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 374,
+    "height": 32,
+    "scale": 2
+  },
+  "03-switch-theme-element": {
+    "id": "03-switch-theme-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=element",
+    "width": 374,
+    "height": 32,
+    "scale": 2
+  },
+  "03-switch-aligned-element": {
+    "id": "03-switch-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-native-shadcn": {
+    "id": "03-switch-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 374,
+    "height": 18,
+    "scale": 2
+  },
+  "03-switch-theme-shadcn": {
+    "id": "03-switch-theme-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=shadcn",
+    "width": 374,
+    "height": 18,
+    "scale": 2
+  },
+  "03-switch-aligned-shadcn": {
+    "id": "03-switch-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-native-arco": {
+    "id": "03-switch-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 374,
+    "height": 24,
+    "scale": 2
+  },
+  "03-switch-theme-arco": {
+    "id": "03-switch-theme-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=arco",
+    "width": 374,
+    "height": 24,
+    "scale": 2
+  },
+  "03-switch-aligned-arco": {
+    "id": "03-switch-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-native-tdesign": {
+    "id": "03-switch-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 374,
+    "height": 20,
+    "scale": 2
+  },
+  "03-switch-theme-tdesign": {
+    "id": "03-switch-theme-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=tdesign",
+    "width": 374,
+    "height": 20,
+    "scale": 2
+  },
+  "03-switch-aligned-tdesign": {
+    "id": "03-switch-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-aligned-40-antd": {
+    "id": "03-switch-aligned-40-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-aligned-40-element": {
+    "id": "03-switch-aligned-40-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-aligned-40-shadcn": {
+    "id": "03-switch-aligned-40-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-aligned-40-arco": {
+    "id": "03-switch-aligned-40-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-switch-aligned-40-tdesign": {
+    "id": "03-switch-aligned-40-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 374,
+    "height": 22,
+    "scale": 2
+  },
+  "03-admin-native-element": {
+    "id": "03-admin-native-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=element&sider=expanded",
+    "width": 1200,
+    "height": 669,
+    "scale": 2
+  },
+  "03-customers-native-antd": {
+    "id": "03-customers-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=default",
+    "width": 1200,
+    "height": 949,
+    "scale": 2
+  },
+  "03-date-native-antd": {
+    "id": "03-date-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=ranged",
+    "width": 576,
+    "height": 309,
+    "scale": 2
+  },
+  "03-date-native-element": {
+    "id": "03-date-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=ranged",
+    "width": 648,
+    "height": 331,
+    "scale": 2
+  },
+  "03-date-native-shadcn": {
+    "id": "03-date-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=ranged",
+    "width": 490,
+    "height": 336,
+    "scale": 2
+  },
+  "03-date-native-arco": {
+    "id": "03-date-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=ranged",
+    "width": 532,
+    "height": 319,
+    "scale": 2
+  },
+  "03-date-native-tdesign": {
+    "id": "03-date-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=ranged",
+    "width": 560,
+    "height": 278,
+    "scale": 2
+  },
+  "03-date-aligned-antd": {
+    "id": "03-date-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=ranged",
+    "width": 498,
+    "height": 282,
+    "scale": 2
+  },
+  "03-date-aligned-element": {
+    "id": "03-date-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=ranged",
+    "width": 498,
+    "height": 282,
+    "scale": 2
+  },
+  "03-date-aligned-shadcn": {
+    "id": "03-date-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=ranged",
+    "width": 498,
+    "height": 282,
+    "scale": 2
+  },
+  "03-date-aligned-arco": {
+    "id": "03-date-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=ranged",
+    "width": 498,
+    "height": 282,
+    "scale": 2
+  },
+  "03-date-aligned-tdesign": {
+    "id": "03-date-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=ranged",
+    "width": 498,
+    "height": 282,
+    "scale": 2
+  },
+  "04-flyout-native-antd": {
+    "id": "04-flyout-native-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=antd&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-native-element": {
+    "id": "04-flyout-native-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=element&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-native-shadcn": {
+    "id": "04-flyout-native-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=shadcn&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-native-arco": {
+    "id": "04-flyout-native-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=arco&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-native-tdesign": {
+    "id": "04-flyout-native-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=tdesign&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-aligned-antd": {
+    "id": "04-flyout-aligned-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=antd&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-aligned-element": {
+    "id": "04-flyout-aligned-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=element&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-aligned-shadcn": {
+    "id": "04-flyout-aligned-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=shadcn&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-aligned-arco": {
+    "id": "04-flyout-aligned-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=arco&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "04-flyout-aligned-tdesign": {
+    "id": "04-flyout-aligned-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=tdesign&sider=collapsed",
+    "width": 360,
+    "height": 300,
+    "scale": 2
+  },
+  "05-shadow-shadcn": {
+    "id": "05-shadow-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=shadcn",
+    "width": 238,
+    "height": 32,
+    "scale": 4
+  },
+  "05-shadow-antd": {
+    "id": "05-shadow-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=theme&kits=antd",
+    "width": 238,
+    "height": 32,
+    "scale": 4
+  },
+  "b-field-native-antd": {
+    "id": "b-field-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-native-element": {
+    "id": "b-field-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-native-shadcn": {
+    "id": "b-field-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 390,
+    "height": 52,
+    "scale": 2
+  },
+  "b-field-native-arco": {
+    "id": "b-field-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-native-tdesign": {
+    "id": "b-field-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-aligned-antd": {
+    "id": "b-field-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-aligned-element": {
+    "id": "b-field-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-aligned-shadcn": {
+    "id": "b-field-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-aligned-arco": {
+    "id": "b-field-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-field-aligned-tdesign": {
+    "id": "b-field-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-select-native-antd": {
+    "id": "b-select-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-native-element": {
+    "id": "b-select-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-native-shadcn": {
+    "id": "b-select-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 141,
+    "height": 56,
+    "scale": 2
+  },
+  "b-select-native-arco": {
+    "id": "b-select-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-native-tdesign": {
+    "id": "b-select-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-aligned-antd": {
+    "id": "b-select-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-aligned-element": {
+    "id": "b-select-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-aligned-shadcn": {
+    "id": "b-select-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-aligned-arco": {
+    "id": "b-select-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-select-aligned-tdesign": {
+    "id": "b-select-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 141,
+    "height": 52,
+    "scale": 2
+  },
+  "b-popup-native-antd": {
+    "id": "b-popup-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 144,
+    "height": 156,
+    "scale": 2
+  },
+  "b-popup-native-element": {
+    "id": "b-popup-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 144,
+    "height": 176,
+    "scale": 2
+  },
+  "b-popup-native-shadcn": {
+    "id": "b-popup-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 176,
+    "height": 162,
+    "scale": 2
+  },
+  "b-popup-native-arco": {
+    "id": "b-popup-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 144,
+    "height": 170,
+    "scale": 2
+  },
+  "b-popup-native-tdesign": {
+    "id": "b-popup-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 144,
+    "height": 156,
+    "scale": 2
+  },
+  "b-popup-aligned-antd": {
+    "id": "b-popup-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 144,
+    "height": 158,
+    "scale": 2
+  },
+  "b-popup-aligned-element": {
+    "id": "b-popup-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 144,
+    "height": 158,
+    "scale": 2
+  },
+  "b-popup-aligned-shadcn": {
+    "id": "b-popup-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 144,
+    "height": 158,
+    "scale": 2
+  },
+  "b-popup-aligned-arco": {
+    "id": "b-popup-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 144,
+    "height": 158,
+    "scale": 2
+  },
+  "b-popup-aligned-tdesign": {
+    "id": "b-popup-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 144,
+    "height": 158,
+    "scale": 2
+  },
+  "b-checkbox-native-antd": {
+    "id": "b-checkbox-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-checkbox-native-element": {
+    "id": "b-checkbox-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-checkbox-native-shadcn": {
+    "id": "b-checkbox-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 390,
+    "height": 36,
+    "scale": 2
+  },
+  "b-checkbox-native-arco": {
+    "id": "b-checkbox-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-checkbox-native-tdesign": {
+    "id": "b-checkbox-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-checkbox-aligned-antd": {
+    "id": "b-checkbox-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-checkbox-aligned-element": {
+    "id": "b-checkbox-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-checkbox-aligned-shadcn": {
+    "id": "b-checkbox-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-checkbox-aligned-arco": {
+    "id": "b-checkbox-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-checkbox-aligned-tdesign": {
+    "id": "b-checkbox-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 390,
+    "height": 38,
+    "scale": 2
+  },
+  "b-cbhover-native-antd": {
+    "id": "b-cbhover-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-cbhover-native-element": {
+    "id": "b-cbhover-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 398,
+    "height": 56,
+    "scale": 2
+  },
+  "b-cbhover-native-shadcn": {
+    "id": "b-cbhover-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 398,
+    "height": 44,
+    "scale": 2
+  },
+  "b-cbhover-native-arco": {
+    "id": "b-cbhover-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-cbhover-native-tdesign": {
+    "id": "b-cbhover-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-cbhover-aligned-antd": {
+    "id": "b-cbhover-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-cbhover-aligned-element": {
+    "id": "b-cbhover-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-cbhover-aligned-shadcn": {
+    "id": "b-cbhover-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-cbhover-aligned-arco": {
+    "id": "b-cbhover-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-cbhover-aligned-tdesign": {
+    "id": "b-cbhover-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 398,
+    "height": 46,
+    "scale": 2
+  },
+  "b-button-native-antd": {
+    "id": "b-button-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-native-element": {
+    "id": "b-button-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-native-shadcn": {
+    "id": "b-button-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 390,
+    "height": 52,
+    "scale": 2
+  },
+  "b-button-native-arco": {
+    "id": "b-button-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-native-tdesign": {
+    "id": "b-button-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-aligned-antd": {
+    "id": "b-button-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-aligned-element": {
+    "id": "b-button-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-aligned-shadcn": {
+    "id": "b-button-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-aligned-arco": {
+    "id": "b-button-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-button-aligned-tdesign": {
+    "id": "b-button-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 390,
+    "height": 48,
+    "scale": 2
+  },
+  "b-text-native-antd": {
+    "id": "b-text-native-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=antd",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-native-element": {
+    "id": "b-text-native-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=element",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-native-shadcn": {
+    "id": "b-text-native-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=shadcn",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-native-arco": {
+    "id": "b-text-native-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=arco",
+    "width": 390,
+    "height": 108,
+    "scale": 2
+  },
+  "b-text-native-tdesign": {
+    "id": "b-text-native-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=native&kits=tdesign",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-aligned-antd": {
+    "id": "b-text-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=antd",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-aligned-element": {
+    "id": "b-text-aligned-element",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=element",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-aligned-shadcn": {
+    "id": "b-text-aligned-shadcn",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=shadcn",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-aligned-arco": {
+    "id": "b-text-aligned-arco",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=arco",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-text-aligned-tdesign": {
+    "id": "b-text-aligned-tdesign",
+    "url": "/audit.html?scene=controls&spec=mono&mode=aligned&kits=tdesign",
+    "width": 390,
+    "height": 116,
+    "scale": 2
+  },
+  "b-tabs-native-antd": {
+    "id": "b-tabs-native-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=antd&state=initial&variant=centered",
+    "width": 350,
+    "height": 58,
+    "scale": 2
+  },
+  "b-tabs-native-element": {
+    "id": "b-tabs-native-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=element&state=initial&variant=centered",
+    "width": 350,
+    "height": 51,
+    "scale": 2
+  },
+  "b-tabs-native-shadcn": {
+    "id": "b-tabs-native-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=shadcn&state=initial&variant=centered",
+    "width": 350,
+    "height": 48,
+    "scale": 2
+  },
+  "b-tabs-native-arco": {
+    "id": "b-tabs-native-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=arco&state=initial&variant=centered",
+    "width": 350,
+    "height": 52,
+    "scale": 2
+  },
+  "b-tabs-native-tdesign": {
+    "id": "b-tabs-native-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=tdesign&state=initial&variant=centered",
+    "width": 350,
+    "height": 60,
+    "scale": 2
+  },
+  "b-tabs-aligned-antd": {
+    "id": "b-tabs-aligned-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=antd&state=initial&variant=centered",
+    "width": 350,
+    "height": 52,
+    "scale": 2
+  },
+  "b-tabs-aligned-element": {
+    "id": "b-tabs-aligned-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=element&state=initial&variant=centered",
+    "width": 350,
+    "height": 52,
+    "scale": 2
+  },
+  "b-tabs-aligned-shadcn": {
+    "id": "b-tabs-aligned-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=shadcn&state=initial&variant=centered",
+    "width": 350,
+    "height": 52,
+    "scale": 2
+  },
+  "b-tabs-aligned-arco": {
+    "id": "b-tabs-aligned-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=arco&state=initial&variant=centered",
+    "width": 350,
+    "height": 52,
+    "scale": 2
+  },
+  "b-tabs-aligned-tdesign": {
+    "id": "b-tabs-aligned-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=tdesign&state=initial&variant=centered",
+    "width": 350,
+    "height": 52,
+    "scale": 2
+  },
+  "b-link-native-antd": {
+    "id": "b-link-native-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=antd&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-native-element": {
+    "id": "b-link-native-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=element&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-native-shadcn": {
+    "id": "b-link-native-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=shadcn&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-native-arco": {
+    "id": "b-link-native-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=arco&state=initial&variant=centered",
+    "width": 350,
+    "height": 52,
+    "scale": 2
+  },
+  "b-link-native-tdesign": {
+    "id": "b-link-native-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=native&kits=tdesign&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-aligned-antd": {
+    "id": "b-link-aligned-antd",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=antd&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-aligned-element": {
+    "id": "b-link-aligned-element",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=element&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-aligned-shadcn": {
+    "id": "b-link-aligned-shadcn",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=shadcn&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-aligned-arco": {
+    "id": "b-link-aligned-arco",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=arco&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-link-aligned-tdesign": {
+    "id": "b-link-aligned-tdesign",
+    "url": "/audit.html?scene=login&spec=mono&mode=aligned&kits=tdesign&state=initial&variant=centered",
+    "width": 350,
+    "height": 56,
+    "scale": 2
+  },
+  "b-nav-native-antd": {
+    "id": "b-nav-native-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=antd&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-native-element": {
+    "id": "b-nav-native-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=element&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-native-shadcn": {
+    "id": "b-nav-native-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=shadcn&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-native-arco": {
+    "id": "b-nav-native-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=arco&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-native-tdesign": {
+    "id": "b-nav-native-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=tdesign&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-aligned-antd": {
+    "id": "b-nav-aligned-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=antd&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-aligned-element": {
+    "id": "b-nav-aligned-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=element&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-aligned-shadcn": {
+    "id": "b-nav-aligned-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=shadcn&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-aligned-arco": {
+    "id": "b-nav-aligned-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=arco&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-nav-aligned-tdesign": {
+    "id": "b-nav-aligned-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=tdesign&sider=expanded",
+    "width": 221,
+    "height": 380,
+    "scale": 2
+  },
+  "b-breadcrumb-native-antd": {
+    "id": "b-breadcrumb-native-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=antd&sider=expanded",
+    "width": 208,
+    "height": 42,
+    "scale": 2
+  },
+  "b-breadcrumb-native-element": {
+    "id": "b-breadcrumb-native-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=element&sider=expanded",
+    "width": 209,
+    "height": 37,
+    "scale": 2
+  },
+  "b-breadcrumb-native-shadcn": {
+    "id": "b-breadcrumb-native-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=shadcn&sider=expanded",
+    "width": 232,
+    "height": 40,
+    "scale": 2
+  },
+  "b-breadcrumb-native-arco": {
+    "id": "b-breadcrumb-native-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=arco&sider=expanded",
+    "width": 228,
+    "height": 44,
+    "scale": 2
+  },
+  "b-breadcrumb-native-tdesign": {
+    "id": "b-breadcrumb-native-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=tdesign&sider=expanded",
+    "width": 212,
+    "height": 42,
+    "scale": 2
+  },
+  "b-breadcrumb-aligned-antd": {
+    "id": "b-breadcrumb-aligned-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=antd&sider=expanded",
+    "width": 204,
+    "height": 42,
+    "scale": 2
+  },
+  "b-breadcrumb-aligned-element": {
+    "id": "b-breadcrumb-aligned-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=element&sider=expanded",
+    "width": 204,
+    "height": 42,
+    "scale": 2
+  },
+  "b-breadcrumb-aligned-shadcn": {
+    "id": "b-breadcrumb-aligned-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=shadcn&sider=expanded",
+    "width": 204,
+    "height": 42,
+    "scale": 2
+  },
+  "b-breadcrumb-aligned-arco": {
+    "id": "b-breadcrumb-aligned-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=arco&sider=expanded",
+    "width": 204,
+    "height": 42,
+    "scale": 2
+  },
+  "b-breadcrumb-aligned-tdesign": {
+    "id": "b-breadcrumb-aligned-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=tdesign&sider=expanded",
+    "width": 204,
+    "height": 42,
+    "scale": 2
+  },
+  "b-header-native-antd": {
+    "id": "b-header-native-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=antd&sider=expanded",
+    "width": 194,
+    "height": 62,
+    "scale": 2
+  },
+  "b-header-native-element": {
+    "id": "b-header-native-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=element&sider=expanded",
+    "width": 202,
+    "height": 62,
+    "scale": 2
+  },
+  "b-header-native-shadcn": {
+    "id": "b-header-native-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=shadcn&sider=expanded",
+    "width": 197,
+    "height": 63,
+    "scale": 2
+  },
+  "b-header-native-arco": {
+    "id": "b-header-native-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=arco&sider=expanded",
+    "width": 204,
+    "height": 60,
+    "scale": 2
+  },
+  "b-header-native-tdesign": {
+    "id": "b-header-native-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=tdesign&sider=expanded",
+    "width": 194,
+    "height": 65,
+    "scale": 2
+  },
+  "b-header-aligned-antd": {
+    "id": "b-header-aligned-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=antd&sider=expanded",
+    "width": 188,
+    "height": 60,
+    "scale": 2
+  },
+  "b-header-aligned-element": {
+    "id": "b-header-aligned-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=element&sider=expanded",
+    "width": 188,
+    "height": 60,
+    "scale": 2
+  },
+  "b-header-aligned-shadcn": {
+    "id": "b-header-aligned-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=shadcn&sider=expanded",
+    "width": 188,
+    "height": 60,
+    "scale": 2
+  },
+  "b-header-aligned-arco": {
+    "id": "b-header-aligned-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=arco&sider=expanded",
+    "width": 188,
+    "height": 60,
+    "scale": 2
+  },
+  "b-header-aligned-tdesign": {
+    "id": "b-header-aligned-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=tdesign&sider=expanded",
+    "width": 188,
+    "height": 60,
+    "scale": 2
+  },
+  "b-dropdown-native-antd": {
+    "id": "b-dropdown-native-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=antd&sider=expanded",
+    "width": 136,
+    "height": 169,
+    "scale": 2
+  },
+  "b-dropdown-native-element": {
+    "id": "b-dropdown-native-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=element&sider=expanded",
+    "width": 144,
+    "height": 185,
+    "scale": 2
+  },
+  "b-dropdown-native-shadcn": {
+    "id": "b-dropdown-native-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=shadcn&sider=expanded",
+    "width": 148,
+    "height": 171,
+    "scale": 2
+  },
+  "b-dropdown-native-arco": {
+    "id": "b-dropdown-native-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=arco&sider=expanded",
+    "width": 144,
+    "height": 183,
+    "scale": 2
+  },
+  "b-dropdown-native-tdesign": {
+    "id": "b-dropdown-native-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=tdesign&sider=expanded",
+    "width": 136,
+    "height": 169,
+    "scale": 2
+  },
+  "b-dropdown-aligned-antd": {
+    "id": "b-dropdown-aligned-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=antd&sider=expanded",
+    "width": 180,
+    "height": 171,
+    "scale": 2
+  },
+  "b-dropdown-aligned-element": {
+    "id": "b-dropdown-aligned-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=element&sider=expanded",
+    "width": 180,
+    "height": 171,
+    "scale": 2
+  },
+  "b-dropdown-aligned-shadcn": {
+    "id": "b-dropdown-aligned-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=shadcn&sider=expanded",
+    "width": 180,
+    "height": 171,
+    "scale": 2
+  },
+  "b-dropdown-aligned-arco": {
+    "id": "b-dropdown-aligned-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=arco&sider=expanded",
+    "width": 180,
+    "height": 171,
+    "scale": 2
+  },
+  "b-dropdown-aligned-tdesign": {
+    "id": "b-dropdown-aligned-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=tdesign&sider=expanded",
+    "width": 180,
+    "height": 171,
+    "scale": 2
+  },
+  "b-tip-native-antd": {
+    "id": "b-tip-native-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=antd&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-native-element": {
+    "id": "b-tip-native-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=element&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-native-shadcn": {
+    "id": "b-tip-native-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=shadcn&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-native-arco": {
+    "id": "b-tip-native-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=arco&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-native-tdesign": {
+    "id": "b-tip-native-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=native&kits=tdesign&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-aligned-antd": {
+    "id": "b-tip-aligned-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=antd&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-aligned-element": {
+    "id": "b-tip-aligned-element",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=element&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-aligned-shadcn": {
+    "id": "b-tip-aligned-shadcn",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=shadcn&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-aligned-arco": {
+    "id": "b-tip-aligned-arco",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=arco&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-tip-aligned-tdesign": {
+    "id": "b-tip-aligned-tdesign",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=tdesign&sider=collapsed",
+    "width": 222,
+    "height": 118,
+    "scale": 2
+  },
+  "b-table-native-antd": {
+    "id": "b-table-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-native-element": {
+    "id": "b-table-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-native-shadcn": {
+    "id": "b-table-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-native-arco": {
+    "id": "b-table-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-native-tdesign": {
+    "id": "b-table-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-aligned-antd": {
+    "id": "b-table-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-aligned-element": {
+    "id": "b-table-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-aligned-shadcn": {
+    "id": "b-table-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-aligned-arco": {
+    "id": "b-table-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-table-aligned-tdesign": {
+    "id": "b-table-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=default",
+    "width": 600,
+    "height": 230,
+    "scale": 2
+  },
+  "b-sort-native-antd": {
+    "id": "b-sort-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=sorted",
+    "width": 140,
+    "height": 67,
+    "scale": 2
+  },
+  "b-sort-native-element": {
+    "id": "b-sort-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=sorted",
+    "width": 140,
+    "height": 54,
+    "scale": 2
+  },
+  "b-sort-native-shadcn": {
+    "id": "b-sort-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=sorted",
+    "width": 140,
+    "height": 52,
+    "scale": 2
+  },
+  "b-sort-native-arco": {
+    "id": "b-sort-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=sorted",
+    "width": 140,
+    "height": 53,
+    "scale": 2
+  },
+  "b-sort-native-tdesign": {
+    "id": "b-sort-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=sorted",
+    "width": 140,
+    "height": 59,
+    "scale": 2
+  },
+  "b-sort-aligned-antd": {
+    "id": "b-sort-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=sorted",
+    "width": 140,
+    "height": 52,
+    "scale": 2
+  },
+  "b-sort-aligned-element": {
+    "id": "b-sort-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=sorted",
+    "width": 140,
+    "height": 52,
+    "scale": 2
+  },
+  "b-sort-aligned-shadcn": {
+    "id": "b-sort-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=sorted",
+    "width": 140,
+    "height": 52,
+    "scale": 2
+  },
+  "b-sort-aligned-arco": {
+    "id": "b-sort-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=sorted",
+    "width": 140,
+    "height": 52,
+    "scale": 2
+  },
+  "b-sort-aligned-tdesign": {
+    "id": "b-sort-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=sorted",
+    "width": 140,
+    "height": 52,
+    "scale": 2
+  },
+  "b-loading-native-antd": {
+    "id": "b-loading-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-native-element": {
+    "id": "b-loading-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-native-shadcn": {
+    "id": "b-loading-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-native-arco": {
+    "id": "b-loading-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-native-tdesign": {
+    "id": "b-loading-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-aligned-antd": {
+    "id": "b-loading-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-aligned-element": {
+    "id": "b-loading-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-aligned-shadcn": {
+    "id": "b-loading-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-aligned-arco": {
+    "id": "b-loading-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-loading-aligned-tdesign": {
+    "id": "b-loading-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=loading",
+    "width": 520,
+    "height": 260,
+    "scale": 2
+  },
+  "b-pagination-native-antd": {
+    "id": "b-pagination-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-native-element": {
+    "id": "b-pagination-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=default",
+    "width": 238,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-native-shadcn": {
+    "id": "b-pagination-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=default",
+    "width": 382,
+    "height": 56,
+    "scale": 2
+  },
+  "b-pagination-native-arco": {
+    "id": "b-pagination-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-native-tdesign": {
+    "id": "b-pagination-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-aligned-antd": {
+    "id": "b-pagination-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-aligned-element": {
+    "id": "b-pagination-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-aligned-shadcn": {
+    "id": "b-pagination-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-aligned-arco": {
+    "id": "b-pagination-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-pagination-aligned-tdesign": {
+    "id": "b-pagination-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=default",
+    "width": 286,
+    "height": 52,
+    "scale": 2
+  },
+  "b-tag-native-antd": {
+    "id": "b-tag-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=sorted",
+    "width": 60,
+    "height": 298,
+    "scale": 2
+  },
+  "b-tag-native-element": {
+    "id": "b-tag-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=sorted",
+    "width": 64,
+    "height": 236,
+    "scale": 2
+  },
+  "b-tag-native-shadcn": {
+    "id": "b-tag-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=sorted",
+    "width": 62,
+    "height": 195,
+    "scale": 2
+  },
+  "b-tag-native-arco": {
+    "id": "b-tag-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=sorted",
+    "width": 62,
+    "height": 213,
+    "scale": 2
+  },
+  "b-tag-native-tdesign": {
+    "id": "b-tag-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=sorted",
+    "width": 62,
+    "height": 268,
+    "scale": 2
+  },
+  "b-tag-aligned-antd": {
+    "id": "b-tag-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=sorted",
+    "width": 56,
+    "height": 212,
+    "scale": 2
+  },
+  "b-tag-aligned-element": {
+    "id": "b-tag-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=sorted",
+    "width": 56,
+    "height": 212,
+    "scale": 2
+  },
+  "b-tag-aligned-shadcn": {
+    "id": "b-tag-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=sorted",
+    "width": 56,
+    "height": 212,
+    "scale": 2
+  },
+  "b-tag-aligned-arco": {
+    "id": "b-tag-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=sorted",
+    "width": 56,
+    "height": 212,
+    "scale": 2
+  },
+  "b-tag-aligned-tdesign": {
+    "id": "b-tag-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=sorted",
+    "width": 56,
+    "height": 212,
+    "scale": 2
+  },
+  "b-dialog-native-antd": {
+    "id": "b-dialog-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=default",
+    "width": 544,
+    "height": 586,
+    "scale": 2
+  },
+  "b-dialog-native-element": {
+    "id": "b-dialog-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=default",
+    "width": 624,
+    "height": 586,
+    "scale": 2
+  },
+  "b-dialog-native-shadcn": {
+    "id": "b-dialog-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=default",
+    "width": 536,
+    "height": 668,
+    "scale": 2
+  },
+  "b-dialog-native-arco": {
+    "id": "b-dialog-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=default",
+    "width": 544,
+    "height": 633,
+    "scale": 2
+  },
+  "b-dialog-native-tdesign": {
+    "id": "b-dialog-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=default",
+    "width": 504,
+    "height": 621,
+    "scale": 2
+  },
+  "b-dialog-aligned-antd": {
+    "id": "b-dialog-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=default",
+    "width": 544,
+    "height": 618,
+    "scale": 2
+  },
+  "b-dialog-aligned-element": {
+    "id": "b-dialog-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=default",
+    "width": 544,
+    "height": 618,
+    "scale": 2
+  },
+  "b-dialog-aligned-shadcn": {
+    "id": "b-dialog-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=default",
+    "width": 544,
+    "height": 618,
+    "scale": 2
+  },
+  "b-dialog-aligned-arco": {
+    "id": "b-dialog-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=default",
+    "width": 544,
+    "height": 618,
+    "scale": 2
+  },
+  "b-dialog-aligned-tdesign": {
+    "id": "b-dialog-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=default",
+    "width": 544,
+    "height": 618,
+    "scale": 2
+  },
+  "b-radio-native-antd": {
+    "id": "b-radio-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=default",
+    "width": 218,
+    "height": 42,
+    "scale": 2
+  },
+  "b-radio-native-element": {
+    "id": "b-radio-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=default",
+    "width": 232,
+    "height": 52,
+    "scale": 2
+  },
+  "b-radio-native-shadcn": {
+    "id": "b-radio-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=default",
+    "width": 486,
+    "height": 104,
+    "scale": 2
+  },
+  "b-radio-native-arco": {
+    "id": "b-radio-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=default",
+    "width": 227,
+    "height": 42,
+    "scale": 2
+  },
+  "b-radio-native-tdesign": {
+    "id": "b-radio-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=default",
+    "width": 229,
+    "height": 43,
+    "scale": 2
+  },
+  "b-radio-aligned-antd": {
+    "id": "b-radio-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=default",
+    "width": 226,
+    "height": 42,
+    "scale": 2
+  },
+  "b-radio-aligned-element": {
+    "id": "b-radio-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=default",
+    "width": 226,
+    "height": 42,
+    "scale": 2
+  },
+  "b-radio-aligned-shadcn": {
+    "id": "b-radio-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=default",
+    "width": 226,
+    "height": 42,
+    "scale": 2
+  },
+  "b-radio-aligned-arco": {
+    "id": "b-radio-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=default",
+    "width": 226,
+    "height": 42,
+    "scale": 2
+  },
+  "b-radio-aligned-tdesign": {
+    "id": "b-radio-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=default",
+    "width": 226,
+    "height": 42,
+    "scale": 2
+  },
+  "b-textarea-native-antd": {
+    "id": "b-textarea-native-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=antd&state=default",
+    "width": 492,
+    "height": 96,
+    "scale": 2
+  },
+  "b-textarea-native-element": {
+    "id": "b-textarea-native-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=element&state=default",
+    "width": 588,
+    "height": 72,
+    "scale": 2
+  },
+  "b-textarea-native-shadcn": {
+    "id": "b-textarea-native-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=shadcn&state=default",
+    "width": 482,
+    "height": 84,
+    "scale": 2
+  },
+  "b-textarea-native-arco": {
+    "id": "b-textarea-native-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=arco&state=default",
+    "width": 500,
+    "height": 96,
+    "scale": 2
+  },
+  "b-textarea-native-tdesign": {
+    "id": "b-textarea-native-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=native&kits=tdesign&state=default",
+    "width": 434,
+    "height": 76,
+    "scale": 2
+  },
+  "b-textarea-aligned-antd": {
+    "id": "b-textarea-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=default",
+    "width": 492,
+    "height": 96,
+    "scale": 2
+  },
+  "b-textarea-aligned-element": {
+    "id": "b-textarea-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=default",
+    "width": 492,
+    "height": 96,
+    "scale": 2
+  },
+  "b-textarea-aligned-shadcn": {
+    "id": "b-textarea-aligned-shadcn",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=shadcn&state=default",
+    "width": 492,
+    "height": 96,
+    "scale": 2
+  },
+  "b-textarea-aligned-arco": {
+    "id": "b-textarea-aligned-arco",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=arco&state=default",
+    "width": 492,
+    "height": 96,
+    "scale": 2
+  },
+  "b-textarea-aligned-tdesign": {
+    "id": "b-textarea-aligned-tdesign",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=tdesign&state=default",
+    "width": 492,
+    "height": 96,
+    "scale": 2
+  },
+  "00-controls-blue-aligned-antd": {
+    "id": "00-controls-blue-aligned-antd",
+    "url": "/audit.html?scene=controls&spec=blue&mode=aligned&kits=antd",
+    "width": 440,
+    "height": 446,
+    "scale": 2
+  },
+  "00-customers-aligned-antd": {
+    "id": "00-customers-aligned-antd",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=antd&state=default",
+    "width": 1200,
+    "height": 949,
+    "scale": 2
+  },
+  "00-customers-aligned-element": {
+    "id": "00-customers-aligned-element",
+    "url": "/audit.html?scene=customers&spec=mono&mode=aligned&kits=element&state=default",
+    "width": 1200,
+    "height": 949,
+    "scale": 2
+  },
+  "00-admin-aligned-antd": {
+    "id": "00-admin-aligned-antd",
+    "url": "/audit.html?scene=admin&spec=mono&mode=aligned&kits=antd&sider=expanded",
+    "width": 1200,
+    "height": 669,
+    "scale": 2
+  }
+}

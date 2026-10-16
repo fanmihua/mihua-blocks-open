@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>控件层：总述与数据录入 · Mihua Blocks 文字版</title>
+  <meta name="description" content="控件层第一篇：主题设好以后，同名控件为什么还不一样，控件规格怎么写；开关、日期面板这些数据录入控件，五个组件库差在哪、怎么对齐。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/ch03.css">
+  <link rel="stylesheet" href="assets/art.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">03-1</span></div>
+    <h1>控件层：总述与数据录入</h1>
+    <div class="lstrip" data-on="控件"></div>
+    <p class="lead">主题设好以后，同名的控件为什么还不一样？本篇先讲共通的道理，再逐个看数据录入类的控件：输入框与选择框、复选框与单选、开关、日期面板。</p>
+    <div class="series"></div>
+    <div class="series-l"></div>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <!-- ═════════ 开头 ═════════ -->
+  <section class="sec" id="s0">
+    <div class="kick"><span class="no">开头</span><span>控件样张</span></div>
+    <h2>设置主题后，五个组件库的控件仍不一致</h2>
+    <p class="lead">点「只设主题」：颜色都变成黑色，大小一个都没变。数是实时量的。</p>
+    <figure class="fig">
+      <div class="ctl"><span class="lb">外观</span><div class="seg" data-ctl="hook"><button data-v="native" class="on">组件库原生</button><button data-v="theme">只设主题</button><button data-v="aligned">对齐到控件规格</button></div></div>
+      <div class="frame"><div class="fh"><span class="lab"><b>五个组件库</b>　控件样张 · 黑白规范</span><span class="live-tag">真组件，可以点</span></div>
+        <div class="live" id="hook-live" data-live="scene=controls&spec=mono&mode=native" data-shot="assets/img/02-controls-native-mono.png" data-min="260"></div></div>
+    </figure>
+    <p>这一篇讲第二层：控件。</p>
+    <p class="src">量的是每个套件部件地图里写的「开关的轨道」「开关的圆点」（<code>spec/src/parts.ts</code>），每一格量第一个开关</p>
+  </section>
+
+  <!-- ═════════ 01 总述 ═════════ -->
+
+  <section class="part" id="p1">
+    <div class="kick"><span class="no">01</span><span>第一部分</span></div>
+    <h2>总述：主题与控件规格</h2>
+  </section>
+
+  <section class="sec" id="s2">
+    <div class="kick"><span class="no">1</span><span>主题管不到</span></div>
+    <h2>主题无法控制开关尺寸</h2>
+    <p class="lead">主题是所有控件共用的全局变量，开关的尺寸不在其中。</p>
+    <figure class="fig">
+      <div class="figs3">
+        <div class="vp"><div class="vh">本地变量<span>主题 · 大家共用</span></div>
+          <div class="vr"><span>主操作</span><span class="v"><i class="sw" style="background:#0A0A0A"></i>#0A0A0A</span></div>
+          <div class="vr"><span>控件边框</span><span class="v"><i class="sw" style="background:#D4D4D4"></i>#D4D4D4</span></div>
+          <div class="vr"><span>控件高度</span><span class="v">32</span></div>
+          <div class="vr"><span>控件圆角</span><span class="v">6</span></div>
+        </div>
+        <div class="vp"><div class="vh">图层 · Ant Design 的开关</div>
+          <div class="sw-sample"><i style="width:44px;height:22px"></i></div>
+          <div class="vr"><span>开着的颜色</span><span class="chip bound">⬡ 主操作</span></div>
+          <div class="vr"><span>宽</span><span class="chip bound">⬡ 组件 Token · 44</span></div>
+          <div class="vr"><span>高</span><span class="chip bound">⬡ 组件 Token · 22</span></div>
+        </div>
+        <div class="vp"><div class="vh">图层 · Element Plus 的开关</div>
+          <div class="sw-sample"><i style="width:40px;height:20px"></i></div>
+          <div class="vr"><span>开着的颜色</span><span class="chip bound">⬡ 主操作</span></div>
+          <div class="vr"><span>宽</span><span class="chip none">40 · 没绑变量</span></div>
+          <div class="vr"><span>高</span><span class="chip none">20 · 没绑变量</span></div>
+        </div>
+      </div>
+      <figcaption>像 Figma 的变量面板和图层面板：颜色两家都绑着主题；大小，Ant Design 绑着它自己的一组变量，Element Plus 直接写死。</figcaption>
+    </figure>
+    <p>开关自己的数能不能改，要看组件库给没给它留变量。</p>
+  </section>
+
+  <section class="sec locked" id="s15" hidden><div class="kick"><span class="no">2</span></div><h2>编写控件规格的三条原则</h2></section>
+
+  <!-- ═════════ 02 输入框与选择框 ═════════ -->
+
+  <section class="part locked" id="p8" hidden><div class="kick"><span class="no">02</span></div><h2>输入框与选择框</h2></section>
+
+  <section class="sec locked" id="s20" hidden><div class="kick"><span class="no">3</span></div><h2>输入框与选择框：五个组件库与规格的对照</h2></section>
+
+  <!-- ═════════ 03 复选框与单选 ═════════ -->
+
+  <section class="part locked" id="p9" hidden><div class="kick"><span class="no">03</span></div><h2>复选框与单选</h2></section>
+
+  <section class="sec locked" id="s21" hidden><div class="kick"><span class="no">4</span></div><h2>复选框与单选：五个组件库与规格的对照</h2></section>
+
+  <!-- ═════════ 04 开关 ═════════ -->
+
+  <section class="part locked" id="p4" hidden><div class="kick"><span class="no">04</span></div><h2>开关</h2></section>
+
+  <section class="sec locked" id="s1" hidden><div class="kick"><span class="no">5</span></div><h2>开关：五个组件库与规格的对照</h2></section>
+
+  <section class="sec locked" id="s3" hidden><div class="kick"><span class="no">6</span></div><h2>开关尺寸：Ant Design 留了变量，其余四个写死</h2></section>
+
+  <section class="sec locked" id="s14" hidden><div class="kick"><span class="no">7</span></div><h2>开关的控件规格</h2></section>
+
+  <!-- ═════════ 05 日期面板 ═════════ -->
+
+  <section class="part locked" id="p7" hidden><div class="kick"><span class="no">05</span></div><h2>日期面板</h2></section>
+
+  <section class="sec locked" id="s13" hidden><div class="kick"><span class="no">8</span></div><h2>日期面板：五个组件库的外观对比</h2></section>
+
+  <!-- ═════════ 结尾 ═════════ -->
+
+  <section class="sec teaser" aria-hidden="true" inert>
+    <div class="kick"><span class="no">2</span><span>三条规矩</span></div>
+    <h2>编写控件规格的三条原则</h2>
+    <p>大小、颜色、圆角，和悬停、禁用、聚焦时<span class="nb">怎么变</span>。</p>
+    <p>写「主操作」，不写色值；写 44 × 22，不写「和谁一样」。</p>
+  </section>
+<!-- ═════════ 课程 ═════════ -->
+  <div class="paywall" id="course">
+    <a class="pw-cv" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener" aria-label="第 03-1 集完整视频"><span class="pw-ep">第 03-1 集 · 完整视频</span><i class="pw-lock"></i></a>
+    <h2>后面 7 节在课程里</h2>
+    <p>这一篇后面的 7 节和第 03-1 集完整视频，在「给设计师的零基础 AI 课」里。</p>
+    <p class="pw-more">完整版文字版还有每段代码的逐行解释和四个附录（组件库档案、适配记录、取舍记录、常用提示词），可以下载到本地看。</p>
+    <div class="buy">
+      <a class="btn" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener">官网购买</a>
+      <a class="btn ghost" href="https://xhslink.com/m/7qrmpq1Hzzh" target="_blank" rel="noopener">小红书店铺</a>
+      <button class="btn ghost wx" type="button" aria-expanded="false">微信小店</button>
+      <div class="wxq" hidden><img src="https://fanstudio.cn/images/courses/ai-course-wechat-shop.jpg" alt="微信小店商品码" loading="lazy"><span>微信扫码，进入课程商品页</span></div>
+    </div>
+  </div>
+
+  <section class="sec" id="end">
+    <div class="ask">
+      <div class="ah"><span>想让 AI 帮你试一试，就这样跟它说</span><button class="btn ghost copy" data-copy="#ask03">复制</button></div>
+      <pre id="ask03">给「状态标签」写一段控件规格草稿：只写看得见的数，颜色用规范里的名字，距离写清楚相对谁。写完和 mihua-blocks-open 里已有的那一组对一对，告诉我哪些要设计师来定。不要改文件。</pre>
+    </div>
+    <div class="next"></div>
+  </section>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/color.js"></script>
+<script src="assets/data/code.js"></script>
+<script src="assets/data/kits.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/ch03.js"></script>
+</body>
+</html>

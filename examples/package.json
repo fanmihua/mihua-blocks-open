@@ -1,0 +1,27 @@
+{
+  "name": "@mihua/examples",
+  "version": "0.1.0",
+  "private": true,
+  "description": "范例：演示页（所有登记的组件库并排、三档切换）和检查页（给自动检查量取用）。",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4182 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4182 --strictPort"
+  },
+  "dependencies": {
+    "@mihua/audit": "*",
+    "@mihua/core": "*",
+    "@mihua/react": "*",
+    "@mihua/spec": "*",
+    "@mihua/vue": "*",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "vue": "^3.5.43"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.2.2",
+    "tailwindcss": "4.2.2"
+  }
+}

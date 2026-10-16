@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>整体演示：三种外观模式与四层拆解 · Mihua Blocks 文字版</title>
+  <meta name="description" content="通过演示整体展示效果：切换组件库时页面保持不变，三种外观模式的差异，以及页面的四层拆解。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/ill.css">
+  <link rel="stylesheet" href="assets/layers.css">
+  <link rel="stylesheet" href="assets/art.css">
+  <link rel="stylesheet" href="assets/ch02.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">01</span></div>
+    <h1>整体演示：三种外观模式与四层拆解</h1>
+    <p class="lead">更换组件库时，如何保持页面的视觉与交互一致，并保留操作状态？本篇结合后台页面演示介绍底层原理，细节在后续各篇展开。</p>
+    <div class="series"></div>
+    <div class="series-l"></div>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <!-- ═════════ 01 一键切换 ═════════ -->
+  <section class="part" id="p1">
+    <div class="kick"><span class="no">01</span><span>第一部分</span></div>
+    <h2>一键切换</h2>
+  </section>
+
+  <section class="sec" id="s2">
+    <div class="kick"><span class="no">1.1</span><span>状态都在</span></div>
+    <h2>完成一组交互后切换组件库，页面状态完整保留</h2>
+    <figure class="fig rp" data-replay="state">
+      <ol class="rp-steps">
+        <li><i>1</i><b>搜一下</b><span>输入「科技」，点查询</span></li>
+        <li><i>2</i><b>排个序</b><span>点「年度金额」</span></li>
+        <li><i>3</i><b>勾两个</b><span>再翻到第 2 页</span></li>
+        <li><i>4</i><b>收起侧栏</b><span>点左下角</span></li>
+        <li><i>5</i><b>开对话框</b><span>改 A 级、写备注，不保存</span></li>
+        <li><i>6</i><b>换组件库</b><span>点 Element Plus</span></li>
+        <li class="end"><i>✓</i><b>都还在</b><span>填的、选的、勾的</span></li>
+      </ol>
+      <div class="frame"><div class="fh"><span class="lab"><b>演示页</b>　客户列表</span><span class="rp-ctl"><button class="btn" type="button" data-rp="play">▶ 自动演示一遍</button><button class="btn ghost" type="button" data-rp="next">再换一个库</button><button class="btn ghost" type="button" data-rp="reset">重来</button></span></div>
+        <div class="live" data-page="index.html" data-w="1440" data-live="" data-shot="assets/img/03-admin-native-element.png" data-min="400" style="aspect-ratio:1440/1131"></div></div>
+      <div class="rp-legend" aria-live="polite"></div>
+    </figure>
+    <p class="src">在演示页里一项一项试过（2026-10-12）</p>
+  </section>
+
+  <section class="sec" id="s3">
+    <div class="kick"><span class="no">1.2</span><span>React 和 Vue</span></div>
+    <h2>React 与 Vue 框架同步切换</h2>
+    <p class="lead">Ant Design 是 React 写的，Element Plus 是 Vue 写的。刚才那一下，两个都换了。</p>
+    <figure class="fig" data-fig="a"><div class="libs fw5"><div class="lib"><div class="lab"><b>Ant Design</b> · React</div><img src="assets/img/02-login-mono-aligned-antd.png" alt="Ant Design 的登录框，对齐到控件规格" loading="lazy"></div><div class="lib"><div class="lab"><b>Element Plus</b> · Vue</div><img src="assets/img/02-login-mono-aligned-element.png" alt="Element Plus 的登录框，对齐到控件规格" loading="lazy"></div><div class="lib"><div class="lab"><b>shadcn/ui</b> · React</div><img src="assets/img/02-login-mono-aligned-shadcn.png" alt="shadcn/ui 的登录框，对齐到控件规格" loading="lazy"></div><div class="lib"><div class="lab"><b>Arco Design</b> · React</div><img src="assets/img/02-login-mono-aligned-arco.png" alt="Arco Design 的登录框，对齐到控件规格" loading="lazy"></div><div class="lib"><div class="lab"><b>TDesign</b> · Vue</div><img src="assets/img/02-login-mono-aligned-tdesign.png" alt="TDesign 的登录框，对齐到控件规格" loading="lazy"></div></div><figcaption>五个格子，三个是 React 画的，两个是 Vue 画的。</figcaption></figure>
+    <figure class="fig"><div class="code" data-code="kits-registry"><div class="say">五个组件库在登记表里各一行，顺序就是页面上从左到右的顺序。接一个新库，就在这里加一行。</div></div></figure>
+    <p class="src">Ant Design 官网「基于 Ant Design 设计体系的 React UI 组件库」；Element Plus 官网「基于 Vue 3 的组件库」</p>
+  </section>
+
+  <section class="sec" id="s4">
+    <div class="kick"><span class="no">1.3</span><span>共用的逻辑</span></div>
+    <h2>状态不丢失的原因：保存在共用的逻辑层</h2>
+    <p class="lead">用户做的事记在一份逻辑里，React 和 Vue 共用。组件库只负责画出来。</p>
+    <figure class="fig" data-fig="a">
+      <div class="st1">
+        <div class="st1-v"><div class="lab"><b>React · Ant Design</b></div><img src="assets/img/00-customers-aligned-antd.png" alt="客户列表，Ant Design 画的" loading="lazy"></div>
+        <div class="st1-c"><b>一份业务状态</b><span>搜了什么</span><span>按哪一列排</span><span>第几页</span><span>勾了哪几行</span><span>对话框里填的</span><em>core/src/customers/controller.ts</em></div>
+        <div class="st1-v"><div class="lab"><b>Vue · Element Plus</b></div><img src="assets/img/00-customers-aligned-element.png" alt="客户列表，Element Plus 画的" loading="lazy"></div>
+      </div>
+      <figcaption>中间那一份只有一个。换组件库，换的是两边谁来画。</figcaption>
+    </figure>
+    <figure class="fig"><div class="codes" style="--n:2"><div class="code" data-code="customers-controller"></div><div class="code" data-code="agents-state-rule"></div></div></figure>
+    <p class="src"><code>core/src/customers/controller.ts</code>；<code>AGENTS.md</code>「规则」</p>
+  </section>
+
+  <!-- ═════════ 02 三档外观 ═════════ -->
+  <section class="part" id="p2">
+    <div class="kick"><span class="no">02</span><span>第二部分</span></div>
+    <h2>三种外观模式</h2>
+  </section>
+
+  <section class="sec" id="s5">
+    <div class="kick"><span class="no">1.4</span><span>第一档</span></div>
+    <h2>组件库原生：五个组件库各自保持原有样式</h2>
+    <figure class="fig">
+      <div class="frame"><div class="fh"><span class="lab"><b>五个组件库</b>　登录框 · 组件库原生</span><span class="live-tag">真组件</span></div>
+        <div class="live" id="native-live" data-live="scene=login&spec=mono&variant=centered&state=initial&mode=native" data-shot="assets/img/02-login-native-mono.png" data-min="300"></div></div>
+    </figure>
+    <p class="src">官方默认主色：Ant Design colorPrimary #1677FF、Element Plus Brand Color #409EFF、Arco ArcoBlue #165DFF、TDesign brand-color-7 #0052D9；shadcn/ui 默认 baseColor neutral</p>
+  </section>
+
+  <section class="sec" id="s6">
+    <div class="kick"><span class="no">1.5</span><span>第二档</span></div>
+    <h2>只设主题：配色统一，细节仍有差异</h2>
+    <p class="lead">把规范里的颜色、字号、圆角、控件高度，填进每个组件库的主题。</p>
+    <figure class="fig">
+      <div class="frame"><div class="fh"><span class="lab"><b>五个组件库</b>　登录框 · 只设主题</span><span class="live-tag">真组件</span></div>
+        <div class="live" data-live="scene=login&spec=mono&variant=centered&state=initial&mode=theme" data-shot="assets/img/02-login-theme-mono.png" data-min="300"></div></div>
+    </figure>
+    <p>颜色统一了。Element Plus 的侧栏，每一项还高出一截。</p>
+    <figure class="fig">
+      <div class="ctl"><span class="lb">外观</span><div class="seg" data-ctl="elmenu"><button data-v="theme" class="on">只设主题</button><button data-v="aligned">对齐到控件规格</button></div></div>
+      <div class="frame"><div class="fh"><span class="lab"><b>Vue · Element Plus</b>　后台页面框架</span><span class="live-tag">真组件</span></div>
+        <div class="live" id="elmenu-live" data-live="scene=admin&spec=mono&sider=expanded&mode=theme&kits=element" data-shot="assets/img/02-antd-theme-mono-selected.png" data-min="420"></div></div>
+    </figure>
+    <p class="src">Element Plus 菜单项高度：源码 <code>theme-chalk/src/common/var.scss</code> 的 <code>'item-height': 56px</code>，官方文档没写；Arco 灰底输入框见 <code>docs/architecture.md</code> 原则 3；shadcn/ui 的淡阴影见 <code>docs/取舍记录.md</code> 第 3 条</p>
+  </section>
+
+  <section class="sec" id="s7">
+    <div class="kick"><span class="no">1.6</span><span>第三档</span></div>
+    <h2>对齐到控件规格：五个组件库完全一致</h2>
+    <figure class="fig">
+      <div class="frame"><div class="fh"><span class="lab"><b>五个组件库</b>　客户列表 · 对齐到控件规格</span><span class="live-tag">真组件</span></div>
+        <div class="live" data-live="scene=customers&spec=mono&state=selected&mode=aligned" data-shot="assets/img/02-antd-aligned-mono-selected-table.png" data-min="200" data-pad="12"></div></div>
+    </figure>
+    <p>第二档到第三档，差的就是一层<b>翻译</b>。</p>
+    <p class="src"><code>README.md</code> 第 5 行「299 项，五个组件库全部一致」</p>
+  </section>
+
+  <section class="sec" id="s8">
+    <div class="kick"><span class="no">1.7</span><span>代码里</span></div>
+    <h2>三种外观模式在代码中由两个开关控制</h2>
+    <p class="lead">一个是「交不交规范」，一个是「要不要对齐」。</p>
+    <figure class="fig" data-fig="a">
+      <div class="m22">
+        <span></span><b class="m22-h">不对齐</b><b class="m22-h">对齐</b>
+        <b class="m22-r">不交规范</b><div class="m22-c"><img src="assets/img/02-login-mono-native-antd.png" alt="Ant Design 登录框，组件库原生" loading="lazy"><span>组件库原生</span></div><div class="m22-c no"><span>没有这一档</span><small>手里没有规范，对齐无从做起</small></div>
+        <b class="m22-r">交规范</b><div class="m22-c"><img src="assets/img/02-login-mono-theme-antd.png" alt="Ant Design 登录框，只设主题" loading="lazy"><span>只设主题</span></div><div class="m22-c on"><img src="assets/img/02-login-mono-aligned-antd.png" alt="Ant Design 登录框，对齐到控件规格" loading="lazy"><span>对齐到控件规格</span></div>
+      </div>
+      <figcaption>两个开关，四个格子，用上的是三个。图里是 Ant Design 的登录框。</figcaption>
+    </figure>
+    <figure class="fig"><div class="codes" style="--n:2"><div class="code" data-code="kitview-modes"></div><div class="code" data-code="provider-three"></div></div></figure>
+    <figure class="fig wide">
+      <div class="dg" id="modes-grid"></div>
+    </figure>
+    <p class="src">图里的数是演示页实测（2026-10-12），黑白规范；检查只查对齐那一档（<code>audit/README.md</code>「不量什么」）</p>
+  </section>
+
+  <!-- ═════════ 03 怎么做到 ═════════ -->
+  <section class="part" id="p3">
+    <div class="kick"><span class="no">03</span><span>第三部分</span></div>
+    <h2>实现原理</h2>
+  </section>
+
+  <section class="sec" id="s9">
+    <div class="kick"><span class="no">1.8</span><span>一个比喻</span></div>
+    <h2>类比：一张图纸、五个施工队与五位监理</h2>
+    <p class="lead">一张图纸交给五个施工队，每个队都有自己的习惯。</p>
+    <figure class="fig"><div class="ill" data-ill="crew"></div></figure>
+    <!-- 插画位：米花展开图纸（图纸上是这个后台页面的线框，角上写 Design.md）；五个工地一字排开，五个施工队各举库名牌子 -->
+    <figure class="fig">
+      <div class="cards" style="--n:2">
+        <div class="card"><h4>图纸 = Design.md</h4><p>设计只写这一份。</p><div class="code" data-code="design-head"></div></div>
+        <div class="card"><h4>施工队 = 组件库</h4><p>各有各的习惯，不去改它们。</p></div>
+        <div class="card"><h4>规格表 = 控件规格</h4><p>每种控件用图纸上的哪些数、做多大。</p><div class="code" data-code="controls-head"></div></div>
+        <div class="card"><h4>监理 = 套件</h4><p>把图纸和规格表翻译成这个库听得懂的话。每个库配一个。</p></div>
+      </div>
+    </figure>
+    <p class="src"><code>README.md</code> 第 5 行「每个组件库一个『套件』把它翻译成自己的组件」；<code>docs/接入一个新组件库.md</code>「先认识几样东西」</p>
+  </section>
+
+  <section class="sec" id="s11">
+    <div class="kick"><span class="no">1.9</span><span>四层</span></div>
+    <h2>类比：从外到内分为四层的房子</h2>
+    <p class="lead">视觉、控件、结构、逻辑，从外往里。</p>
+    <figure class="fig"><div class="lay3d" data-lay3d></div></figure>
+    <!-- 插画位：一栋剖开的小房子，四层标「材料 视觉 · 预制件 控件 · 户型 结构 · 水电 逻辑」 -->
+    <figure class="fig wide">
+      <div class="four4">
+        <div class="c4"><b>视觉</b><em>装修材料</em><p>颜色、字号、圆角、尺寸、图标这些取值</p><span><code>designs/</code><code>spec/src/roles.ts</code><code>spec/src/icons.ts</code></span><a href="02-visual.html">第 02-1 至 02-3 篇</a></div>
+        <div class="c4"><b>控件</b><em>预制件</em><p>按钮、开关、表格，每种控件统一成什么样</p><span><code>spec/src/controls.ts</code><code>react|vue/src/kits/*</code></span><a href="03-controls.html">第 03-1 至 03-3 篇</a></div>
+        <div class="c4"><b>结构</b><em>户型</em><p>页面分哪几块、怎么排</p><span><code>core/src/**/frame.ts</code><code>list.ts</code><code>core/styles/</code><code>react|vue/src/blocks/*</code></span><a href="04-structure.html">第 04 篇</a></div>
+        <div class="c4"><b>逻辑</b><em>水电</em><p>用户点了什么、选了什么</p><span><code>core/src/**/controller.ts</code></span></div>
+      </div>
+    </figure>
+    <p>换组件库只动控件这一层，换规范只动视觉，逻辑哪种都不动。</p>
+    <p class="src"><code>docs/architecture.md</code>「四层在仓库里的位置」；仓库的架构说明还有一种「五层」的分法（规范、语义角色、骨架、控件套件、框架视图），是同一套东西从代码角度切</p>
+  </section>
+
+  <section class="sec" id="s12">
+    <div class="kick"><span class="no">1.10</span><span>验收</span></div>
+    <h2>自动检查：完成后的验收</h2>
+    <figure class="fig"><div class="ill" data-ill="accept"></div></figure>
+    <figure class="fig"><div class="cmd"><pre>自动检查：299 项，5 个组件库全部一致。</pre></div></figure>
+    <p>怎么量、量不到什么，第 05 篇讲。</p>
+    <p class="src"><code>README.md</code> 第 5 行；<code>audit/README.md</code></p>
+  </section>
+
+
+  <section class="part" id="p4">
+    <div class="kick"><span class="no">04</span><span>第四部分</span></div>
+    <h2>规范如何传递到组件库</h2>
+  </section>
+
+  <section class="sec" id="v1">
+    <div class="kick"><span class="no">1.11</span><span>改一个数</span></div>
+    <h2>修改一个数值，五个组件库同步变化</h2>
+    <p class="lead">把黑白规范里的控件高度，从 32 改成 36。</p>
+    <figure class="fig wide">
+      <div class="codes" style="--n:2;margin-bottom:18px">
+        <div class="code" data-code="design-size"></div>
+        <div>
+          <div class="ctl"><span class="lb">控件高度</span><div class="seg" data-ctl="h36"><button data-v="32" class="on">32px，仓库里现在的值</button><button data-v="36">改成 36px</button></div></div>
+          <p class="cap" style="margin:0">下面一排是大号，读的是另一项，不跟着变。</p>
+        </div>
+      </div>
+      <div class="libs">
+        <div class="lib"><div class="lab"><b>Ant Design</b></div><img data-h36="antd" src="assets/img/02-controls-mono-aligned-antd.png" alt="Ant Design 控件样张"></div>
+        <div class="lib"><div class="lab"><b>Element Plus</b></div><img data-h36="element" src="assets/img/02-controls-mono-aligned-element.png" alt="Element Plus 控件样张"></div>
+        <div class="lib"><div class="lab"><b>shadcn/ui</b></div><img data-h36="shadcn" src="assets/img/02-controls-mono-aligned-shadcn.png" alt="shadcn/ui 控件样张"></div>
+        <div class="lib"><div class="lab"><b>Arco Design</b></div><img data-h36="arco" src="assets/img/02-controls-mono-aligned-arco.png" alt="Arco Design 控件样张"></div>
+        <div class="lib"><div class="lab"><b>TDesign</b></div><img data-h36="tdesign" src="assets/img/02-controls-mono-aligned-tdesign.png" alt="TDesign 控件样张"></div>
+      </div>
+    </figure>
+    <p>五个组件库里的按钮、输入框，还有选择框，一起变高了。<span class="k">套件的代码，一个字都没改。</span></p>
+    <p class="src">控件样张 · 黑白 · 对齐到控件规格，2 倍截图。36px 那一组是把 <code>designs/mono/Design.md</code> 第 53 行临时改成 36 以后截的，截完改了回去。这一处要改文件才看得到，所以放的是截图。</p>
+  </section>
+
+  <section class="sec" id="v2">
+    <div class="kick"><span class="no">1.12</span><span>变量</span></div>
+    <h2>组件库的颜色与尺寸大多由变量控制</h2>
+    <p class="lead">组件库里的颜色、尺寸，大多是变量，和 Figma 里的变量一个意思。</p>
+    <figure class="fig">
+      <div class="figs">
+        <div class="vp"><div class="vh">本地变量<span>像 Figma 的变量面板</span></div>
+          <div class="vr"><span>主操作</span><span class="v vsw" id="v2-c"><button type="button" class="on" data-c="#0A0A0A" style="background:#0A0A0A" aria-label="黑"></button><button type="button" data-c="#3370FF" style="background:#3370FF" aria-label="蓝"></button><button type="button" data-c="#16A34A" style="background:#16A34A" aria-label="绿"></button><b>#0A0A0A</b></span></div>
+          <div class="vr"><span>控件高度</span><span class="v vrg"><input type="range" id="v2-h" min="24" max="48" step="2" value="32" aria-label="控件高度"><b>32</b></span></div>
+          <div class="vr"><span>控件圆角</span><span class="v vrg"><input type="range" id="v2-r" min="0" max="20" step="1" value="6" aria-label="控件圆角"><b>6</b></span></div>
+        </div>
+        <div class="vp"><div class="vh">图层 · 主按钮「查询」</div>
+          <div class="btn-sample" id="v2-btn"><span>查询</span></div>
+          <div class="vr"><span>填充</span><span class="chip bound" id="v2-cc">⬡ 主操作</span></div>
+          <div class="vr"><span>高度</span><span class="chip bound" id="v2-hc">⬡ 控件高度 · 32</span></div>
+          <div class="vr"><span>圆角</span><span class="chip bound" id="v2-rc">⬡ 控件圆角 · 6</span></div>
+        </div>
+      </div>
+    </figure>
+    <p>套件做的事，就是把规范里的数，填进组件库的这些变量。</p>
+    <p class="src">变量名用的是规范里的语义角色（<code>spec/src/roles.ts</code>），取值是 <code>designs/mono/Design.md</code> 里写的</p>
+  </section>
+
+  <section class="sec" id="v3">
+    <div class="kick"><span class="no">1.13</span><span>三种情况</span></div>
+    <h2>五个组件库变量的三种情况</h2>
+    <p class="lead">归起来有三种，从省事到费事。</p>
+    <figure class="fig wide">
+      <div class="cards" style="--n:3">
+        <div class="card"><h4><span class="n">1</span>它自己会</h4>
+          <p>你只给一个主色，它自己算出一整排。</p>
+          <div class="ctl" style="margin:0"><label class="pick">换一个主色 <input type="color" id="c1-color" value="#3370FF"></label><span class="mono" style="font-size:12px" id="c1-hex">#3370FF</span></div>
+          <div class="mini-ramp" id="c1-ramp"></div><div class="mini-l"><span>最浅</span><span>主色</span></div>
+          <div class="who">颜色上：<b>Ant Design</b><br>尺寸上：<b>Ant Design</b></div>
+        </div>
+        <div class="card"><h4><span class="n">2</span>要你说全</h4>
+          <p>主色、悬停、浅底各是一个变量，都得你来填。</p>
+          <div class="vp" id="c2-vars"></div>
+          <div class="ctl" style="margin:0"><button class="btn" id="c2-fill">让套件来填</button><button class="btn ghost" id="c2-clear">清空</button></div>
+          <div class="who">颜色上：<b>Element Plus、Arco、TDesign、shadcn/ui</b><br>尺寸上：<b>TDesign</b></div>
+        </div>
+        <div class="card"><h4><span class="n">3</span>它改不了</h4>
+          <p>数直接写在控件上，就像<span class="nb">按钮高度</span><span class="nb">直接填了 32</span>。</p>
+          <div class="rng"><span class="nb">变量「控件高度」</span><input type="range" id="c3-range" min="24" max="48" value="32"><b id="c3-val">32</b></div>
+          <div class="layers"><div class="ly"><div class="rect" id="c3-bound">32</div><span class="chip bound">⬡ 控件高度</span>绑了变量，跟着变</div><div class="ly"><div class="rect fixed" style="height:32px">32</div><span class="chip none">没绑变量</span>怎么改，它都不变</div></div>
+          <div class="who">颜色上：<b>没有</b><br>尺寸上：<b>Element Plus、Arco、shadcn/ui</b></div>
+        </div>
+      </div>
+    </figure>
+    <p>接一个新组件库，第一步就是弄清它是哪一种。</p>
+  </section>
+
+  <section class="sec" id="v4">
+    <div class="kick"><span class="no">1.14</span><span>五步</span></div>
+    <h2>一个数值在仓库中的五个传递步骤</h2>
+    <figure class="fig wide">
+      <div class="flow" id="flow">
+        <div class="node on" data-i="0"><b>规范</b><small>designs/*/Design.md</small></div><span class="arr"></span>
+        <div class="node" data-i="1"><b>语义角色</b><small>spec/src/roles.ts</small></div><span class="arr"></span>
+        <div class="node" data-i="2"><b>控件规格</b><small>spec/src/controls.ts</small></div><span class="arr"></span>
+        <div class="node" data-i="3"><b>套件</b><small>react|vue/src/kits/*</small></div><span class="arr"></span>
+        <div class="node" data-i="4"><b>组件库</b><small>Ant Design……</small></div>
+      </div>
+      <div class="flow-detail" id="flow-detail"></div>
+    </figure>
+    <h3>真文件里，就是这几行</h3>
+    <figure class="fig wide">
+      <div class="codes" style="--n:2"><div class="code" data-code="design-size"></div><div class="code" data-code="roles-size"></div></div>
+    </figure>
+    <p>Design.md 里，机器只读 mihua-tokens 那一块；写错了直接报错。</p>
+    <p class="src"><code>docs/architecture.md</code>「五层」「新增一份规范」；<code>designs/mono/Design.md</code> 正文第 12 行写的就是这条路</p>
+  </section>
+
+  <section class="sec" id="v5">
+    <div class="kick"><span class="no">1.15</span><span>六种手段</span></div>
+    <h2>套件对齐的六种手段：由简到繁</h2>
+    <p class="lead">前一种够不着，才用后一种。</p>
+    <figure class="fig">
+      <div class="stairs6">
+        <div class="st" style="--h:1"><i>1</i><b>全局主题变量</b><span>Ant Design 的 token、<code>--el-*</code></span></div>
+        <div class="st" style="--h:2"><i>2</i><b>组件主题变量</b><span>Ant Design 按钮、标签栏各自的一组</span></div>
+        <div class="st" style="--h:3"><i>3</i><b>组件属性</b><span>Arco 输入框的 <code>height</code></span></div>
+        <div class="st" style="--h:4"><i>4</i><b>换类名</b><span>shadcn/ui，源码在手里</span></div>
+        <div class="st" style="--h:5"><i>5</i><b>样式覆盖</b><span>只在对齐档，不用 <code>!important</code></span></div>
+        <div class="st" style="--h:6"><i>6</i><b>补交互</b><span>密码框的眼睛、展开状态</span></div>
+      </div>
+      <div class="ladder-ends"><span>← 省事</span><span>费事 →</span></div>
+    </figure>
+    <p>每用一次，套件里记一条<b>适配记录</b>。</p>
+    <p class="src"><code>AGENTS.md</code>「规则」第二条；手段的名字照 <code>spec/src/adaptation.ts</code> 的 <code>METHOD_NAMES</code></p>
+  </section>
+
+  <!-- ═════════ 结尾 ═════════ -->
+  <section class="sec" id="end">
+    <div class="ask">
+      <div class="ah"><span>想让 AI 帮你跑起来，就这样跟它说</span><button class="btn ghost copy" data-copy="#ask01">复制</button></div>
+      <pre id="ask01">帮我把 mihua-blocks-open 这个项目跑起来，打开演示页。再告诉我，视觉、控件、结构、逻辑这四层在仓库里，各在哪个文件夹。先不用改代码。</pre>
+    </div>
+    <div class="next"></div>
+  </section>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/color.js"></script>
+<script src="assets/data/code.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/replay.js"></script>
+<script src="assets/ill.js"></script>
+<script src="assets/layers.js"></script>
+<script src="assets/ch01.js"></script>
+<script src="assets/ch02.js"></script>
+</body>
+</html>

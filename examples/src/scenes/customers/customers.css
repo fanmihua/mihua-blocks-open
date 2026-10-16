@@ -1,0 +1,18 @@
+/*
+ * 客户列表在演示页、检查页里的大小：一个 1200 × 920 的「窗口」，整页放得下，不用滚动。
+ * 对话框和它的遮罩是 position: fixed，本来相对浏览器窗口；这里让每一格的作用域（.mh-root）当「窗口」
+ * （layout containment 会让 fixed 的元素相对它定位），几个组件库并排时对话框才不会叠在一起。
+ * 真实项目里对话框挂在页面上，相对浏览器窗口，效果一样。
+ */
+.ex-list {
+  width: 1200px;
+  height: 920px;
+  overflow: hidden;
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-panel);
+}
+.mh-root:has(.ex-list) {
+  position: relative;
+  contain: layout;
+  width: max-content;
+}

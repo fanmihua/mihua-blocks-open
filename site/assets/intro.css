@@ -1,0 +1,50 @@
+/* 导读 */
+.stepnote { margin: -6px 0 18px; padding: 12px 16px; border-radius: 10px; background: var(--soft2); font-size: 15px; color: var(--ink); }
+.outline { border-top: 1px solid var(--ink); }
+.outline .ol { display: grid; grid-template-columns: 52px minmax(0, 1fr) 96px; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
+.outline .ol:hover b { text-decoration: underline; }
+.outline .ol .n { font: 600 14px var(--mono); color: var(--faint); }
+.outline .ol b { display: block; font-size: 16.5px; color: var(--ink); }
+.outline .ol div span { display: block; margin-top: 2px; font-size: 14.5px; color: var(--sub); }
+.outline .ol em { font-style: normal; font-size: 12.5px; color: var(--muted); text-align: right; }
+.outline .ol-h { padding: 22px 0 6px; font-size: 13px; font-weight: 600; color: var(--muted); border-bottom: 1px solid var(--line); }
+@media (max-width: 640px) { .outline .ol { grid-template-columns: 40px 1fr; } .outline .ol em { display: none; } }
+
+/* 三种做法：一行一种，左边截图、右边真代码 */
+.way { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 20px; align-items: start; padding: 20px 0; border-top: 1px solid var(--line); }
+.way:first-child { border-top: 1.5px solid var(--ink); }
+.way .wl h4 { margin: 0 0 4px; font-size: 18px; display: inline; }
+.way .wn { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 8px; border-radius: 50%; background: var(--ink); color: #fff; font: 600 13px var(--mono); vertical-align: 2px; }
+.way .wl p { margin: 8px 0 12px; font-size: 14.5px; line-height: 1.7; color: var(--sub); }
+.way .wl img { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+@media (max-width: 760px) { .way { grid-template-columns: 1fr; } }
+/* 代码收起来时右边空了：说明占满一行，截图不放大 */
+body.code-off:not(.staging) .way .wl img { width: auto; max-width: min(100%, 480px); display: block; }
+
+/* 解耦：上面是我们要的设计（四层，只写一次），虚线下面是五个组件库各自的写法，中间每个库一个套件 */
+.decouple { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 300px; grid-template-rows: auto 56px auto; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(180deg, #fafaf9, #f1f1ef); overflow: hidden; }
+.decouple .top { position: relative; height: 300px; perspective: 1800px; }
+.decouple .stack { position: absolute; left: 50%; top: 56%; width: 200px; height: 300px; margin: -150px 0 0 -100px; transform: rotateX(56deg) rotateZ(-34deg) scale(0.62); transform-style: preserve-3d; }
+.decouple .stack i { position: absolute; inset: 0; background: #fff; border: 1.5px solid #0a0a0a; }
+.decouple .stack i b { position: absolute; left: -1.5px; top: -28px; padding: 5px 9px; background: #0a0a0a; color: #fff; font: normal 600 15px/1 var(--mono); white-space: nowrap; }
+.decouple .stack img { position: absolute; inset: 0; width: 200px; height: 306px; }
+.decouple .txt { display: flex; flex-direction: column; justify-content: center; padding-right: 28px; }
+.decouple .txt b { font-size: 24px; color: var(--ink); }
+.decouple .txt span { margin-top: 6px; font-size: 14px; color: var(--muted); }
+.decouple .cut { grid-column: 1 / -1; position: relative; display: flex; align-items: center; }
+.decouple .cut::before { content: ''; position: absolute; left: 24px; right: 24px; top: 50%; border-top: 2px dashed #0a0a0a; }
+.decouple .cut span { position: relative; margin-left: auto; margin-right: 168px; padding: 8px 16px; border-radius: 8px; background: #0a0a0a; color: #fff; font-weight: 700; font-size: 17px; }
+.decouple .libs5 { display: flex; justify-content: center; gap: 14px; padding: 18px 24px 28px; }
+.decouple .libs5 div { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.decouple .libs5 em { font-style: normal; font: 600 11px var(--mono); color: #fff; background: #0a0a0a; padding: 3px 8px; border-radius: 4px; }
+.decouple .libs5 i { display: block; width: 92px; height: 70px; border: 1.5px solid #0a0a0a; border-radius: 6px; background: #fff; transform: perspective(500px) rotateX(38deg); }
+.decouple .libs5 b { font: 600 12.5px var(--mono); color: var(--ink); }
+@media (max-width: 760px) {
+  /* 单列：五块从上往下排，虚线那一行固定 56px，其余按内容高 */
+  .decouple { grid-template-columns: 1fr; grid-template-rows: auto auto 56px auto auto; }
+  .decouple .top { height: 344px; }
+  .decouple .stack { top: 50%; }
+  .decouple .txt { position: relative; z-index: 1; padding: 0 20px 12px; }
+  .decouple .cut span { margin-right: 24px; }
+  .decouple .libs5 { flex-wrap: wrap; }
+}

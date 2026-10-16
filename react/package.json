@@ -1,0 +1,41 @@
+{
+  "name": "@mihua/react",
+  "version": "0.2.0",
+  "private": true,
+  "description": "React views for Mihua Blocks, with kits for shadcn/ui, Ant Design and Arco Design.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./kits/antd": "./src/kits/antd/index.tsx",
+    "./kits/arco": "./src/kits/arco/index.tsx",
+    "./kits/arco/styles.css": "./src/kits/arco/styles.css",
+    "./kits/shadcn": "./src/kits/shadcn/index.tsx",
+    "./kits/shadcn/styles.css": "./src/kits/shadcn/styles.css"
+  },
+  "dependencies": {
+    "@mihua/core": "*",
+    "@mihua/spec": "*"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "optionalDependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "@arco-design/web-react": "^2.66.16",
+    "@tanstack/react-table": "8.21.3",
+    "antd": "^6.6.5",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "dayjs": "^1.11.23",
+    "lucide-react": "0.523.0",
+    "radix-ui": "1.4.3",
+    "react-day-picker": "9.14.0",
+    "tailwind-merge": "3.5.0"
+  },
+  "devDependencies": {
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  }
+}

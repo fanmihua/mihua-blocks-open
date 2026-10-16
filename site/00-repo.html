@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>源码仓库：包含哪些内容，如何使用 · Mihua Blocks 文字版</title>
+  <meta name="description" content="仓库的目录、每个文件是干什么的、怎么跑起来、怎么交给 AI；视频、文字版、仓库三者怎么对着看。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/ch00.css">
+  <link rel="stylesheet" href="assets/art.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">00</span></div>
+    <h1>源码仓库：包含哪些内容，如何使用</h1>
+    <p class="lead">这里提供了不同组件库的演示，以及整个系列的配套源码。你可以对比各个组件库的实现效果，也可以找到后续文章涉及的设计规范、示例与代码文件。</p>
+    <div class="series"></div>
+    <div class="series-l"></div>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <section class="part" id="p1">
+    <div class="kick"><span class="no">01</span><span>第一部分</span></div>
+    <h2>快速上手</h2>
+  </section>
+
+  <section class="sec" id="s1">
+    <div class="kick"><span class="no">0.1</span><span>对照</span></div>
+    <h2>各篇对应的仓库文件</h2>
+    <figure class="fig">
+      <div class="tbl-wrap"><table class="tbl map3">
+        <tr><th>视频和文字版</th><th>仓库里先看这些</th></tr>
+        <tr><td><a href="01-switch.html">01 · 整体演示：三种外观模式与四层拆解</a></td><td><code>examples/</code> 演示页、<code>docs/architecture.md</code>、<code>designs/</code><br><code>react/src/kits/</code>、<code>vue/src/kits/</code>、<code>core/</code></td></tr>
+        <tr><td><a href="02-visual.html">02-1 · 视觉层：统一颜色</a></td><td><code>designs/*/Design.md</code>、<code>spec/src/roles.ts</code>、五个套件的主题部分</td></tr>
+        <tr><td><a href="02-size.html">02-2 · 视觉层：统一尺寸</a></td><td><code>designs/*/Design.md</code>、<code>spec/src/controls.ts</code>、五个套件的档案</td></tr>
+        <tr><td><a href="02-icons.html">02-3 · 视觉层：统一图标</a></td><td><code>spec/src/icons.ts</code>、五个套件的图标部分</td></tr>
+        <tr><td><a href="03-controls.html">03-1 · 控件层：总述与数据录入</a></td><td><code>spec/src/controls.ts</code>、<code>react/src/kit/types.ts</code><br><code>vue/src/kit/types.ts</code>、五个套件的适配记录</td></tr>
+        <tr><td><a href="03-nav.html">03-2 · 控件层：导航</a></td><td><code>spec/src/controls.ts</code> 里的菜单、标签栏、面包屑、下拉菜单，五个套件的对应部分</td></tr>
+        <tr><td><a href="03-display.html">03-3 · 控件层：通用与数据展示</a></td><td><code>spec/src/controls.ts</code> 里的表格、头像、徽标，shadcn/ui 套件拼表格的部分</td></tr>
+        <tr><td><a href="04-structure.html">04 · 结构层：统一页面布局</a></td><td><code>core/styles/</code>、<code>core/src/**/frame.ts</code>、<code>react/src/blocks/</code>、<code>vue/src/blocks/</code></td></tr>
+        <tr><td><a href="05-audit.html">05 · 验证：如何检查一致性</a></td><td><code>audit/</code>、<code>spec/src/parts.ts</code></td></tr>
+        <tr><td><a href="06-ai.html">06 · 交给 AI：如何让生成结果符合适配要求</a></td><td><code>AGENTS.md</code>、<code>docs/</code> 三份做法说明、<code>skills/</code></td></tr>
+      </table></div>
+    </figure>
+  </section>
+
+  <section class="sec" id="s2">
+    <div class="kick"><span class="no">0.2</span><span>跑起来</span></div>
+    <h2>运行仓库</h2>
+    <p class="lead">不用敲命令，在 AI 工具里直接对话。</p>
+    <figure class="fig">
+      <div class="askai">
+        <div class="r"><span class="tools"><img src="assets/brand/ai-claude.png" alt="">Claude<img src="assets/brand/ai-codex.png" alt="">Codex</span><span class="h">AI 工具，哪个都行</span></div>
+        <div class="r"><span class="link">https://github.com/fanmihua/mihua-blocks-open</span><span class="h">仓库链接</span></div>
+        <div class="r"><span class="say">帮我运行这个项目</span><span class="h">说一句</span></div>
+        <div class="ft"><i>+</i><b>↑</b></div>
+      </div>
+    </figure>
+    <h3>跑起来就是演示页</h3>
+    <figure class="fig">
+      <div class="frame"><div class="fh"><span class="lab"><b>演示页</b>　examples/index.html</span><span><span class="live-tag">真的演示页，可以点</span><a class="live-open" data-demo href="demo/index.html" target="_blank" rel="noopener">打开完整演示页</a></span></div>
+        <div class="live" data-page="index.html" data-w="1440" data-live="" data-shot="assets/img/02-antd-theme-mono-selected.png" data-min="620"></div></div>
+    </figure>
+    <p class="src"><code>README.md</code>「跑起来」；<code>examples/src/demo/main.tsx</code></p>
+  </section>
+
+  <section class="sec" id="s5">
+    <div class="kick"><span class="no">0.3</span><span>四层</span></div>
+    <h2>一个界面分四层，对应仓库哪些文件</h2>
+    <figure class="fig">
+      <div class="bands">
+        <a class="band" href="02-visual.html"><span class="bl"><i>1</i>视觉</span><span class="bd">颜色、字号、圆角、尺寸、图标的取值</span><span class="bf"><code>designs/</code><code>spec/src/roles.ts</code><code>spec/src/icons.ts</code></span><em>02-1 至 02-3 篇</em></a>
+        <a class="band hot" href="03-controls.html"><span class="bl"><i>2</i>控件</span><span class="bd">每种控件统一成什么样，在每个库里怎么做到</span><span class="bf"><code>spec/src/controls.ts</code><code>react/src/kits/</code><code>vue/src/kits/</code></span><em>03-1 至 03-3 篇</em><b class="tag">换组件库，只换这里</b></a>
+        <a class="band" href="04-structure.html"><span class="bl"><i>3</i>结构</span><span class="bd">页面上有什么、怎么排</span><span class="bf"><code>core/styles/</code><code>react/src/blocks/</code><code>vue/src/blocks/</code></span><em>04 篇</em></a>
+        <div class="band"><span class="bl"><i>4</i>逻辑</span><span class="bd">选了什么、筛了什么、提交以后怎样</span><span class="bf"><code>core/src/**/controller.ts</code></span></div>
+      </div>
+      <figcaption>逻辑那一层 React、Vue 共用一份。</figcaption>
+    </figure>
+    <p class="src"><code>docs/architecture.md</code>「四层在仓库里的位置」</p>
+  </section>
+
+  <section class="part" id="p2">
+    <div class="kick"><span class="no">02</span><span>第二部分</span></div>
+    <h2>目录说明</h2>
+  </section>
+
+  <section class="sec" id="s6">
+    <div class="kick"><span class="no">0.4</span><span>目录总览</span></div>
+    <h2>目录总览</h2>
+    <figure class="fig"><div class="tree" id="tree"></div></figure>
+    <p class="src">文件清单是从 git 列出来的，测试文件在下面每一节的表里</p>
+  </section>
+
+  <section class="sec" id="r-designs">
+    <div class="kick"><span class="no">0.5</span><span>designs/</span></div>
+    <h2>designs/：规范的源头</h2>
+    <figure class="fig" data-fig="a">
+      <div class="d3">
+        <div class="d3-c"><div class="lab"><b>黑白</b>　designs/mono</div><img src="assets/img/02-controls-mono-aligned-antd.png" alt="黑白规范下的 Ant Design 控件样张" loading="lazy"><div class="d3-v"><span><i style="background:#0A0A0A"></i>#0A0A0A</span><span>控件 32</span><span>圆角 6</span><span>Lucide</span></div></div>
+        <div class="d3-c"><div class="lab"><b>蓝色</b>　designs/blue</div><img src="assets/img/00-controls-blue-aligned-antd.png" alt="蓝色规范下的 Ant Design 控件样张" loading="lazy"><div class="d3-v"><span><i style="background:#3370FF"></i>#3370FF</span><span>控件 32</span><span>圆角 6</span><span>Lucide</span></div></div>
+        <div class="d3-c"><div class="lab"><span class="tipq" tabindex="0" data-tip="压力测试不是给页面用的，是给检查用的：把取值推到边上——主色换成青绿、控件 34 / 46 高、正文 15px、直角、换一套图标，看五个组件库是真的跟着规范走，还是碰巧和默认值一样。"><b>压力测试</b><i>?</i></span>　designs/stress</div><img src="assets/img/02-controls-stress-aligned-antd.png" alt="压力测试规范下的 Ant Design 控件样张" loading="lazy"><div class="d3-v"><span><i style="background:#0F766E"></i>#0F766E</span><span>控件 34</span><span>直角</span><span>Mihua 自绘</span></div></div>
+      </div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="designs/"></span></summary><figure class="fig"><div class="ftable" data-dir="designs/"></div></figure></details>
+    <figure class="fig"><div class="code" data-code="design-size"></div></figure>
+    <p class="src"><code>docs/architecture.md</code>「新增一份规范」</p>
+  </section>
+
+  <section class="sec" id="r-spec">
+    <div class="kick"><span class="no">0.6</span><span>spec/</span></div>
+    <h2>spec/：规范层</h2>
+    <figure class="fig" data-fig="a">
+      <div class="sp3">
+        <div class="spx"><div class="sp-h"><b>语义角色</b><code>roles.ts</code></div>
+          <div class="rrow"><i style="background:#0A0A0A"></i><b>主操作</b><span>#0A0A0A</span></div>
+          <div class="rrow"><i style="background:#EBEBEB"></i><b>选中面</b><span>#EBEBEB</span></div>
+          <div class="rrow"><i style="background:#fff;box-shadow:inset 0 0 0 2px #D4D4D4"></i><b>控件边框</b><span>#D4D4D4</span></div>
+          <div class="rrow"><i class="hh"></i><b>控件高度</b><span>32px</span></div></div>
+        <div class="spx"><div class="sp-h"><b>控件规格</b><code>controls.ts</code></div>
+          <div class="swd"><div class="swd-w"><span>44</span></div><div class="swd-row"><div class="swd-t"><i></i></div><div class="swd-h"><span>22</span></div></div><div class="swd-n"><span>圆点 18</span><span>离边 2</span><span>开：主操作</span><span>关：控件边框</span></div></div></div>
+        <div class="spx"><div class="sp-h"><b>图标集</b><code>icons.ts</code></div>
+          <div class="ics"><small>Lucide</small><span class="ico-row" data-set="lucide"></span><small>Mihua 自绘</small><span class="ico-row" data-set="mihua"></span></div></div>
+      </div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="spec/"></span></summary><figure class="fig"><div class="ftable" data-dir="spec/"></div></figure></details>
+  </section>
+
+  <section class="sec" id="r-core">
+    <div class="kick"><span class="no">0.7</span><span>core/</span></div>
+    <h2>core/：React 与 Vue 共用的骨架</h2>
+    <figure class="fig" data-fig="a">
+      <div class="c2">
+        <div><div class="lab"><b>React · Ant Design</b></div><img src="assets/img/00-customers-aligned-antd.png" alt="客户列表，React 写的，Ant Design" loading="lazy"></div>
+        <div><div class="lab"><b>Vue · Element Plus</b></div><img src="assets/img/00-customers-aligned-element.png" alt="客户列表，Vue 写的，Element Plus" loading="lazy"></div>
+      </div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="core/"></span></summary><figure class="fig"><div class="ftable" data-dir="core/"></div></figure></details>
+  </section>
+
+  <section class="sec" id="r-react">
+    <div class="kick"><span class="no">0.8</span><span>react/</span></div>
+    <h2>react/：React 的套件与视图</h2>
+    <figure class="fig" data-fig="a">
+      <div class="ctl"><span class="lb">外观</span><div class="seg sm kitrow-seg"><button type="button" data-v="a" class="on">组件库原生</button><button type="button" data-v="b">对齐到控件规格</button></div></div>
+      <div class="libs kitrow" style="--n:3"><div class="lib"><div class="lab"><b>Ant Design</b></div><img data-a="assets/img/02-login-mono-native-antd.png" data-b="assets/img/02-login-mono-aligned-antd.png" src="assets/img/02-login-mono-native-antd.png" alt="Ant Design 的登录框" loading="lazy"></div><div class="lib"><div class="lab"><b>shadcn/ui</b></div><img data-a="assets/img/02-login-mono-native-shadcn.png" data-b="assets/img/02-login-mono-aligned-shadcn.png" src="assets/img/02-login-mono-native-shadcn.png" alt="shadcn/ui 的登录框" loading="lazy"></div><div class="lib"><div class="lab"><b>Arco Design</b></div><img data-a="assets/img/02-login-mono-native-arco.png" data-b="assets/img/02-login-mono-aligned-arco.png" src="assets/img/02-login-mono-native-arco.png" alt="Arco Design 的登录框" loading="lazy"></div></div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="react/"></span></summary><figure class="fig"><div class="ftable" data-dir="react/"></div></figure></details>
+  </section>
+
+  <section class="sec" id="r-vue">
+    <div class="kick"><span class="no">0.9</span><span>vue/</span></div>
+    <h2>vue/：Vue 的套件与视图</h2>
+    <figure class="fig" data-fig="a">
+      <div class="ctl"><span class="lb">外观</span><div class="seg sm kitrow-seg"><button type="button" data-v="a" class="on">组件库原生</button><button type="button" data-v="b">对齐到控件规格</button></div></div>
+      <div class="libs kitrow" style="--n:2"><div class="lib"><div class="lab"><b>Element Plus</b></div><img data-a="assets/img/02-login-mono-native-element.png" data-b="assets/img/02-login-mono-aligned-element.png" src="assets/img/02-login-mono-native-element.png" alt="Element Plus 的登录框" loading="lazy"></div><div class="lib"><div class="lab"><b>TDesign</b></div><img data-a="assets/img/02-login-mono-native-tdesign.png" data-b="assets/img/02-login-mono-aligned-tdesign.png" src="assets/img/02-login-mono-native-tdesign.png" alt="TDesign 的登录框" loading="lazy"></div></div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="vue/"></span></summary><figure class="fig"><div class="ftable" data-dir="vue/"></div></figure></details>
+  </section>
+
+  <section class="sec" id="r-audit">
+    <div class="kick"><span class="no">0.10</span><span>audit/</span></div>
+    <h2>audit/：自动检查</h2>
+    <figure class="fig" data-fig="a">
+      <div class="browser"><div class="bb"><i></i><i></i><i></i><span>检查页 · 登录框 · 五个组件库并排</span></div><img src="assets/img/02-login-aligned-mono.png" alt="检查页：五个组件库的登录框并排" loading="lazy"></div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="audit/"></span></summary><figure class="fig"><div class="ftable" data-dir="audit/"></div></figure></details>
+    <figure class="fig">
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>想查什么</th><th>跟 AI 说</th></tr>
+        <tr><td>所有场景、所有组合</td><td>「跑一遍自动检查」</td></tr>
+        <tr><td>只查控件样张</td><td>「只检查控件样张」</td></tr>
+        <tr><td>只比其中两个库</td><td>「后台页面只比 shadcn/ui 和 Ant Design」</td></tr>
+        <tr><td>看组件库原生的样子</td><td>「只量不比，看组件库原生的样子」</td></tr>
+      </table></div>
+    </figure>
+    <p class="src"><code>audit/README.md</code>；第 05 篇细讲它怎么量、量不到什么</p>
+  </section>
+
+  <section class="sec" id="r-examples">
+    <div class="kick"><span class="no">0.11</span><span>examples/</span></div>
+    <h2>examples/：演示页、检查页、登记表</h2>
+    <figure class="fig" data-fig="a">
+      <div class="c2 wide-r">
+        <div><div class="lab"><b>演示页</b>　examples/index.html</div><div class="browser sm"><div class="bb"><i></i><i></i><i></i><span>给人看：顶上一排开关</span></div><img src="assets/img/00-demo-home.png" alt="演示页" loading="lazy"></div></div>
+        <div><div class="lab"><b>检查页</b>　examples/audit.html</div><div class="browser sm"><div class="bb"><i></i><i></i><i></i><span>给检查量：五个库并排</span></div><img src="assets/img/02-controls-aligned-mono.png" alt="检查页：五个组件库的控件样张并排" loading="lazy"></div></div>
+      </div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="examples/"></span></summary><figure class="fig"><div class="ftable" data-dir="examples/"></div></figure></details>
+  </section>
+
+  <section class="sec" id="r-docs">
+    <div class="kick"><span class="no">0.12</span><span>docs/</span></div>
+    <h2>docs/：架构和做法说明</h2>
+    <figure class="fig" data-fig="a"><div class="dsteps" id="dsteps"></div></figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="docs/"></span></summary><figure class="fig"><div class="ftable" data-dir="docs/"></div></figure></details>
+  </section>
+
+  <section class="sec" id="r-skills">
+    <div class="kick"><span class="no">0.13</span><span>skills/ · AGENTS.md</span></div>
+    <h2>skills/ 和 AGENTS.md：写给 AI 的说明</h2>
+    <figure class="fig" data-fig="a">
+      <div class="chat">
+        <div class="cu"><span>照 docs/接入一个新组件库.md，把 Naive UI 接进来。</span></div>
+        <div class="ca">
+          <div class="cl"><i></i>读 <b>AGENTS.md</b>：这件事照哪份说明</div>
+          <div class="cl"><i></i>打开 <b>docs/接入一个新组件库.md</b>（Claude Code 里是 Skill <b>connect-component-library</b>）</div>
+          <div class="cl"><i></i>第 0 步到第 10 步，一步一步做</div>
+          <div class="cl ok"><i></i>跑 <b>npm run check</b>，全部通过才算做完</div>
+        </div>
+      </div>
+    </figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="skills/"></span></summary><figure class="fig"><div class="ftable" data-dir="skills/"></div></figure></details>
+    <figure class="fig">
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>要做的事</th><th>照哪份说明</th><th>Skill</th></tr>
+        <tr><td>接一个新的组件库（比如 Naive UI、MUI）</td><td><code>docs/接入一个新组件库.md</code></td><td class="n">connect-component-library</td></tr>
+        <tr><td>给套件加一个新控件（比如抽屉、步骤条）</td><td><code>docs/给套件加一个新控件.md</code></td><td class="n">add-kit-control</td></tr>
+        <tr><td>已有项目不换结构，只让它和设计稿对上</td><td><code>docs/只借方法.md</code></td><td class="n">borrow-the-method</td></tr>
+        <tr><td>定一处「各组件库做法不一样、统一成什么」</td><td><code>docs/取舍记录.md</code></td><td class="n">record-tradeoff</td></tr>
+      </table></div>
+    </figure>
+    <p class="src"><code>AGENTS.md</code> 开头那张表</p>
+  </section>
+
+  <section class="sec" id="r-root">
+    <div class="kick"><span class="no">0.14</span><span>根目录</span></div>
+    <h2>根目录：说明文件、许可与配置</h2>
+    <figure class="fig" data-fig="a"><div class="finder"><div class="bb"><i></i><i></i><i></i><span>mihua-blocks-open</span></div><div class="fgrid" id="fgrid"></div></div></figure>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="."></span></summary><figure class="fig"><div class="ftable" data-dir="." data-cols="230,,64,104"></div></figure></details>
+    <h3>licenses/：许可原文</h3>
+    <details class="flist"><summary>文件清单<span class="n" data-cnt="licenses/"></span></summary><figure class="fig"><div class="ftable" data-dir="licenses/" data-cols="230,,64,104"></div></figure></details>
+    <p>源码 Apache-2.0；组件库和图标各自的许可放在 <code>licenses/</code>。</p>
+  </section>
+
+  <section class="part" id="p3">
+    <div class="kick"><span class="no">03</span><span>第三部分</span></div>
+    <h2>修改与交给 AI</h2>
+  </section>
+
+  <section class="sec" id="s17">
+    <div class="kick"><span class="no">0.15</span><span>跟 AI 说</span></div>
+    <h2>常用指令</h2>
+    <figure class="fig" data-fig="a">
+      <div class="cmds">
+        <div class="cmd1"><q>帮我运行这个项目</q><div class="browser sm"><div class="bb"><i></i><i></i><i></i><span>127.0.0.1:4182</span></div><img src="assets/img/00-demo-home.png" alt="演示页" loading="lazy"></div></div>
+        <div class="cmd1"><q>跑一遍完整检查</q><div class="pipe"><span><b>1</b>类型检查</span><span><b>2</b>测试</span><span><b>3</b>构建</span><span><b>4</b>自动检查</span></div><p>四步都过才算做完，约 17 分钟，可以放后台跑。</p></div>
+      </div>
+    </figure>
+    <figure class="fig">
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th>跟 AI 说</th><th>它做什么</th></tr>
+        <tr><td>「帮我运行这个项目」</td><td>打开演示页 http://127.0.0.1:4182</td></tr>
+        <tr><td>「跑一遍完整检查」</td><td>类型检查、全部测试、构建、自动检查，全部通过才算做完。比较慢，可以放在后台跑</td></tr>
+        <tr><td>「只跑自动检查」</td><td>只量五个库一不一样；可以只查某个场景、某几个库，或者只看原生的样子</td></tr>
+        <tr><td>「只跑测试」</td><td>只跑测试</td></tr>
+        <tr><td>「只做类型检查」</td><td>React 和 Vue 各查一遍</td></tr>
+        <tr><td>「把演示页打包」</td><td>把演示页编译成静态文件</td></tr>
+        <tr><td>「统一一下代码格式」</td><td>统一代码格式</td></tr>
+      </table></div>
+    </figure>
+    <p class="src"><code>package.json</code> 的 <code>scripts</code>；<code>AGENTS.md</code>「检查」</p>
+  </section>
+
+  <section class="sec" id="s18">
+    <div class="kick"><span class="no">0.16</span><span>改一个数</span></div>
+    <h2>修改一个数值，查看效果</h2>
+    <p class="lead">把 <code>designs/mono/Design.md</code> 里的控件高度从 32 改成 36，五个组件库一起变高。</p>
+    <figure class="fig wide">
+      <div class="codes" style="--n:2;margin-bottom:18px">
+        <div class="code" data-code="design-size"></div>
+        <div><div class="ctl"><span class="lb">控件高度</span><div class="seg" data-ctl="h36b"><button data-v="32" class="on">32px，现在的值</button><button data-v="36">改成 36px</button></div></div></div>
+      </div>
+      <div class="libs">
+        <div class="lib"><div class="lab"><b>Ant Design</b></div><img data-h36b="antd" src="assets/img/02-controls-mono-aligned-antd.png" alt="Ant Design 控件样张"></div>
+        <div class="lib"><div class="lab"><b>Element Plus</b></div><img data-h36b="element" src="assets/img/02-controls-mono-aligned-element.png" alt="Element Plus 控件样张"></div>
+        <div class="lib"><div class="lab"><b>shadcn/ui</b></div><img data-h36b="shadcn" src="assets/img/02-controls-mono-aligned-shadcn.png" alt="shadcn/ui 控件样张"></div>
+        <div class="lib"><div class="lab"><b>Arco Design</b></div><img data-h36b="arco" src="assets/img/02-controls-mono-aligned-arco.png" alt="Arco Design 控件样张"></div>
+        <div class="lib"><div class="lab"><b>TDesign</b></div><img data-h36b="tdesign" src="assets/img/02-controls-mono-aligned-tdesign.png" alt="TDesign 控件样张"></div>
+      </div>
+      <figcaption>套件的代码一个字没改。试完记得改回来。</figcaption>
+    </figure>
+    <p class="src"><code>README.md</code>「改一个数试试」</p>
+  </section>
+
+  <section class="sec" id="s19">
+    <div class="kick"><span class="no">0.17</span><span>交给 AI</span></div>
+    <h2>交给 AI 的指令示例</h2>
+    <p class="lead">用 AI 编程工具打开仓库目录，直接说你要做什么。</p>
+    <div class="ask">
+      <div class="ah"><span>先认识仓库</span><button class="btn ghost copy" data-copy="#ask00a">复制</button></div>
+      <pre id="ask00a">帮我把 mihua-blocks-open 这个项目跑起来，把演示页的地址给我。再用一张表告诉我：视觉、控件、结构、逻辑这四层，各在仓库哪个文件夹。只看，不要改仓库里的文件，也不用跑检查。</pre>
+    </div>
+    <div class="ask" style="margin-top:12px">
+      <div class="ah"><span>README 里写的三种用法</span><button class="btn ghost copy" data-copy="#ask00b">复制</button></div>
+      <pre id="ask00b">照 docs/接入一个新组件库.md，把 Naive UI 接进来。
+照 docs/给套件加一个新控件.md，加一个抽屉。
+照 docs/只借方法.md，让我这个 antd 后台和 Design.md 对上。</pre>
+      <p class="small">会改文件的，最后要跑完整检查。</p>
+    </div>
+    <p class="src"><code>README.md</code>「让 AI 接你自己的组件库」</p>
+  </section>
+
+  <section class="sec" id="s20">
+    <div class="kick"><span class="no">0.18</span><span>支持范围</span></div>
+    <h2>本案例支持范围</h2>
+    <figure class="fig" data-fig="a">
+      <div class="scn">
+        <div><img src="assets/img/02-login-mono-aligned-antd.png" alt="登录框" loading="lazy"><span>登录框</span></div>
+        <div><img src="assets/img/02-controls-mono-aligned-antd.png" alt="控件样张" loading="lazy"><span>控件样张</span></div>
+        <div><img src="assets/img/00-admin-aligned-antd.png" alt="后台页面框架" loading="lazy"><span>后台页面框架</span></div>
+        <div><img src="assets/img/00-customers-aligned-antd.png" alt="客户列表" loading="lazy"><span>客户列表</span></div>
+        <div class="no"><b>深色模式</b><span>还没有</span></div>
+        <div class="no"><b>窄屏</b><span>还没有</span></div>
+      </div>
+    </figure>
+    <figure class="fig">
+      <div class="tbl-wrap"><table class="tbl">
+        <tr><th></th><th>现在</th></tr>
+        <tr><td>场景</td><td>登录框（五种布局）、控件样张、后台页面框架（顶栏、可收起的侧栏、面包屑）、客户列表（筛选栏、表格、编辑对话框）</td></tr>
+        <tr><td>控件</td><td>按钮、输入框、选择框、复选框、标签栏、开关、导航菜单、面包屑、下拉菜单<br>头像、徽标、表格、分页、标签、日期范围、对话框、单选、多行输入</td></tr>
+        <tr><td>表格没做的</td><td>固定列、虚拟滚动、展开行、拖拽、树形表格；要的话照「给套件加一个新控件」自己加</td></tr>
+        <tr><td>还没有的</td><td>深色模式、窄屏的场景</td></tr>
+        <tr><td>检查证明什么</td><td>证明几个组件库一样，不证明好看；它说「全部一致」，只代表它量了的那些一致，盲区写在 <code>audit/README.md</code></td></tr>
+      </table></div>
+    </figure>
+    <p class="src"><code>README.md</code>「做到哪、没做什么」</p>
+    <div class="next"></div>
+  </section>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/data/code.js"></script>
+<script src="assets/data/repo.js"></script>
+<script src="assets/data/icons.js"></script>
+<script src="assets/data/docs.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/ch00.js"></script>
+</body>
+</html>

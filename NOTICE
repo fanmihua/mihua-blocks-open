@@ -1,0 +1,9 @@
+Mihua Blocks
+Copyright 2026 范米花儿
+
+This project is licensed under the Apache License, Version 2.0.
+The author's avatar (site/assets/brand/avatar.png) and the Mihua character
+artwork (site/_tools/ill/mihua_body.svgfrag, drawn into site/assets/ill.js)
+are not covered by that license; all rights reserved.
+Third-party components retain their own licenses and attribution notices;
+see THIRD_PARTY_NOTICES.md and licenses/.

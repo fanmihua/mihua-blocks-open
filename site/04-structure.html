@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>结构层：统一页面布局 · Mihua Blocks 文字版</title>
+  <meta name="description" content="结构层：顶栏、侧栏、筛选栏、表格卡片、对话框怎么排、隔多远；换组件库，页面布局为什么不变。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/ch04.css">
+  <link rel="stylesheet" href="assets/art.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">04</span></div>
+    <h1>结构层：统一页面布局</h1>
+    <div class="lstrip" data-on="结构"></div>
+    <p class="lead">顶栏多高、侧栏多宽、筛选栏和表格怎么排，换一个组件库为什么不变？本篇先看页面框架，再看内容区。</p>
+    <div class="series"></div>
+    <div class="series-l"></div>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <!-- ═════════ 开头 ═════════ -->
+  <section class="sec" id="s0">
+    <div class="kick"><span class="no">开头</span><span>布局不变</span></div>
+    <h2>更换组件库后，页面布局保持不变</h2>
+    <p class="lead">红线是从真页面上实时量的。换一个库、换一档外观，看这些数。</p>
+    <figure class="fig">
+      <div class="ctl"><span class="lb">外观</span><div class="seg" data-ctl="rlmode"><button data-v="aligned" class="on">对齐到控件规格</button><button data-v="native">组件库原生</button></div><span class="lb">组件库</span><div class="seg" data-ctl="rlkit"><button data-v="antd" class="on">Ant Design</button><button data-v="element">Element Plus</button><button data-v="shadcn">shadcn/ui</button><button data-v="arco">Arco</button><button data-v="tdesign">TDesign</button></div></div>
+      <div class="frame"><div class="fh"><span class="lab"><b id="rl-name">React · Ant Design</b>　客户列表</span><span class="live-tag">真组件 · 红线实时量</span></div>
+        <div class="rl-sc"><div class="live" id="rl-page" data-rl="page" data-live="scene=customers&spec=mono&state=default&mode=aligned&kits=antd" data-shot="assets/img/03-customers-native-antd.png" data-min="420" data-pad="0"></div></div></div>
+      <p class="swipe-hint rl-hint">左右滑动看整页</p>
+    </figure>
+    <p>组件库只管控件长什么样；页面怎么排，归我们自己。这一篇讲第三层：结构。</p>
+  </section>
+
+  <!-- ═════════ 01 页面框架 ═════════ -->
+
+  <section class="part" id="p1">
+    <div class="kick"><span class="no">01</span><span>第一部分 · 结构</span></div>
+    <h2>页面框架：顶栏与侧栏</h2>
+  </section>
+
+  <section class="sec" id="s1">
+    <div class="kick"><span class="no">4.1</span><span>三块</span></div>
+    <h2>后台页面的三个区域</h2>
+    <p class="lead">顶栏、侧栏、内容区。这个仓库里是这么大：</p>
+    <figure class="fig">
+      <div class="wf" id="wf">
+        <div class="wf-h"><span>顶栏</span><i>56</i></div>
+        <div class="wf-b">
+          <div class="wf-s"><span>侧栏</span><i id="wf-sw">展开 220</i></div>
+          <div class="wf-m"><span>内容区</span></div>
+        </div>
+      </div>
+      <div class="ctl" style="margin-top:12px"><span class="lb">侧栏</span><div class="seg" data-ctl="wf"><button data-v="open" class="on">展开 220</button><button data-v="closed">收起 64</button></div></div>
+      <figcaption>按真实大小画，分隔线另算 1 像素。</figcaption>
+    </figure>
+    <p class="src"><code>core/styles/admin.css</code> 第 28–31、133–136、141–143 行</p>
+  </section>
+
+  <section class="sec locked" id="s2" hidden><div class="kick"><span class="no">4.2</span></div><h2>五个组件库布局组件的默认尺寸对比</h2></section>
+
+  <section class="sec locked" id="s3" hidden><div class="kick"><span class="no">4.3</span></div><h2>Ant Design：顶栏高度为控件高度的两倍</h2></section>
+
+  <section class="sec locked" id="s4" hidden><div class="kick"><span class="no">4.4</span></div><h2>菜单组件自带的布局尺寸</h2></section>
+
+  <section class="sec locked" id="s5" hidden><div class="kick"><span class="no">4.5</span></div><h2>页面布局由结构层统一定义，不使用组件库的布局组件</h2></section>
+
+  <section class="sec locked" id="s6" hidden><div class="kick"><span class="no">4.6</span></div><h2>两处细节：Logo 与收起后的侧栏对齐，顶栏 56 不含分隔线</h2></section>
+
+  <section class="sec locked" id="s7" hidden><div class="kick"><span class="no">4.7</span></div><h2>侧栏收起后，子菜单的五种弹出方式</h2></section>
+
+  <section class="sec locked" id="s8" hidden><div class="kick"><span class="no">4.8</span></div><h2>侧栏收起后，图标悬停显示名称</h2></section>
+
+  <!-- ═════════ 02 内容区 ═════════ -->
+
+  <section class="part locked" id="p2" hidden><div class="kick"><span class="no">02</span></div><h2>内容区：客户列表的布局</h2></section>
+
+  <section class="sec locked" id="s9" hidden><div class="kick"><span class="no">4.9</span></div><h2>内容区留白：上 16、左右 24、区块间距 16</h2></section>
+
+  <section class="sec locked" id="s10" hidden><div class="kick"><span class="no">4.10</span></div><h2>筛选栏：卡片内控件单行排列</h2></section>
+
+  <section class="sec locked" id="s11" hidden><div class="kick"><span class="no">4.11</span></div><h2>表格卡片：顶部工具条与底部分页条</h2></section>
+
+  <section class="sec locked" id="s12" hidden><div class="kick"><span class="no">4.12</span></div><h2>编辑对话框：标签在上、控件在下，每行两项</h2></section>
+
+  <!-- ═════════ 结尾 ═════════ -->
+
+  <section class="sec teaser" aria-hidden="true" inert>
+    <div class="kick"><span class="no">4.2</span><span>五个布局组件</span></div>
+    <h2>五个组件库布局组件的默认尺寸对比</h2>
+    <p class="lead">全用默认值，顶栏的高矮、侧栏的宽窄，五个各不一样。</p>
+    <p>和官方文档比，只有 TDesign 的顶栏对不上：文档写 <b>64</b>，量出来是 <b>56</b>。</p>
+  </section>
+<!-- ═════════ 课程 ═════════ -->
+  <div class="paywall" id="course">
+    <a class="pw-cv" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener" aria-label="第 04 集完整视频"><span class="pw-ep">第 04 集 · 完整视频</span><i class="pw-lock"></i></a>
+    <h2>后面 11 节在课程里</h2>
+    <p>这一篇后面的 11 节和第 04 集完整视频，在「给设计师的零基础 AI 课」里。</p>
+    <p class="pw-more">完整版文字版还有每段代码的逐行解释和四个附录（组件库档案、适配记录、取舍记录、常用提示词），可以下载到本地看。</p>
+    <div class="buy">
+      <a class="btn" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener">官网购买</a>
+      <a class="btn ghost" href="https://xhslink.com/m/7qrmpq1Hzzh" target="_blank" rel="noopener">小红书店铺</a>
+      <button class="btn ghost wx" type="button" aria-expanded="false">微信小店</button>
+      <div class="wxq" hidden><img src="https://fanstudio.cn/images/courses/ai-course-wechat-shop.jpg" alt="微信小店商品码" loading="lazy"><span>微信扫码，进入课程商品页</span></div>
+    </div>
+  </div>
+
+  <section class="sec" id="end">
+    <div class="ask">
+      <div class="ah"><span>想让 AI 帮你看一看，就这样跟它说</span><button class="btn ghost copy" data-copy="#ask04">复制</button></div>
+      <pre id="ask04">打开 mihua-blocks-open 里的后台页面框架和客户列表，告诉我：顶栏多高、侧栏多宽、内容区留白多少、筛选栏怎么排，各写在哪里；为什么换组件库这些都不变。只看，不要改文件，最后用三四句话讲清楚。</pre>
+    </div>
+    <div class="next"></div>
+  </section>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/color.js"></script>
+<script src="assets/data/code.js"></script>
+<script src="assets/data/kits.js"></script>
+<script src="assets/data/icons.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/replay.js"></script>
+<script src="assets/ch04.js"></script>
+</body>
+</html>

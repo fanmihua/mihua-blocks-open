@@ -1,0 +1,14 @@
+{
+  "name": "@mihua/spec",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Design specs for Mihua Blocks: semantic roles, Design.md parsing and built-in specs.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "zod": "3.25.76"
+  }
+}

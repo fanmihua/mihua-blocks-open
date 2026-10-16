@@ -1,0 +1,391 @@
+/*
+ * 登录组件的布局与自有部件样式。React 与 Vue 共用这一份：布局属于「骨架」，不属于某个框架。
+ * 这里只管「组件库没有的东西」：卡片、标题、间距、扫码区、第三方入口、组织列表。
+ * 按钮、输入框、复选框、标签页都由套件交给组件库绘制，这里一行都不碰。
+ */
+.mh-login {
+  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 400px;
+  max-width: 100%;
+  padding: var(--mh-space-panel);
+  overflow: hidden;
+  background: var(--mh-surface-base);
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-panel);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 12px 32px -16px rgb(0 0 0 / 0.14);
+}
+.mh-login[data-variant='split'] {
+  width: 760px;
+}
+.mh-login :where(button, a):focus-visible {
+  outline: 2px solid var(--mh-action-primary);
+  outline-offset: 2px;
+}
+
+.mh-login__title {
+  margin: 0;
+  font-size: var(--mh-type-title);
+  /* 行高取整像素：22px × 1.35 = 29.7px 会让下面所有元素的位置都带小数，各组件库取整方式不同，会差出 1px */
+  line-height: round(calc(var(--mh-type-title) * 1.35), 1px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--mh-text-strong);
+}
+.mh-login__subtitle {
+  margin: 6px 0 0;
+  color: var(--mh-text-secondary);
+}
+.mh-login__section-title {
+  margin: 0;
+  font-size: calc(var(--mh-type-body) + 2px);
+  font-weight: 600;
+  color: var(--mh-text-strong);
+}
+.mh-login__stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mh-space-field);
+}
+.mh-login__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: var(--mh-c-text-line);
+}
+.mh-login__agreement {
+  color: var(--mh-text-secondary);
+}
+.mh-login__notice {
+  margin: 0;
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+}
+.mh-login__notice[data-tone='error'] {
+  color: var(--mh-feedback-danger);
+}
+.mh-login__notice:empty {
+  display: none;
+}
+.mh-login__footnote {
+  margin: 0;
+  text-align: center;
+  color: var(--mh-text-secondary);
+}
+.mh-login__switches {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* 字段：控件 + 错误说明 */
+.mh-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mh-field__group {
+  display: flex;
+  gap: 8px;
+}
+.mh-field__group > :last-child {
+  flex: 1;
+  min-width: 0;
+}
+.mh-field__error {
+  margin: 0;
+  font-size: var(--mh-type-small);
+  line-height: 1.5;
+  color: var(--mh-feedback-danger);
+}
+
+.mh-inline-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--mh-text-link);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.mh-inline-link:hover {
+  text-decoration-color: currentColor;
+}
+.mh-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--mh-text-secondary);
+  cursor: pointer;
+}
+.mh-back:hover {
+  color: var(--mh-text-strong);
+}
+
+.mh-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+}
+.mh-divider::before,
+.mh-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--mh-border-default);
+}
+
+/* 第三方登录 */
+.mh-login__social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mh-login__providers {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.mh-provider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 72px;
+  padding: 8px 0;
+  border: 0;
+  border-radius: var(--mh-radius-control);
+  background: none;
+  font: inherit;
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+  cursor: pointer;
+  transition: background var(--mh-motion-duration);
+}
+.mh-provider:hover {
+  background: var(--mh-surface-hover);
+  color: var(--mh-text-body);
+}
+.mh-provider-mark {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* 扫码 */
+.mh-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  justify-items: end;
+  align-items: start;
+  width: 56px;
+  height: 56px;
+  padding: 8px;
+  border: 0;
+  background: var(--mh-surface-subtle);
+  color: var(--mh-text-strong);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  cursor: pointer;
+  transition: background var(--mh-motion-duration);
+}
+.mh-corner:hover {
+  background: var(--mh-surface-hover);
+}
+.mh-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.mh-qr__frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-control);
+  background: #fff;
+}
+.mh-qr[data-compact] .mh-qr__frame {
+  width: 176px;
+  height: 176px;
+}
+.mh-qr__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.mh-qr__hint {
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+}
+.mh-qr__cover {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--mh-surface-base) 94%, transparent);
+  color: var(--mh-text-strong);
+  text-align: center;
+}
+.mh-qr__caption {
+  margin: 0;
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+  text-align: center;
+}
+
+/* 双栏：容器变窄时二维码移到表单下方 */
+.mh-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  gap: 32px;
+}
+.mh-split__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.mh-split__qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-left: 32px;
+  border-left: 1px solid var(--mh-border-default);
+}
+/* 容器查询量的是卡片的内容宽度（不含内边距）；两栏并排至少需要约 580px。 */
+@container (max-width: 560px) {
+  .mh-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mh-split__qr {
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--mh-border-default);
+  }
+}
+
+/* 分步 */
+.mh-steps {
+  margin: 0;
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+  letter-spacing: 0.02em;
+}
+.mh-identity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--mh-radius-control);
+  background: var(--mh-surface-subtle);
+  color: var(--mh-text-strong);
+}
+.mh-identity .mh-back {
+  align-self: center;
+}
+
+/* 组织选择与成功 */
+.mh-orgs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mh-org {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-control);
+  background: var(--mh-surface-base);
+  font: inherit;
+  color: var(--mh-text-body);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background var(--mh-motion-duration),
+    border-color var(--mh-motion-duration);
+}
+.mh-org:hover {
+  background: var(--mh-surface-hover);
+  border-color: var(--mh-border-control);
+}
+.mh-org[aria-busy='true'] {
+  opacity: 0.6;
+}
+.mh-org__avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: calc(var(--mh-radius-control) + 2px);
+  background: var(--mh-action-primary);
+  color: var(--mh-action-on-primary);
+  font-weight: 600;
+}
+.mh-org__name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--mh-text-strong);
+}
+.mh-org__meta {
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+}
+.mh-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0;
+  text-align: center;
+}
+.mh-success .mh-back {
+  align-self: center;
+  margin-top: 8px;
+}
+.mh-success__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--mh-feedback-success) 12%, transparent);
+  color: var(--mh-feedback-success);
+}

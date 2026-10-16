@@ -1,0 +1,1117 @@
+/*
+ * TDesign 的样式表会在 :root 上声明变量，还带一条全局规则（[tabindex='-1']:focus 去掉轮廓线）。
+ * 放进单独的 cascade layer，宿主页面自己的样式优先。
+ * 组件从 tdesign-vue-next/lib 引入（不带样式），所以整份样式只从这里进来一次。
+ */
+@import 'tdesign-vue-next/dist/tdesign.css' layer(tdesign);
+
+/* 以下只是布局分配，不改变 TDesign 的外观：
+ * 登录方式切换只需要标签栏，不需要内容区。 */
+.mh-kit-tdesign-tabs .t-tabs__content {
+  display: none;
+}
+
+/*
+ * 接上规范时（--aligned），把 TDesign 的控件对齐到统一设计（控件规格见 @mihua/spec 的 controls.ts）。
+ * 所有取值都读 --mh-c-* 变量，这里只决定「TDesign 的哪一处对应控件规格的哪一项」。
+ * TDesign 的样式在 tdesign 层里，这里的规则在层外，天然优先，不用比选择器的优先级。
+ * TDesign 没有组件级的变量（尺寸、内边距都直接读全局的 --td-comp-*，改了会牵连别的组件），所以逐项写在组件上。
+ * 原生模式没有 --aligned，以下规则都不生效。
+ */
+
+/* 按钮：TDesign 字重 400；左右内边距默认 15px、大号 23px（不含 1px 边框）；大号字号 16px。
+ * 统一成控件规格：字重 500，文字离外边框默认 16px、大号 20px，两档都是正文字号 */
+.mh-kit-tdesign--aligned .t-button {
+  padding-inline: calc(var(--mh-c-button-inset) - 1px);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  font-weight: var(--mh-c-button-weight);
+}
+.mh-kit-tdesign--aligned .t-button.t-size-l {
+  padding-inline: calc(var(--mh-c-button-inset-large) - 1px);
+}
+/* 按钮文字只占一个字高，由按钮上下居中（TDesign 的文字框是整整一行高；字号是奇数时，
+ * 一行高的文字框和别的组件库会差半个像素） */
+.mh-kit-tdesign--aligned .t-button:not(.t-button--variant-text) .t-button__text {
+  line-height: 1;
+}
+/* 按钮里的图标和文字间距取控件规格（TDesign 只给紧跟在 svg 后面的文字留 8px，品牌标识是 span 就没有间距） */
+.mh-kit-tdesign--aligned .t-button > :not(.t-button__text) + .t-button__text {
+  margin-left: var(--mh-c-button-icon-gap);
+}
+/* 次要按钮：白底描边，悬停浅灰底、字变深（TDesign 悬停时描边和字都变主色） */
+.mh-kit-tdesign--aligned .t-button--variant-outline {
+  background-color: var(--mh-c-button-secondary-background);
+  border-color: var(--mh-c-button-secondary-border);
+  color: var(--mh-c-button-secondary-color);
+}
+.mh-kit-tdesign--aligned .t-button--variant-outline:hover {
+  background-color: var(--mh-c-button-secondary-hover-background);
+  border-color: var(--mh-c-button-secondary-border);
+  color: var(--mh-c-button-secondary-hover-color);
+}
+/* 加载：TDesign 换成浅主色底；统一成整个按钮按控件规格降低不透明度，底色不变 */
+.mh-kit-tdesign--aligned .t-button.t-is-loading {
+  opacity: var(--mh-c-button-loading-opacity);
+  cursor: default;
+}
+.mh-kit-tdesign--aligned .t-button--variant-base.t-button--theme-primary.t-is-loading {
+  background-color: var(--td-brand-color);
+  border-color: var(--td-brand-color);
+  color: var(--td-text-color-anti);
+}
+
+/* 文字链接（text 变体）：只占一行文字高，链接色，悬停不加灰底
+ * （TDesign 的文字按钮和普通按钮一样高、一样的内边距，悬停有灰底） */
+.mh-kit-tdesign--aligned .t-button--variant-text {
+  height: auto;
+  padding: 0;
+  border-width: 0;
+  font-weight: var(--mh-c-link-weight);
+  vertical-align: top;
+}
+.mh-kit-tdesign--aligned .t-button--variant-text.t-button--theme-primary {
+  color: var(--mh-c-link-color);
+}
+.mh-kit-tdesign--aligned .t-button--variant-text:hover {
+  background-color: transparent;
+}
+.mh-kit-tdesign--aligned .t-button--variant-text.t-button--theme-primary:hover {
+  color: var(--mh-c-link-hover-color);
+}
+
+/* 输入框、选择框：TDesign 文字离边框 9px（大号 13px），大号字号 16px，聚焦外圈 2px */
+.mh-kit-tdesign--aligned .t-input {
+  padding: 0 calc(var(--mh-c-field-inset) - 1px);
+  border-color: var(--mh-c-field-border);
+  background-color: var(--mh-c-field-background);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-input--focused {
+  border-color: var(--mh-c-field-border-focus);
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-tdesign--aligned .t-input.t-is-error {
+  border-color: var(--mh-c-field-border-invalid);
+}
+/* 选择框：已选的值（valueDisplay）在 TDesign 里放在 prefix 里，去掉它和后面那个空输入框之间的 8px */
+.mh-kit-tdesign--aligned .t-select .t-input__prefix:not(:empty) {
+  margin-right: 0;
+}
+.mh-kit-tdesign--aligned .t-select .t-input__suffix {
+  color: var(--mh-c-icon-color);
+}
+
+/* 下拉：TDesign 离选择框 8px、圆角 6px、0.5px 内阴影描边、选项 28px（大号 36px）、左右 8px（大号 12px）、
+ * 选中主色字加浅主色底。统一成控件规格。 */
+.mh-kit-tdesign--aligned .t-select__dropdown .t-popup__content {
+  margin: var(--mh-c-popup-offset) 0;
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-tdesign--aligned .t-select__dropdown-inner .t-select__list {
+  padding: var(--mh-c-popup-padding);
+}
+.mh-kit-tdesign--aligned .t-select-option {
+  min-height: var(--mh-c-popup-option-height);
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  font-weight: 400;
+  color: var(--mh-c-popup-option-color);
+}
+/* TDesign 在相邻两个选项之间留 2px */
+.mh-kit-tdesign--aligned .t-select-option + .t-select-option {
+  margin-top: 0;
+}
+.mh-kit-tdesign--aligned .t-select-option:not(.t-is-disabled):not(.t-is-selected):hover,
+.mh-kit-tdesign--aligned .t-select-option.t-select-option__hover:not(.t-is-selected) {
+  background-color: var(--mh-c-popup-hover-background);
+}
+.mh-kit-tdesign--aligned .t-select-option.t-is-selected:not(.t-is-disabled),
+.mh-kit-tdesign--aligned .t-select-option.t-is-selected:not(.t-is-disabled):hover {
+  background-color: var(--mh-c-popup-selected-background);
+  font-weight: var(--mh-c-popup-selected-weight);
+  color: var(--mh-c-popup-selected-color);
+}
+
+/* 复选框：TDesign 16px 方块、8px 间距本来就和规格一样；圆角跟着全局圆角走（规格最多 4px） */
+.mh-kit-tdesign--aligned .t-checkbox__input {
+  border-radius: var(--mh-c-checkbox-radius);
+  border-color: var(--mh-c-checkbox-border);
+}
+.mh-kit-tdesign--aligned .t-checkbox.t-is-checked .t-checkbox__input {
+  border-color: var(--mh-c-checkbox-checked);
+  background-color: var(--mh-c-checkbox-checked);
+}
+.mh-kit-tdesign--aligned .mh-tdesign-invalid .t-checkbox__input {
+  border-color: var(--mh-c-checkbox-border-invalid);
+}
+.mh-kit-tdesign--aligned .t-checkbox__label {
+  margin-left: var(--mh-c-checkbox-gap);
+  line-height: var(--mh-c-text-line);
+}
+/* 对勾：TDesign 用旋转的 2px 边框画，换成规范图标集里的对勾（同一份图形生成的 CSS 遮罩）。
+   --icons：规范选了一套图标（icon.set 不是 native）时才换 */
+.mh-kit-tdesign--icons .t-checkbox.t-is-checked .t-checkbox__input::after {
+  top: 50%;
+  left: 50%;
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  border: 0;
+  border-radius: 0;
+  background-color: var(--mh-c-checkbox-mark);
+  -webkit-mask: var(--mh-icon-check) center / contain no-repeat;
+  mask: var(--mh-icon-check) center / contain no-repeat;
+  transform: translate(-50%, -50%);
+}
+
+/*
+ * 开关：TDesign 20px 高、宽 = 高 ÷ 0.618（32.4px）；圆点 12px 离边 4px，开的时候变成 15px 离边 2.5px；
+ * 圆点是 ::before 画的白圆，阴影在外层；悬停变色；禁用换成更浅的颜色、去掉阴影。
+ */
+.mh-kit-tdesign--aligned .t-switch {
+  width: var(--mh-c-switch-width);
+  min-width: var(--mh-c-switch-width);
+  height: var(--mh-c-switch-height);
+  border-radius: calc(var(--mh-c-switch-height) / 2);
+  background-color: var(--mh-c-switch-off-background);
+}
+.mh-kit-tdesign--aligned .t-switch.t-is-checked {
+  background-color: var(--mh-c-switch-on-background);
+}
+.mh-kit-tdesign--aligned .t-switch.t-is-disabled {
+  opacity: var(--mh-c-switch-disabled-opacity);
+}
+.mh-kit-tdesign--aligned .t-switch__content {
+  display: none;
+}
+.mh-kit-tdesign--aligned .t-switch .t-switch__handle {
+  top: var(--mh-c-switch-thumb-inset);
+  left: var(--mh-c-switch-thumb-inset);
+  width: var(--mh-c-switch-thumb);
+  height: var(--mh-c-switch-thumb);
+  transform: none;
+  background-color: var(--mh-c-switch-thumb-color);
+  box-shadow: var(--mh-c-switch-thumb-shadow);
+}
+.mh-kit-tdesign--aligned .t-switch.t-is-checked .t-switch__handle {
+  left: calc(100% - var(--mh-c-switch-thumb) - var(--mh-c-switch-thumb-inset));
+}
+.mh-kit-tdesign--aligned .t-switch__handle::before {
+  display: none;
+}
+.mh-kit-tdesign--aligned .t-switch:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 标签栏：TDesign 一项 48px 高、标签之间靠内边距和外边距各 8px 隔开、未选中的悬停有灰底、
+ * 选中的字用 0.3px 文字阴影加粗；指示条 3px、带圆角，宽度按整项算（含内外边距，比字宽 32px）。
+ * TDesign 的指示条由 JS 按「前面各项的宽度之和」定位、写成行内样式，CSS 改不了它的位置，
+ * 所以接上规范时藏起来，由套件在选中的那一项下面画（宽度等于文字）。
+ */
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-item {
+  height: var(--mh-c-tabs-height);
+  line-height: var(--mh-c-tabs-height);
+  font-size: var(--mh-c-text-size);
+  font-weight: var(--mh-c-tabs-weight);
+  color: var(--mh-c-tabs-color);
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-item + .t-tabs__nav-item {
+  margin-left: var(--mh-c-tabs-gap);
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-item-wrapper {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-item:hover {
+  color: var(--mh-c-tabs-hover-color);
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-item.t-is-active {
+  font-weight: var(--mh-c-tabs-active-weight);
+  color: var(--mh-c-tabs-active-color);
+  text-shadow: none;
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-container.t-is-top::after {
+  background-color: var(--mh-c-tabs-divider);
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__bar {
+  display: none;
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-item.t-is-active::after {
+  content: '';
+  position: absolute;
+  top: calc(100% - var(--mh-c-tabs-indicator));
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: var(--mh-c-tabs-indicator);
+  background-color: var(--mh-c-tabs-active-color);
+}
+.mh-kit-tdesign--aligned .mh-kit-tdesign-tabs .t-tabs__nav-item:focus-visible {
+  outline: none;
+}
+
+/*
+ * 导航菜单：TDesign 菜单 232 宽（收起 64）、白底，四周留白上下 16 左右 8；一项 216×36、相邻两项隔 4；
+ * 文字离左边 16、子菜单里的项 44；图标 20px、和文字隔 8；没选中的字是次要色，选中是浅主色底加主色字（字重 400）；
+ * 子菜单标题有选中的子项时是深色字；收起后只剩图标、子菜单变成悬停弹层，有选中子项的图标画成选中的样子。
+ * 统一成控件规格（宽度由组件属性跟着侧栏，见 index.ts）。
+ */
+.mh-kit-tdesign--aligned .t-default-menu {
+  background: none;
+  transition: none;
+}
+.mh-kit-tdesign--aligned .t-default-menu__inner .t-menu {
+  padding: var(--mh-c-nav-padding);
+}
+.mh-kit-tdesign--aligned .t-default-menu__inner .t-menu > *:not(:first-child),
+.mh-kit-tdesign--aligned .t-default-menu__inner .t-menu .t-submenu > *:not(:first-child),
+.mh-kit-tdesign--aligned .t-default-menu__inner .t-menu .t-menu__sub > *:not(:first-child) {
+  margin-top: var(--mh-c-nav-item-gap);
+}
+.mh-kit-tdesign--aligned .t-default-menu .t-menu__item {
+  height: var(--mh-c-nav-item-height);
+  gap: var(--mh-c-nav-icon-gap);
+  padding: 0 var(--mh-c-nav-arrow-inset) 0 var(--mh-c-nav-item-inset);
+  border-radius: var(--mh-c-nav-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  font-weight: var(--mh-c-nav-weight);
+  color: var(--mh-c-nav-color);
+  background: none;
+  transition: background-color var(--mh-motion-duration);
+}
+.mh-kit-tdesign--aligned .t-default-menu .t-menu__sub .t-menu__item {
+  padding-left: var(--mh-c-nav-sub-inset);
+}
+.mh-kit-tdesign--aligned .t-default-menu .t-menu__item > .mh-nav-icon {
+  width: var(--mh-c-nav-icon-size);
+  height: var(--mh-c-nav-icon-size);
+  margin: 0;
+  color: var(--mh-c-nav-icon-color);
+}
+.mh-kit-tdesign--aligned .t-default-menu .t-menu__item > .t-menu__content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+}
+/* 子菜单的展开箭头：规范图标集的 chevron-down（TDesign 自己的 FakeArrow 藏起来），展开时朝上 */
+.mh-kit-tdesign--icons .t-default-menu .t-fake-arrow {
+  display: none;
+}
+.mh-kit-tdesign--aligned .t-default-menu .mh-nav-arrow {
+  flex: none;
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  margin-left: auto;
+  color: var(--mh-c-icon-color);
+  transition: transform var(--mh-motion-duration);
+}
+.mh-kit-tdesign--aligned .t-default-menu .t-submenu.t-is-opened > .t-menu__item .mh-nav-arrow {
+  transform: rotate(180deg);
+}
+/* 子菜单里有选中的项：标题是父级选中色、不加底色 */
+.mh-kit-tdesign--aligned .t-default-menu .t-submenu > .t-menu__item.t-is-active {
+  color: var(--mh-c-nav-parent-selected-color);
+}
+.mh-kit-tdesign--aligned .t-default-menu .t-submenu > .t-menu__item.t-is-active > .mh-nav-icon {
+  color: var(--mh-c-nav-parent-selected-color);
+}
+/* 悬停（选中的叶子除外）：浅灰底、字变深，图标颜色不变 */
+.mh-kit-tdesign--aligned .t-default-menu .t-menu__item:not(li.t-is-active):hover {
+  background-color: var(--mh-c-nav-hover-background);
+  color: var(--mh-c-nav-hover-color);
+}
+/* 选中的叶子：浅底、选中色、字重 500，悬停不变 */
+.mh-kit-tdesign--aligned .t-default-menu li.t-menu__item.t-is-active {
+  background-color: var(--mh-c-nav-selected-background);
+  color: var(--mh-c-nav-selected-color);
+  font-weight: var(--mh-c-nav-selected-weight);
+}
+.mh-kit-tdesign--aligned .t-default-menu li.t-menu__item.t-is-active > .mh-nav-icon {
+  color: var(--mh-c-nav-selected-color);
+}
+.mh-kit-tdesign--aligned .t-default-menu .t-menu__item:focus-visible,
+.mh-kit-tdesign--aligned .t-menu__popup .t-menu__item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 收起：每一项只剩图标、水平居中；文字藏起来但读屏读得到（TDesign 是 display: none） */
+.mh-kit-tdesign--aligned .t-default-menu.t-is-collapsed .t-menu__item {
+  justify-content: center;
+  padding: 0;
+}
+.mh-kit-tdesign--aligned .t-default-menu.t-is-collapsed .t-menu__item > .t-menu__content {
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* 收起后有选中子项的子菜单：画成选中的样子（悬停、弹层打开时不变） */
+.mh-kit-tdesign--aligned .t-default-menu.t-is-collapsed .t-submenu > .t-menu__item.t-is-active {
+  background-color: var(--mh-c-nav-selected-background);
+  color: var(--mh-c-nav-selected-color);
+  font-weight: var(--mh-c-nav-selected-weight);
+}
+.mh-kit-tdesign--aligned
+  .t-default-menu.t-is-collapsed
+  .t-submenu
+  > .t-menu__item.t-is-active
+  > .mh-nav-icon {
+  color: var(--mh-c-nav-selected-color);
+}
+
+/*
+ * 收起后的子菜单弹层：TDesign 离菜单项右边 2px（8px 外边距减 6px 回拉）、顶边对齐；160 宽，圆角 6px、
+ * 没有描边、三层阴影，内边距 6px；里面的项 28px 高、左右 16px、相邻隔 2px，选中是浅主色底加深色字。
+ * 统一成控件规格：左边离侧栏右边缘 popup.offset，外框和选项取下拉（popup）一组。
+ */
+.mh-kit-tdesign--aligned .t-popup[data-popper-placement^='right'] > .t-menu__popup {
+  left: 0;
+  margin-left: calc(var(--mh-c-nav-padding) + 1px + var(--mh-c-popup-offset));
+}
+.mh-kit-tdesign--aligned .t-menu__popup {
+  min-width: var(--mh-c-nav-popup-min-width);
+  padding: 0;
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background-color: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-tdesign--aligned .t-menu__popup .t-menu__popup-wrapper {
+  padding: var(--mh-c-popup-padding);
+}
+.mh-kit-tdesign--aligned .t-menu__popup .t-menu__item {
+  height: var(--mh-c-popup-option-height);
+  margin: 0;
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  font-weight: 400;
+  color: var(--mh-c-popup-option-color);
+  background: none;
+}
+.mh-kit-tdesign--aligned .t-menu__popup .t-menu__item:not(.t-is-active):hover {
+  background-color: var(--mh-c-popup-hover-background);
+}
+.mh-kit-tdesign--aligned .t-menu__popup .t-menu__item.t-is-active {
+  background-color: var(--mh-c-popup-selected-background);
+  color: var(--mh-c-popup-selected-color);
+  font-weight: var(--mh-c-popup-selected-weight);
+}
+
+/*
+ * 收起后的文字提示：TDesign 的菜单项收起时自己包一层 Tooltip（放在右边，没有属性入口，套件里也只有菜单用到它）。
+ * TDesign 是深灰底（gray-13）白字 14/22、上下 4 左右 8、圆角 6px（radius-medium，不跟全局圆角）、
+ * 0.5px 内阴影描边，左边一个 8px 的小箭头；离菜单项右边 16px（comp-margin-l），底下多 1px 外边距。
+ * 统一成控件规格的 tooltip 一组：没有箭头、描边和阴影；左边离侧栏右边缘 popup.offset（和收起后的子菜单一样），
+ * 去掉底下那 1px，上下才和菜单项居中。悬停延时（出现 250ms、移开 150ms 后淡出）TDesign 自己管。
+ */
+.mh-kit-tdesign--aligned .t-tooltip[data-popper-placement^='right'] > .t-popup__content {
+  margin: 0 0 0 calc(var(--mh-c-nav-padding) + 1px + var(--mh-c-popup-offset));
+}
+.mh-kit-tdesign--aligned .t-tooltip > .t-popup__content {
+  padding: var(--mh-c-tooltip-inset-y) var(--mh-c-tooltip-inset-x);
+  border-radius: var(--mh-c-tooltip-radius);
+  background: var(--mh-c-tooltip-background);
+  box-shadow: none;
+  font-size: var(--mh-c-tooltip-font-size);
+  line-height: var(--mh-c-tooltip-line);
+  font-weight: 400;
+  color: var(--mh-c-tooltip-color);
+}
+.mh-kit-tdesign--aligned .t-tooltip .t-popup__arrow {
+  display: none;
+}
+
+/*
+ * 面包屑：TDesign 用 ChevronRight 图标隔开、左右各 4px；上级和不能点的都是占位文字色，悬停（连不能点的）变主色；
+ * 文字行高 22px 写死。统一成控件规格：文字「/」左右各 separatorGap，能点的上级悬停变深，当前页强调色。
+ */
+.mh-kit-tdesign--aligned .t-breadcrumb {
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-breadcrumb-color);
+}
+.mh-kit-tdesign--aligned .t-breadcrumb__item {
+  color: var(--mh-c-breadcrumb-color);
+}
+.mh-kit-tdesign--aligned .t-breadcrumb__item:last-child {
+  font-weight: var(--mh-c-breadcrumb-current-weight);
+  color: var(--mh-c-breadcrumb-current-color);
+}
+.mh-kit-tdesign--aligned .t-breadcrumb__inner {
+  font-size: var(--mh-c-text-size);
+  font-weight: inherit;
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-breadcrumb--text-overflow .t-breadcrumb__inner:hover {
+  color: inherit;
+}
+.mh-kit-tdesign--aligned .t-breadcrumb__item a.t-link {
+  border-radius: var(--mh-c-breadcrumb-radius);
+  outline: none;
+  color: inherit;
+}
+.mh-kit-tdesign--aligned .t-breadcrumb__item a.t-link:hover {
+  color: var(--mh-c-breadcrumb-hover-color);
+}
+.mh-kit-tdesign--aligned .t-breadcrumb__item a.t-link:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-tdesign--aligned .t-breadcrumb__separator {
+  margin: 0 var(--mh-c-breadcrumb-separator-gap);
+  color: var(--mh-c-breadcrumb-separator-color);
+}
+
+/*
+ * 下拉菜单：TDesign 离按钮 8px，圆角 6px、0.5px 描边、三层阴影，内边距 6px；项 28px 高（上下 3px 加一行）、
+ * 左右 8px、相邻隔 2px，每项最宽 100px；分隔线左右各缩进 8px、上 4 下 2。统一成控件规格。
+ */
+.mh-kit-tdesign--aligned .t-popup[data-popper-placement^='bottom'] > .t-dropdown {
+  margin-top: var(--mh-c-popup-offset);
+}
+.mh-kit-tdesign--aligned .t-dropdown {
+  min-width: var(--mh-c-dropdown-min-width);
+  padding: 0;
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background-color: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-tdesign--aligned .t-dropdown__menu {
+  gap: 0;
+  padding: var(--mh-c-popup-padding);
+  border-radius: 0;
+}
+.mh-kit-tdesign--aligned .t-dropdown__item {
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-dropdown-color);
+}
+.mh-kit-tdesign--aligned .t-dropdown__item-icon {
+  margin-right: var(--mh-c-dropdown-icon-gap);
+  color: var(--mh-c-dropdown-icon-color);
+}
+.mh-kit-tdesign--aligned .t-dropdown__item-icon > svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-kit-tdesign--aligned .t-dropdown__item--theme-error,
+.mh-kit-tdesign--aligned .t-dropdown__item--theme-error .t-dropdown__item-icon {
+  color: var(--mh-c-dropdown-danger-color);
+}
+.mh-kit-tdesign--aligned .t-dropdown__item:hover,
+.mh-kit-tdesign--aligned .t-dropdown__item:active,
+.mh-kit-tdesign--aligned .t-dropdown__item:focus {
+  outline: none;
+  background-color: var(--mh-c-popup-hover-background);
+}
+.mh-kit-tdesign--aligned .t-dropdown__menu .t-divider {
+  width: auto;
+  margin: var(--mh-c-popup-padding) calc(0px - var(--mh-c-popup-padding));
+  border-top-color: var(--mh-c-dropdown-divider);
+}
+
+/* 头像：TDesign 32px（默认控件高度）、浅主色底、主色字 16px。统一成控件规格 */
+.mh-kit-tdesign--aligned .t-avatar {
+  width: var(--mh-c-avatar-size);
+  height: var(--mh-c-avatar-size);
+  background: var(--mh-c-avatar-background);
+  font-size: var(--mh-c-avatar-font-size);
+  font-weight: var(--mh-c-avatar-weight);
+  line-height: var(--mh-c-avatar-size);
+  color: var(--mh-c-avatar-color);
+}
+
+/*
+ * 徽标：TDesign 20px 高、左右 6px、12px 字（字重 400）、圆角 10px；外层是一整行高的块，
+ * 数字对准的是这一行的右上角，不是图标的。统一成控件规格：外层只包住图标。
+ */
+.mh-kit-tdesign--aligned .t-badge {
+  display: inline-flex;
+  vertical-align: top;
+  color: inherit;
+}
+.mh-kit-tdesign--aligned .t-badge > .t-badge--circle {
+  box-sizing: border-box;
+  min-width: var(--mh-c-badge-min-width);
+  height: var(--mh-c-badge-height);
+  padding: 0 var(--mh-c-badge-inset);
+  border-radius: calc(var(--mh-c-badge-height) / 2);
+  background-color: var(--mh-c-badge-background);
+  font-size: var(--mh-c-badge-font-size);
+  font-weight: var(--mh-c-badge-weight);
+  line-height: var(--mh-c-badge-height);
+  color: var(--mh-c-badge-color);
+}
+
+/*
+ * 表格（Table）。TDesign 的格子上下 13px、左右 24px 的内边距（行 47 高），表头和格子同样白底、表头是占位灰的
+ * 14px 400 字；格子的底色继承行；最后一行下面也有线；勾选的行不变色（没有对应的样式），悬停也不变色
+ * （hover 属性默认关）。统一成控件规格：底色画在格子（td）上，行线只在下边。
+ */
+.mh-kit-tdesign--aligned .t-table {
+  background-color: transparent;
+  color: var(--mh-c-table-color);
+}
+.mh-kit-tdesign--aligned .t-table tr {
+  background-color: transparent;
+}
+.mh-kit-tdesign--aligned .t-table :is(th, td) {
+  padding: 0 var(--mh-c-table-cell-inset);
+  border-bottom: 1px solid var(--mh-c-table-divider);
+  background-color: transparent;
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-table th {
+  height: var(--mh-c-table-head-height);
+  background-color: var(--mh-c-table-head-background);
+  font-size: var(--mh-c-table-head-size);
+  font-weight: var(--mh-c-table-head-weight);
+  color: var(--mh-c-table-head-color);
+}
+.mh-kit-tdesign--aligned .t-table td {
+  height: var(--mh-c-table-row-height);
+}
+.mh-kit-tdesign--aligned .t-table tbody > tr:last-child > td {
+  border-bottom: 0;
+}
+.mh-kit-tdesign--aligned .t-table tbody > tr:hover > td {
+  background-color: var(--mh-c-table-hover-background);
+}
+.mh-kit-tdesign--aligned .t-table tbody > tr.t-table__row--selected > td {
+  background-color: var(--mh-c-table-selected-background);
+}
+/* 勾选列：TDesign 64 宽（列宽在 index.ts 里给控件规格的 48），复选框本来就在格子正中 */
+.mh-kit-tdesign--aligned .t-table :is(th, td).t-table__cell-check {
+  padding: 0;
+}
+/* 排序：对齐时表头里是套件自己的按钮（文字 + 图标集的排序图标），不用 TDesign 的两个小箭头 */
+.mh-kit-tdesign--aligned .mh-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mh-c-table-sort-gap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-c-table-sort-radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: var(--mh-c-text-line);
+  cursor: pointer;
+  outline: none;
+}
+.mh-kit-tdesign--aligned .mh-table-sort:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-tdesign--aligned .mh-table-sort > svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  color: var(--mh-c-table-sort-color);
+}
+.mh-kit-tdesign--aligned .mh-table-sort > svg[data-sorted] {
+  color: var(--mh-c-table-sort-active-color);
+}
+/* 加载中：TDesign 盖一层 60% 的白（.t-loading__overlay），表格本身不变；加载图标是渐变圆环。
+   统一成表头和行一起变浅、不盖白，图标集的加载图标在表格正中 */
+.mh-kit-tdesign--aligned .mh-table-loading > .t-table__content {
+  opacity: var(--mh-c-table-loading-opacity);
+}
+.mh-kit-tdesign--aligned .t-table .t-loading__overlay {
+  background-color: transparent;
+}
+.mh-kit-tdesign--aligned .t-table .mh-table-spinner {
+  width: var(--mh-c-table-loading-icon);
+  height: var(--mh-c-table-loading-icon);
+  color: var(--mh-c-table-loading-color);
+}
+/* 没有行：TDesign 的格子里是一个至少 120 高、禁用灰字、内容居中的框；统一成格子不留白、悬停不变色，
+   内容（空状态、出错）由页面给 */
+.mh-kit-tdesign--aligned .t-table tbody > tr.t-table__empty-row > td {
+  height: auto;
+  padding: 0;
+  background-color: transparent;
+}
+.mh-kit-tdesign--aligned .t-table__empty {
+  display: block;
+  min-height: 0;
+  color: inherit;
+}
+
+/* 复选框的键盘聚焦：TDesign 是外层 label 上一圈 2px 主色轮廓线（离开 4px）；对齐时焦点在原生复选框上，
+   统一成方块上控件规格的外圈（登录框的复选框也一样） */
+.mh-kit-tdesign--aligned .t-checkbox__former:focus-visible + .t-checkbox__input {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 部分选中：TDesign 本来就是主色底加白色短横，短横换成图标集的 minus；没有行时表头的复选框禁用，底色取控件规格 */
+.mh-kit-tdesign--aligned .t-checkbox.t-is-indeterminate .t-checkbox__input {
+  border-color: var(--mh-c-checkbox-checked);
+  background-color: var(--mh-c-checkbox-checked);
+}
+.mh-kit-tdesign--icons .t-checkbox.t-is-indeterminate .t-checkbox__input::after {
+  top: 50%;
+  left: 50%;
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  border: 0;
+  border-radius: 0;
+  background-color: var(--mh-c-checkbox-mark);
+  -webkit-mask: var(--mh-icon-minus) center / contain no-repeat;
+  mask: var(--mh-icon-minus) center / contain no-repeat;
+  transform: translate(-50%, -50%);
+}
+.mh-kit-tdesign--aligned .t-checkbox.t-is-disabled .t-checkbox__input {
+  background-color: var(--mh-c-checkbox-disabled-background);
+}
+
+/*
+ * 分页（Pagination）。TDesign 的页码是 32 的方块、带 1px 灰描边，当前页是主色实底白字，悬停描边和字变主色；
+ * 上一页、下一页没有描边、悬停浅灰底；「共 N 条」占满左边（flex: 1），次要灰。
+ * 统一成控件规格：方块没有描边，当前页主色描边加主色字，「共 N 条」紧挨着页码、离第一项 totalGap。
+ */
+.mh-kit-tdesign--aligned .t-pagination {
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-pagination__total {
+  flex: none;
+  margin-right: var(--mh-c-pagination-total-gap);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-pagination-total-color);
+}
+.mh-kit-tdesign--aligned :is(.t-pagination__number, .t-pagination__btn) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: auto;
+  min-width: var(--mh-c-pagination-item-size);
+  height: var(--mh-c-pagination-item-size);
+  padding: 0 var(--mh-c-pagination-item-inset);
+  border: 1px solid transparent;
+  border-radius: var(--mh-c-pagination-radius);
+  background-color: transparent;
+  color: var(--mh-c-pagination-color);
+  font-size: var(--mh-c-text-size);
+  font-weight: 400;
+  line-height: var(--mh-c-text-line);
+  outline: none;
+}
+.mh-kit-tdesign--aligned .t-pagination__pager li:not(:last-child),
+.mh-kit-tdesign--aligned .t-pagination__btn-prev {
+  margin-right: var(--mh-c-pagination-gap);
+}
+.mh-kit-tdesign--aligned .t-pagination__btn-next {
+  margin-left: var(--mh-c-pagination-gap);
+}
+.mh-kit-tdesign--aligned
+  :is(.t-pagination__number:not(.t-is-current), .t-pagination__btn:not(.t-is-disabled)):is(
+    :hover,
+    :active
+  ) {
+  border-color: transparent;
+  background-color: var(--mh-c-pagination-hover-background);
+  color: var(--mh-c-pagination-color);
+}
+.mh-kit-tdesign--aligned .t-pagination__number.t-is-current {
+  border-color: var(--mh-c-pagination-active-border);
+  background-color: var(--mh-c-pagination-active-background);
+  color: var(--mh-c-pagination-active-color);
+  font-weight: var(--mh-c-pagination-active-weight);
+}
+.mh-kit-tdesign--aligned .t-pagination__btn.t-is-disabled {
+  background-color: transparent;
+  color: var(--mh-c-pagination-disabled-color);
+}
+.mh-kit-tdesign--aligned :is(.t-pagination__number, .t-pagination__btn):focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-tdesign--aligned .t-pagination__btn svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+
+/*
+ * 标签（Tag）：TDesign 24 高、左右 8、12px 400、1px 透明描边，默认深色实底白字。
+ * 对齐时用浅底（index.ts 里 variant: light），尺寸、字重和四种色调的颜色取控件规格。
+ */
+.mh-kit-tdesign--aligned .t-tag {
+  height: var(--mh-c-tag-height);
+  padding: 0 var(--mh-c-tag-inset);
+  border: 0;
+  border-radius: var(--mh-c-tag-radius);
+  font-size: var(--mh-c-tag-font-size);
+  font-weight: var(--mh-c-tag-weight);
+  line-height: var(--mh-c-tag-height);
+}
+.mh-kit-tdesign--aligned .t-tag--default {
+  background-color: var(--mh-c-tag-background);
+  color: var(--mh-c-tag-color);
+}
+.mh-kit-tdesign--aligned .t-tag--success {
+  background-color: var(--mh-c-tag-success-background);
+  color: var(--mh-c-tag-success-color);
+}
+.mh-kit-tdesign--aligned .t-tag--warning {
+  background-color: var(--mh-c-tag-warning-background);
+  color: var(--mh-c-tag-warning-color);
+}
+.mh-kit-tdesign--aligned .t-tag--danger {
+  background-color: var(--mh-c-tag-danger-background);
+  color: var(--mh-c-tag-danger-color);
+}
+
+/*
+ * 日期范围的触发框（DateRangePicker 的 RangeInput）：TDesign 外框 32 高、左右 8 的内边距、悬停描边变主色；
+ * 里面两个框各自是一块圆角 3 的小底（悬停、聚焦时灰底），中间分隔文字离两边各 8。
+ * 统一成和输入框一样的一个框（field 一组），两个框是普通文字、没有底色，分隔文字和日历图标取控件规格。
+ */
+.mh-kit-tdesign--aligned .t-range-input {
+  padding: 0 calc(var(--mh-c-field-inset) - 1px);
+  border-color: var(--mh-c-field-border);
+  background-color: var(--mh-c-field-background);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-range-input.t-is-focused,
+.mh-kit-tdesign--aligned .t-range-input-popup--visible .t-range-input {
+  border-color: var(--mh-c-field-border-focus);
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-tdesign--aligned .t-range-input__inner {
+  gap: 0;
+}
+.mh-kit-tdesign--aligned .t-range-input__inner .t-input,
+.mh-kit-tdesign--aligned .t-range-input__inner .t-input:hover,
+.mh-kit-tdesign--aligned .t-range-input__inner .t-input.t-is-focused {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.mh-kit-tdesign--aligned .t-range-input__inner-separator {
+  padding: 0 var(--mh-c-date-range-separator-gap);
+  color: var(--mh-c-date-range-separator-color);
+}
+.mh-kit-tdesign--aligned .t-range-input .t-range-input__suffix {
+  margin-left: var(--mh-c-date-range-icon-gap);
+  color: var(--mh-c-icon-color);
+}
+.mh-kit-tdesign--aligned .t-range-input .t-range-input__suffix svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+
+/*
+ * 日期面板（.mh-date-popup）：TDesign 每个月四周 16 的留白、月与月之间一道竖线；面板头是年、月两个下拉
+ * 加「上一月、今天、下一月」；星期一行带上下两条 4px 的空行；日子是 30 的格子里一个 24 的方块，
+ * 范围的浅色带画在格子的 ::before 上，今天是浅主色底加主色字。
+ * 统一成：外框取 popup 一组、四周 datePanel.padding、两个月隔 monthGap；面板头是「2026年10月」的标题
+ * （套件写进去的 .mh-date-title），左边月份只留往前的箭头、右边只留往后的；日子 32 的方块紧挨着，
+ * 范围的浅底画在方块上，开始、结束主色底白字，今天 1px 主色描边。
+ */
+.mh-kit-tdesign--aligned .mh-date-popup > .t-popup__content {
+  min-width: 0;
+  margin-top: var(--mh-c-popup-offset);
+  padding: var(--mh-c-date-panel-padding);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background-color: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-range-picker__panel-content-wrapper {
+  gap: var(--mh-c-date-panel-month-gap);
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__panel-content {
+  border: 0;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__panel-date {
+  min-width: 0;
+  padding: 0;
+  gap: 0;
+  border: 0;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__header {
+  position: relative;
+  height: var(--mh-c-date-panel-header-height);
+  justify-content: center;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__header-controller {
+  display: none;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .mh-date-title {
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  font-weight: var(--mh-c-date-panel-title-weight);
+  color: var(--mh-c-date-panel-title-color);
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-pagination-mini {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-pagination-mini__current,
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  .t-date-picker__panel-content:first-child
+  .t-pagination-mini__next,
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  .t-date-picker__panel-content:last-child
+  .t-pagination-mini__prev {
+  display: none;
+}
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  .t-date-picker__panel-content:last-child
+  .t-pagination-mini__next {
+  margin-left: auto;
+}
+.mh-kit-tdesign--aligned .mh-date-popup :is(.t-pagination-mini__prev, .t-pagination-mini__next) {
+  width: var(--mh-c-date-panel-nav-size);
+  min-width: 0;
+  height: var(--mh-c-date-panel-nav-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-c-popup-option-radius);
+  color: var(--mh-c-icon-color);
+  pointer-events: auto;
+}
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  :is(.t-pagination-mini__prev, .t-pagination-mini__next):hover {
+  background-color: var(--mh-c-date-panel-hover-background);
+}
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  :is(.t-pagination-mini__prev, .t-pagination-mini__next)
+  svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__table table {
+  width: calc(var(--mh-c-date-panel-cell-size) * 7);
+  table-layout: fixed;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__table thead::before,
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__table thead::after {
+  display: none;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__table th {
+  width: var(--mh-c-date-panel-cell-size);
+  height: var(--mh-c-date-panel-week-height);
+  font-size: var(--mh-c-date-panel-week-size);
+  line-height: var(--mh-c-date-panel-week-height);
+  font-weight: 400;
+  color: var(--mh-c-date-panel-week-color);
+}
+.mh-kit-tdesign--aligned .mh-date-popup td.t-date-picker__cell {
+  font-weight: 400;
+  line-height: var(--mh-c-date-panel-cell-size);
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__cell::before,
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__cell::after {
+  display: none;
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__cell-inner {
+  display: flex;
+  box-sizing: border-box;
+  width: var(--mh-c-date-panel-cell-size);
+  height: var(--mh-c-date-panel-cell-size);
+  margin: 0;
+  border-radius: var(--mh-c-date-panel-cell-radius);
+  background: none;
+  box-shadow: none;
+  font-size: var(--mh-c-text-size);
+  color: var(--mh-c-date-panel-color);
+}
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  .t-date-picker__cell--additional
+  .t-date-picker__cell-inner {
+  color: var(--mh-c-date-panel-outside-color);
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__cell--now .t-date-picker__cell-inner {
+  border: 1px solid var(--mh-c-date-panel-today-border);
+}
+.mh-kit-tdesign--aligned .mh-date-popup .t-date-picker__cell:hover .t-date-picker__cell-inner {
+  background-color: var(--mh-c-date-panel-hover-background);
+  box-shadow: none;
+}
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  .t-date-picker__cell--highlight:not(.t-date-picker__cell--additional)
+  .t-date-picker__cell-inner {
+  border-radius: 0;
+  background-color: var(--mh-c-date-panel-range-background);
+}
+.mh-kit-tdesign--aligned
+  .mh-date-popup
+  .t-date-picker__cell--active:not(.t-date-picker__cell--additional)
+  .t-date-picker__cell-inner {
+  border-radius: var(--mh-c-date-panel-cell-radius);
+  background-color: var(--mh-c-date-panel-selected-background);
+  color: var(--mh-c-date-panel-selected-color);
+}
+
+/*
+ * 对话框（Dialog）：TDesign 480 宽、离窗口顶部 20%、四周 32 的留白、1px 描边、没有投影；标题 16px 600 行高 24，
+ * 关闭按钮是标题右边一个 20 的方块（span）；内容上下各 16 的留白、次要灰字；遮罩 60% 的黑。
+ * 统一成控件规格：宽度（index.ts 里给）、在窗口正中（placement: center）、留白、圆角、投影；
+ * 关闭按钮是套件的 <button>，32 的方块离上、右 closeInset。
+ */
+.mh-kit-tdesign--aligned .t-dialog {
+  padding: var(--mh-c-dialog-padding);
+  border: 0;
+  border-radius: var(--mh-c-dialog-radius);
+  background-color: var(--mh-c-dialog-background);
+  box-shadow: var(--mh-c-dialog-shadow);
+  color: inherit;
+}
+.mh-kit-tdesign--aligned .t-dialog__mask {
+  background: var(--mh-c-dialog-mask);
+}
+.mh-kit-tdesign--aligned .t-dialog__ctx .t-dialog__position {
+  padding: 0;
+}
+.mh-kit-tdesign--aligned .t-dialog__header {
+  gap: 0;
+  padding-right: var(--mh-c-dialog-close-size);
+  /* TDesign 的标题用 --td-font-title-medium（自己的字体栈），跟着对话框用规范的字体 */
+  font-family: inherit;
+  font-size: var(--mh-c-dialog-title-size);
+  line-height: var(--mh-c-dialog-title-line);
+  font-weight: var(--mh-c-dialog-title-weight);
+  color: var(--mh-c-dialog-title-color);
+}
+.mh-kit-tdesign--aligned .t-dialog__body {
+  margin-top: var(--mh-c-dialog-header-gap);
+  padding: 0;
+  overflow: visible;
+  color: inherit;
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-dialog__footer {
+  margin-top: var(--mh-c-dialog-footer-gap);
+  padding: 0;
+}
+/* TDesign 给底部相邻的两个按钮之间加 8px 的外边距；按钮之间的距离归页面（actionGap） */
+.mh-kit-tdesign--aligned .t-dialog__footer .t-button + .t-button {
+  margin-left: 0;
+}
+.mh-kit-tdesign--aligned .mh-dialog-close {
+  position: absolute;
+  top: var(--mh-c-dialog-close-inset);
+  right: var(--mh-c-dialog-close-inset);
+  display: grid;
+  place-items: center;
+  width: var(--mh-c-dialog-close-size);
+  height: var(--mh-c-dialog-close-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-c-popup-option-radius);
+  background: none;
+  color: var(--mh-c-dialog-close-color);
+  cursor: pointer;
+  outline: none;
+}
+.mh-kit-tdesign--aligned .mh-dialog-close:hover {
+  background-color: var(--mh-c-dialog-close-hover-background);
+}
+.mh-kit-tdesign--aligned .mh-dialog-close:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-tdesign--aligned .mh-dialog-close svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+
+/*
+ * 单选（Radio）：TDesign 16 的圆圈，选中是主色描边加一个 8 的主色圆点（白底）；圆圈和字隔 8，
+ * 每一项右边 24 的外边距（最后一项也有）；悬停描边变主色。
+ * 统一成控件规格：选中是主色底加 dot 大小的白点；两项之间 optionGap；键盘聚焦是圆圈上的外圈。
+ */
+.mh-kit-tdesign--aligned .t-radio-group {
+  gap: var(--mh-c-radio-option-gap);
+}
+.mh-kit-tdesign--aligned .t-radio-group .t-radio {
+  margin-right: 0;
+}
+/* TDesign 的圆圈和文字是两个 inline-block、按「居中」排在一行文字里，行高多出 1.5px；排成一行 flex */
+.mh-kit-tdesign--aligned .t-radio {
+  display: inline-flex;
+  align-items: center;
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-radio__input {
+  width: var(--mh-c-radio-size);
+  height: var(--mh-c-radio-size);
+  border-color: var(--mh-c-radio-border);
+  background-color: var(--mh-c-field-background);
+}
+.mh-kit-tdesign--aligned .t-radio.t-is-checked .t-radio__input {
+  border-color: var(--mh-c-radio-checked);
+  background-color: var(--mh-c-radio-checked);
+}
+.mh-kit-tdesign--aligned .t-radio__input::after {
+  width: var(--mh-c-radio-dot);
+  height: var(--mh-c-radio-dot);
+  margin: calc(var(--mh-c-radio-dot) / -2) 0 0 calc(var(--mh-c-radio-dot) / -2);
+  transform: none;
+  background-color: var(--mh-c-radio-dot-color);
+}
+.mh-kit-tdesign--aligned .t-radio__label {
+  margin-left: var(--mh-c-radio-gap);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-tdesign--aligned .t-radio__former:focus-visible + .t-radio__input {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 多行输入（Textarea）：TDesign 固定 56 高（不看行数）、左右 8、上下 5 的内边距，悬停描边变主色，聚焦 2px 外圈。
+ * 统一成和输入框一样：行数决定高度，上下 insetBlock、左右 field.inset（都含 1px 描边），只能往下拖。
+ */
+.mh-kit-tdesign--aligned .t-textarea__inner {
+  height: auto;
+  padding: calc(var(--mh-c-textarea-inset-block) - 1px) calc(var(--mh-c-field-inset) - 1px);
+  border-color: var(--mh-c-field-border);
+  background-color: var(--mh-c-field-background);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  resize: vertical;
+}
+.mh-kit-tdesign--aligned .t-textarea__inner:focus {
+  border-color: var(--mh-c-field-border-focus);
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-tdesign--aligned .t-textarea__inner.t-is-error {
+  border-color: var(--mh-c-field-border-invalid);
+}

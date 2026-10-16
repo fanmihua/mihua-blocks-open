@@ -1,0 +1,19 @@
+{
+  "name": "@mihua/core",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Framework-free skeletons for Mihua Blocks: contracts, configuration, state controllers and host interfaces.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles/root.css": "./styles/root.css",
+    "./styles/login.css": "./styles/login.css",
+    "./styles/admin.css": "./styles/admin.css",
+    "./styles/customers.css": "./styles/customers.css"
+  },
+  "dependencies": {
+    "@mihua/spec": "*",
+    "zod": "3.25.76"
+  }
+}

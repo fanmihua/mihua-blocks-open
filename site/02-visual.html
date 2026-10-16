@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>视觉层：统一颜色 · Mihua Blocks 文字版</title>
+  <meta name="description" content="同一个主色交给 Ant Design、Element Plus、shadcn/ui、Arco Design、TDesign，颜色为什么不一样；套件怎么把颜色交全。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/ch02.css">
+  <link rel="stylesheet" href="assets/art.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">02-1</span></div>
+    <h1>视觉层：统一颜色</h1>
+    <div class="lstrip" data-on="视觉"></div>
+    <p class="lead">同一个主色，为什么到了五个组件库里颜色不一样？本篇讲组件库怎么从一个主色算出整套颜色，以及套件怎么把颜色交全。</p>
+    <div class="series"></div>
+    <div class="series-l"></div>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <!-- ═════════ 开头 ═════════ -->
+  <section class="sec" id="s0">
+    <div class="kick"><span class="no">开头</span><span>一个深灰</span></div>
+    <h2>主色设为黑色后，勾选行变成了深灰</h2>
+    <p class="lead">真的 Ant Design，只设主题。</p>
+    <figure class="fig wide">
+      <div class="ctl"><span class="lb">规范</span><div class="seg" data-ctl="hookspec"><button data-v="mono" class="on">黑白</button><button data-v="blue">蓝色</button><button data-v="stress">压力测试</button></div></div>
+      <div class="frame"><div class="fh"><span class="lab"><b>React · Ant Design</b>　客户列表 · 只设主题</span><span class="live-tag">真组件，可以勾选</span></div>
+        <div class="live" id="hook-live" data-live="scene=customers&spec=mono&state=selected&mode=theme&kits=antd" data-shot="assets/img/02-antd-theme-mono-selected.png" data-pad="0" data-min="560"></div></div>
+    </figure>
+    <p>这个深灰从哪来？这一篇讲翻译的第一层：视觉。</p>
+    <p class="src">真组件来自仓库的检查页 <code>examples/audit.html?scene=customers&amp;state=selected&amp;mode=theme&amp;kits=antd</code>；演示页实测（2026-10-12）：黑白 #4A4A4A、蓝色 #F0F7FF</p>
+  </section>
+
+  <section class="part" id="pa">
+    <div class="kick"><span class="no">01</span><span>第一部分</span></div>
+    <h2>Ant Design：由主色自动推算整套颜色</h2>
+  </section>
+
+  <section class="sec" id="s7">
+    <div class="kick"><span class="no">1</span><span>一整套颜色</span></div>
+    <h2>一个主色对应一整套状态色</h2>
+    <p class="lead">规范里关于主色，只写了两项：主操作，和它的悬停。</p>
+    <figure class="fig wide">
+      <div class="code" data-code="blue-primary" style="max-width:560px"></div>
+      <div class="states">
+        <div class="state"><div class="tile" id="st-0">平时</div><span class="given">规范给了</span></div>
+        <div class="state"><div class="tile" id="st-1">悬停</div><span class="given">规范给了</span></div>
+        <div class="state"><div class="tile" id="st-2">按下</div><span class="need">组件库也要</span></div>
+        <div class="state"><div class="tile" id="st-3" style="color:#1F2329">选中的底</div><span class="need">组件库也要</span></div>
+        <div class="state"><div class="tile" id="st-4" style="color:#1F2329">聚焦的外圈</div><span class="need">组件库也要</span></div>
+      </div>
+      <figcaption>后三格是示意。</figcaption>
+    </figure>
+    <p>组件库要的不止两个。<span class="k">一个主色，背后是一整套颜色。</span></p>
+    <p class="src"><code>designs/blue/Design.md</code> 第 20–21 行</p>
+  </section>
+
+  <section class="sec locked" id="s8" hidden><div class="kick"><span class="no">2</span></div><h2>Ant Design：从一个种子色推算色板</h2></section>
+
+  <section class="sec locked" id="s9" hidden><div class="kick"><span class="no">3</span></div><h2>主色为黑色时，最浅一档是什么颜色</h2></section>
+
+  <section class="sec locked" id="s10" hidden><div class="kick"><span class="no">4</span></div><h2>黑色推不浅的原因：按亮度递增推算</h2></section>
+
+  <section class="sec locked" id="s11" hidden><div class="kick"><span class="no">5</span></div><h2>最浅一档如何成为勾选行的底色</h2></section>
+
+
+  <section class="sec locked" id="s13" hidden><div class="kick"><span class="no">6</span></div><h2>解决方法：使用规范中的「选中面」</h2></section>
+
+  <section class="sec locked" id="s14" hidden><div class="kick"><span class="no">7</span></div><h2>未提供选中面时自行推算，提供后直接使用</h2></section>
+
+  <section class="part locked" id="pb" hidden><div class="kick"><span class="no">02</span></div><h2>其余四个组件库：颜色变量需要逐个填写</h2></section>
+
+  <section class="sec locked" id="s15" hidden><div class="kick"><span class="no">8</span></div><h2>四个组件库各有哪些颜色变量需要填写</h2></section>
+
+  <section class="sec locked" id="s16" hidden><div class="kick"><span class="no">9</span></div><h2>Element Plus：只修改主色时，悬停色仍是默认蓝色</h2></section>
+
+  <section class="sec locked" id="s17" hidden><div class="kick"><span class="no">10</span></div><h2>套件计算并填写每个颜色变量</h2></section>
+
+  <section class="sec locked" id="s18" hidden><div class="kick"><span class="no">11</span></div><h2>其余三个组件库需要填写的变量数量对比</h2></section>
+
+  <section class="sec locked" id="s19" hidden><div class="kick"><span class="no">12</span></div><h2>Arco Design：颜色变量需写成 RGB 三个数值</h2></section>
+
+  <section class="sec locked" id="s20" hidden><div class="kick"><span class="no">13</span></div><h2>TDesign：主色在页面根节点已组合完成</h2></section>
+
+  <section class="sec locked" id="s21" hidden><div class="kick"><span class="no">14</span></div><h2>shadcn/ui：变量按用途命名，填写最简单</h2></section>
+
+  <section class="sec locked" id="s22" hidden><div class="kick"><span class="no">15</span></div><h2>五个组件库的主题配置入口对比</h2></section>
+
+  <section class="sec locked" id="s23" hidden><div class="kick"><span class="no">16</span></div><h2>颜色部分与官方文档的对照</h2></section>
+
+  <section class="sec teaser" aria-hidden="true" inert>
+    <div class="kick"><span class="no">2</span><span>Ant Design · <a href="01-switch.html#v3">它自己会</a></span></div>
+    <h2>Ant Design：从一个种子色推算色板</h2>
+    <p class="lead">只给它一个主色（Seed Token），别的颜色它自己往浅、往深推。</p>
+  </section>
+<!-- ═════════ 课程 ═════════ -->
+  <div class="paywall" id="course">
+    <a class="pw-cv" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener" aria-label="第 02-1 集完整视频"><span class="pw-ep">第 02-1 集 · 完整视频</span><i class="pw-lock"></i></a>
+    <h2>后面 15 节在课程里</h2>
+    <p>这一篇后面的 15 节和第 02-1 集完整视频，在「给设计师的零基础 AI 课」里。</p>
+    <p class="pw-more">完整版文字版还有每段代码的逐行解释和四个附录（组件库档案、适配记录、取舍记录、常用提示词），可以下载到本地看。</p>
+    <div class="buy">
+      <a class="btn" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener">官网购买</a>
+      <a class="btn ghost" href="https://xhslink.com/m/7qrmpq1Hzzh" target="_blank" rel="noopener">小红书店铺</a>
+      <button class="btn ghost wx" type="button" aria-expanded="false">微信小店</button>
+      <div class="wxq" hidden><img src="https://fanstudio.cn/images/courses/ai-course-wechat-shop.jpg" alt="微信小店商品码" loading="lazy"><span>微信扫码，进入课程商品页</span></div>
+    </div>
+  </div>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/color.js"></script>
+<script src="assets/data/code.js"></script>
+<script src="assets/data/icons.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/ch02.js"></script>
+</body>
+</html>

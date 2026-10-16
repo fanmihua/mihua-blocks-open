@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["vite/client"]
+  },
+  "include": ["spec/src", "core/src", "react/src", "audit/page", "examples/src"]
+}

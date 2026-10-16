@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>视觉层：统一尺寸 · Mihua Blocks 文字版</title>
+  <meta name="description" content="同一个控件高度交给五个组件库，为什么量出来不一样；套件怎么对齐。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/ch02.css">
+  <link rel="stylesheet" href="assets/art.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">02-2</span></div>
+    <h1>视觉层：统一尺寸</h1>
+    <div class="lstrip" data-on="视觉"></div>
+    <p class="lead">同一个控件高度，为什么五个组件库量出来不一样？本篇讲五个库各自怎么算高度，以及套件怎么对齐。</p>
+    <div class="series"></div>
+    <div class="series-l"></div>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <section class="part" id="pa">
+    <div class="kick"><span class="no">01</span><span>第一部分</span></div>
+    <h2>五个组件库如何计算控件高度</h2>
+  </section>
+
+  <section class="sec" id="s24">
+    <div class="kick"><span class="no">1</span><span>Ant Design · <a href="01-switch.html#v3">它自己会</a></span></div>
+    <h2>Ant Design：大号、小号按比例自动计算</h2>
+    <p class="lead">大号乘 1.25，小号乘 0.75，复选框是一半。</p>
+    <figure class="fig wide">
+      <div class="ctl"><label class="rng" style="min-width:320px">控件高度（Seed Token）<input type="range" id="mult-range" min="24" max="48" value="32"><b id="mult-val">32</b></label></div>
+      <div class="mult">
+        <div class="seedh"><div class="box" id="mult-seed" style="height:32px">32</div><small>controlHeight</small></div>
+        <div class="outs">
+          <div class="o"><div class="box" id="mult-lg">40</div><div class="rule">大号 <b>× 1.25</b></div></div>
+          <div class="o"><div class="box" id="mult-sm">24</div><div class="rule">小号 <b>× 0.75</b></div></div>
+          <div class="o"><div class="box" id="mult-cb">16</div><div class="rule">复选框 <b>÷ 2</b></div></div>
+        </div>
+      </div>
+      <figcaption>算法照 antd 6.6.5 的源码。</figcaption>
+    </figure>
+    <figure class="fig wide"><div class="codes" style="--n:2"><div class="code" data-code="antd-height"></div><div class="code" data-code="antd-alias"></div></div></figure>
+    <blockquote class="quote"><span class="from">官方原文 · Ant Design「定制主题」参数表</span>controlHeight：「按钮和输入框等基础控件的高度」，默认 32<br><a href="https://ant.design/docs/react/customize-theme-cn" target="_blank" rel="noopener">ant.design/docs/react/customize-theme-cn ↗</a></blockquote>
+  </section>
+
+  <section class="sec locked" id="s25" hidden><div class="kick"><span class="no">2</span></div><h2>控件高度为 34 时，复选框自动算成 17</h2></section>
+
+  <section class="sec locked" id="s26" hidden><div class="kick"><span class="no">3</span></div><h2>TDesign：高度由一个变量控制</h2></section>
+
+  <section class="sec locked" id="s27" hidden><div class="kick"><span class="no">4</span></div><h2>其余三个组件库：高度为固定值</h2></section>
+
+  <section class="sec locked" id="s28" hidden><div class="kick"><span class="no">5</span></div><h2>同一个高度在五个组件库中的计算方式</h2></section>
+
+  <section class="part locked" id="pb" hidden><div class="kick"><span class="no">02</span></div><h2>套件如何对齐控件高度</h2></section>
+
+  <section class="sec locked" id="s29" hidden><div class="kick"><span class="no">6</span></div><h2>无法通过变量修改时，套件的处理方式</h2></section>
+
+  <section class="sec locked" id="s30" hidden><div class="kick"><span class="no">7</span></div><h2>实测：五个组件库的按钮与复选框尺寸</h2></section>
+
+  <section class="sec locked" id="s31" hidden><div class="kick"><span class="no">8</span></div><h2>默认尺寸的差异</h2></section>
+
+  <section class="sec locked" id="s32" hidden><div class="kick"><span class="no">9</span></div><h2>TDesign 大号控件：字号同步放大</h2></section>
+
+  <section class="sec locked" id="s33" hidden><div class="kick"><span class="no">10</span></div><h2>每个套件的尺寸档案</h2></section>
+
+  <section class="sec locked" id="s34" hidden><div class="kick"><span class="no">11</span></div><h2>尺寸部分与官方文档的对照</h2></section>
+
+  <section class="sec teaser" aria-hidden="true" inert>
+    <div class="kick"><span class="no">2</span><span>压力测试</span></div>
+    <h2>控件高度为 34 时，复选框自动算成 17</h2>
+    <p class="lead">控件高度 34 时，复选框自己算成 17；规格要 16，对齐时直接给它 16。</p>
+  </section>
+<!-- ═════════ 课程 ═════════ -->
+  <div class="paywall" id="course">
+    <a class="pw-cv" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener" aria-label="第 02-2 集完整视频"><span class="pw-ep">第 02-2 集 · 完整视频</span><i class="pw-lock"></i></a>
+    <h2>后面 10 节在课程里</h2>
+    <p>这一篇后面的 10 节和第 02-2 集完整视频，在「给设计师的零基础 AI 课」里。</p>
+    <p class="pw-more">完整版文字版还有每段代码的逐行解释和四个附录（组件库档案、适配记录、取舍记录、常用提示词），可以下载到本地看。</p>
+    <div class="buy">
+      <a class="btn" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener">官网购买</a>
+      <a class="btn ghost" href="https://xhslink.com/m/7qrmpq1Hzzh" target="_blank" rel="noopener">小红书店铺</a>
+      <button class="btn ghost wx" type="button" aria-expanded="false">微信小店</button>
+      <div class="wxq" hidden><img src="https://fanstudio.cn/images/courses/ai-course-wechat-shop.jpg" alt="微信小店商品码" loading="lazy"><span>微信扫码，进入课程商品页</span></div>
+    </div>
+  </div>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/color.js"></script>
+<script src="assets/data/code.js"></script>
+<script src="assets/data/icons.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/art.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/ch02.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* 第 03 篇自己的画面（通用的在 blog.css） */
+
+.cv { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.cv .sw { width: 14px; height: 14px; }
+.nw { white-space: nowrap; }
+
+/* 一排横着的实测数 */
+.meas.row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 18px; margin-top: 14px; }
+.meas.row .m { grid-template-columns: 22px 1fr; grid-template-rows: auto auto; row-gap: 6px; align-items: start; }
+.meas.row .m i { grid-row: 1 / 3; }
+.meas.row .m .v { grid-column: 2; white-space: normal; flex-wrap: wrap; }
+.meas.row .m .v small { font: 12px var(--mono); color: var(--muted); margin-left: 2px; }
+@media (max-width: 760px) { .meas.row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* 16 条适配记录 */
+.tbl.rec td { font-size: 14px; vertical-align: top; }
+.tbl.rec td:first-child { font-weight: 400; color: inherit; white-space: normal; }
+.tbl.rec td.kit b { display: block; color: var(--ink); white-space: nowrap; }
+.tbl.rec td.kit small { font: 12px var(--mono); color: var(--muted); }
+.tbl.rec td.src-l { font: 11.5px var(--mono); color: var(--faint); white-space: nowrap; }
+.tbl.rec td.asp { white-space: nowrap; }
+
+/* 日期面板：两列 */
+.libs.wide2 { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 18px; }
+/* 截图时弹层四周多截了一圈背后的页面：图本身裁掉那一圈（ch03.js 按图的大小算），外面这一层给白底和边框 */
+.libs.wide2 .dp { display: block; border: 1px solid var(--line); border-radius: 8px; background: #fff; overflow: hidden; }
+.libs.wide2 .dp img { display: block; width: 100%; height: auto; border: 0; border-radius: 0; }
+@media (max-width: 900px) { .libs.wide2 { grid-template-columns: repeat(5, 84vw); } }
+
+/* 同一个 4 像素，相对谁 */
+.rel { position: relative; height: 280px; border: 1px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; }
+.rel-sider { position: absolute; left: 0; top: 0; bottom: 0; background: var(--soft); }
+.rel-sider span { position: absolute; left: 10px; top: 8px; font: 11.5px var(--mono); color: var(--muted); white-space: nowrap; }
+.rel-edge { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); }
+.rel-row { position: absolute; left: 0; right: 0; height: 34px; }
+.rel-item { position: absolute; top: 0; height: 34px; border: 1.5px dashed var(--muted); border-radius: 6px; background: rgba(255, 255, 255, 0.6); }
+.rel-gap { position: absolute; top: 15px; height: 4px; background: var(--bad); transition: left 0.45s; }
+.rel-gap span { position: absolute; left: 50%; top: -17px; transform: translateX(-50%); font: 600 11px var(--mono); color: var(--bad); }
+.rel-pop { position: absolute; top: 0; height: 34px; padding: 0 12px; display: flex; align-items: center; gap: 10px; border-radius: 6px; background: var(--ink); color: #fff; font-size: 13.5px; white-space: nowrap; transition: left 0.45s; }
+.rel-pop b { color: #fff; font-weight: 600; }
+.rel-pop small { font-size: 12px; color: rgba(255, 255, 255, 0.7); }
+.rel.aligned .rel-gap { background: var(--ok); }
+.rel.aligned .rel-gap span { color: var(--ok); }
+@media (max-width: 640px) { .rel-pop small { display: none; } }
+
+/* 开关截图：一行一个库，放大 1.5 倍、左对齐，宽窄能直接比 */
+.libs.rows { grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
+.libs.rows .lib { display: grid; grid-template-columns: 150px minmax(0, 1fr); align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.libs.rows .lib .lab { margin: 0; }
+.libs.rows .lib img { border: 0; border-radius: 0; width: 591px; max-width: 100%; height: auto; }
+@media (max-width: 900px) { .libs.rows { grid-template-columns: 1fr; overflow: visible; } .libs.rows .lib { grid-template-columns: 96px minmax(0, 1fr); } }
+
+/* 3.15 三条规矩 */
+.rules3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.rl { border: 1px solid var(--line2); border-radius: 12px; overflow: hidden; background: #fff; }
+.rl h4 { display: flex; align-items: center; gap: 8px; margin: 0; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink); background: var(--soft2); }
+.rl h4 .n { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font: 600 12px var(--mono); }
+.rl p { margin: 0; padding: 12px 16px 14px; font-size: 14px; line-height: 1.7; color: var(--sub); }
+.rl-stage { position: relative; height: 150px; border-bottom: 1px solid var(--line); background: repeating-conic-gradient(#fafafa 0 25%, #f4f4f4 0 50%) 0 0 / 14px 14px; display: grid; place-items: center; }
+.rl-stage svg { width: 92%; height: auto; }
+.sw-draw { width: 88px; height: 44px; border-radius: 22px; background: #0a0a0a; position: relative; }
+.sw-draw i { position: absolute; right: 4px; top: 4px; width: 36px; height: 36px; border-radius: 50%; background: #fff; }
+.rl-stage .tg { position: absolute; padding: 2px 8px; border-radius: 4px; background: #ede9fe; color: #5b21b6; font: 12px var(--mono); white-space: nowrap; }
+.rl-lines { place-items: stretch; align-content: center; gap: 10px; padding: 0 14px; }
+.rl-lines .ln { display: flex; gap: 8px; align-items: baseline; padding: 9px 12px; border-radius: 8px; background: #fff; font-size: 13px; line-height: 1.5; box-shadow: inset 0 0 0 1px var(--line2); }
+.rl-lines .ln i { font-style: normal; font-weight: 700; }
+.rl-lines .bad { color: var(--faint); text-decoration: line-through; text-decoration-color: var(--line2); }
+.rl-lines .ok { color: var(--ink); font-weight: 600; box-shadow: inset 0 0 0 1.5px var(--ink); }
+@media (max-width: 900px) { .rules3 { grid-template-columns: 1fr; } }
+/* 3.18 一样 / 好不好看 */
+
+/* 对照台：真组件下面一排「看哪一项」 */
+.bench { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.bench .lb { font-size: 13px; color: var(--muted); }
+
+/* 3.4 四个库的开关：原来写死的大小（虚线）→ 对齐后 44 × 22（黑），按 1.5 倍画 */
+.swfix { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .swfix { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.swfix .sf { display: flex; flex-direction: column; gap: 10px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; }
+.swfix .sf b { font-size: 15px; color: var(--ink); }
+.swfix .sf-d { display: flex; align-items: center; gap: 10px; height: 40px; }
+.swfix .sf-sw { position: relative; flex: none; width: calc(var(--w) * 1.5px); height: calc(var(--h) * 1.5px); border-radius: 999px; }
+.swfix .sf-sw::after { content: ''; position: absolute; top: 50%; right: 3px; width: calc(var(--h) * 1.5px - 6px); height: calc(var(--h) * 1.5px - 6px); border-radius: 50%; background: #fff; transform: translateY(-50%); }
+.swfix .sf-sw.n { background: #fde2e2; box-shadow: inset 0 0 0 1.5px var(--bad); }
+.swfix .sf-sw.n::after { box-shadow: 0 0 0 1px #f3b4b4; }
+.swfix .sf-sw.a { background: var(--ink); }
+.swfix .sf-ar { flex: none; width: 18px; height: 1.5px; background: var(--faint); position: relative; }
+.swfix .sf-ar::after { content: ''; position: absolute; right: -1px; top: -3.5px; border: 4px solid transparent; border-left: 6px solid var(--faint); border-right: 0; }
+.swfix .sf p { display: flex; flex-direction: column; margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--sub); }
+.swfix .sf p .x { font: 600 13px var(--mono); color: var(--bad); }
+.swfix .sf p .ok { font: 600 13px var(--mono); color: var(--ink); }
+.swfix.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 900px) { .swfix.five { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .swfix.five { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* 套件用了哪几种手段：一行一个库，一列一种手段，用到就有一个点；最右是这几种控件的适配记录条数 */
+.means { border-top: 1px solid var(--ink); }
+.means .mr { display: grid; grid-template-columns: 130px repeat(6, minmax(0, 1fr)) 56px; align-items: center; min-height: 40px; border-bottom: 1px solid var(--line); text-align: center; }
+.means .mh { min-height: 36px; font-size: 12.5px; color: var(--muted); }
+.means .ml { text-align: left; font-size: 14px; color: var(--ink); }
+.means .mc { font: 13px var(--mono); color: var(--sub); text-align: right; }
+.means .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); }
+@media (max-width: 760px) { .means { overflow-x: auto; } .means .mr { min-width: 600px; } }
+
+.dg .day { display: inline-grid; place-items: center; color: #fff; font: 600 12px var(--mono); font-style: normal; }
+.dg .today { position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; font: 13px var(--mono); font-style: normal; color: var(--ink); }
+.dg .today.dotb::after { content: ''; position: absolute; bottom: 2px; left: 50%; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--c); }
+.dg .mi { display: inline-flex; align-items: center; padding: 0 8px; font: 12px var(--sans); font-style: normal; }
+.dg .mstack { display: flex; flex-direction: column; }
+.dg .mind { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--sub); }
+.dg .mind i { position: relative; display: flex; align-items: center; gap: 6px; font-style: normal; }
+.dg .mind .pt b { width: 10px; height: 10px; border-radius: 2px; background: var(--faint); }
+.dg .mind .ch s { position: absolute; left: -4px; top: 0; bottom: 0; border-left: 1.5px solid var(--line2); }
+.dg .crumb { font-size: 13px; color: var(--muted); }
+.dg .crumb i { font-style: normal; color: var(--faint); }
+.dg .dropd { display: flex; flex-direction: column; width: 96px; }
+.dg .dropd .btn { width: 36px; height: 14px; border-radius: 3px; background: var(--ink); }
+.dg .dropd .pop { position: relative; height: 22px; border: 1px solid var(--line2); border-radius: 4px; background: #fff; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
+.dg .dropd .pop s { position: absolute; top: -4px; left: 50%; width: 6px; height: 6px; margin-left: -3px; border-left: 1px solid var(--line2); border-top: 1px solid var(--line2); background: #fff; transform: rotate(45deg); }
+.dg .dropd.r { align-items: flex-end; } .dg .dropd.c { align-items: center; } .dg .dropd.l { align-items: flex-start; }
+.dg .av { display: inline-block; border-radius: 50%; }
+.dg .bdg { position: relative; display: inline-block; width: 22px; height: 22px; }
+.dg .bdg .bell { position: absolute; inset: 3px; border-radius: 6px 6px 3px 3px; border: 1.5px solid var(--sub); }
+.dg .bdg .bd { position: absolute; left: 14px; top: -6px; display: inline-grid; place-items: center; padding: 0 4px; border-radius: 999px; background: #DC2626; color: #fff; font: 600 10px/1 var(--mono); font-style: normal; }
+.dg .th, .dg .tr { display: block; width: 100%; border-bottom: 1px solid var(--line2); }
+.dg .tr { background: #fff; border-top: 1px solid var(--line); }
+.dg .tr.sel { position: relative; }
+.dg .tr.sel b { position: absolute; left: 6px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 2px; background: var(--ink); }
+.dg .tc { display: block; height: 22px; border-radius: 3px; background: var(--line); }
+.dg .tc.none { width: 22px; background: none; border: 1px dashed var(--line2); }
+
+
+/* 表格一次看一项（03-3）：五个库和规格的这一项按 1 倍画；高、宽各带一道尺寸线（不一样的红）；正在看的那个库那一列垫灰 */
+.dg.one { margin-top: 16px; }
+.dg .dd .th, .dg .dd .tr { flex: 1; width: auto; }
+.dg .hv { position: relative; flex: none; width: 0; margin: 0 6px 0 4px; border-left: 1.5px solid currentColor; color: var(--ink); }
+.dg .hv::before, .dg .hv::after { content: ''; position: absolute; left: -5px; width: 9px; border-top: 1.5px solid currentColor; }
+.dg .hv::before { top: 0; }
+.dg .hv::after { bottom: -1.5px; }
+.dg .cw { display: flex; flex-direction: column; gap: 6px; }
+.dg .wv { position: relative; display: block; height: 0; border-top: 1.5px solid currentColor; color: var(--ink); }
+.dg .wv::before, .dg .wv::after { content: ''; position: absolute; top: -5px; height: 9px; border-left: 1.5px solid currentColor; }
+.dg .wv::before { left: 0; }
+.dg .wv::after { right: 0; }
+.dg [data-k=diff] .hv, .dg [data-k=diff] .wv { color: var(--bad); }
+.dg .cur { margin: -8px -8px; padding: 8px; border-radius: 8px; background: var(--soft); }
+.dg .dh .cur { color: var(--ink); font-weight: 600; }

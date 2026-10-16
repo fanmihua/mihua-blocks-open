@@ -1,0 +1,203 @@
+/* 第 04 篇自己的画面（通用的在 blog.css） */
+
+/* 4.1 线框 */
+.wf { border: 1px solid var(--line2); border-radius: 12px; overflow: hidden; background: #fff; font-size: 13.5px; }
+.wf-h { height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-bottom: 1px solid var(--line2); background: var(--soft2); }
+.wf-b { display: flex; height: 260px; }
+.wf-s { width: 220px; flex: none; border-right: 1px solid var(--line2); background: var(--soft2); padding: 12px 16px; display: flex; flex-direction: column; justify-content: space-between; transition: width 0.35s; overflow: hidden; white-space: nowrap; }
+.wf.closed .wf-s { width: 64px; padding: 12px 8px; }
+.wf-m { flex: 1; display: grid; place-items: center; color: var(--muted); background: repeating-linear-gradient(45deg, #fff 0 8px, #fafafa 8px 16px); }
+.wf span { color: var(--sub); font-weight: 600; }
+.wf i { font: normal 600 12px var(--mono); color: #fff; background: var(--ink); padding: 2px 8px; border-radius: 4px; align-self: flex-start; }
+.wf-h i { align-self: center; }
+
+/* 4.3 顶栏跟着控件高度 */
+.hdr { border: 1px solid var(--line2); border-radius: 12px; overflow: hidden; background: #fff; }
+.hdr-bar { display: flex; align-items: center; gap: 14px; padding: 0 18px; background: #001529; color: #fff; transition: height 0.2s; }
+.hdr-logo { width: 28px; height: 28px; border-radius: 6px; background: #fff; color: #001529; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.hdr-btn { display: inline-flex; align-items: center; padding: 0 14px; border-radius: 6px; background: #1677ff; font-size: 13px; transition: height 0.2s; }
+.hdr-bar b { margin-left: auto; font: 600 13px var(--mono); color: #fff; }
+.hdr-bar b::after { content: ' px 高'; font-weight: 400; opacity: 0.7; }
+.hdr-body { height: 90px; background: repeating-linear-gradient(45deg, #fff 0 8px, #fafafa 8px 16px); }
+#hdr-range { width: 220px; accent-color: var(--ink); }
+/* 4.2 五个布局组件的户型图 */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 18px; }
+.plan { display: flex; flex-direction: column; gap: 8px; }
+.plan b { font-size: 14px; color: var(--ink); }
+.plan span { font: 12.5px var(--mono); color: var(--muted); }
+.plan .pg { position: relative; width: 300px; max-width: 100%; aspect-ratio: 1200 / 720; border: 1.5px solid #0a0a0a; border-radius: 4px; background: #fff; overflow: hidden; }
+.plan .ph { position: absolute; left: 0; right: 0; top: 0; border-bottom: 1.5px solid #0a0a0a; background: repeating-linear-gradient(135deg, rgba(0,0,0,0.08) 0 2px, transparent 2px 8px); }
+.plan .ps { position: absolute; left: 0; bottom: 0; border-right: 1.5px solid #0a0a0a; background: repeating-linear-gradient(135deg, rgba(0,0,0,0.08) 0 2px, transparent 2px 8px); }
+.plan .pm { position: absolute; right: 6px; bottom: 6px; border: 1.5px dashed #a3a3a3; border-radius: 3px; }
+.plan.ours .pg { box-shadow: 0 0 0 3px #0a0a0a; }
+@media (max-width: 760px) { .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* 04-2 示意小侧栏（侧栏菜单那一节用） */
+.mini-nav { padding: 10px 12px 4px; }
+.mi { position: relative; display: flex; justify-content: space-between; align-items: center; height: 34px; padding: 0 12px; border-radius: 6px; font-size: 13.5px; color: var(--sub); }
+.mi em { font: normal 11.5px var(--mono); color: var(--muted); }
+.mi.grp { font-weight: 600; color: var(--ink); }
+.mi.sel { background: #ebebeb; color: var(--ink); font-weight: 600; }
+.mi.hov { background: #f5f5f5; }
+.mi.sel em, .mi.grp em { color: var(--ink); font-weight: 600; }
+
+/* 红线（开头、4.10、4.11）：手机上真组件按看得清的大小排，框里左右滑；红线的字在 ch04.js 里跟着放大 */
+.rl-hint { display: none; }
+@media (max-width: 760px) {
+  .rl-sc { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+  .rl-sc.more { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), rgba(0, 0, 0, 0.15)); mask-image: linear-gradient(to right, #000 calc(100% - 36px), rgba(0, 0, 0, 0.15)); }
+  #rl-page { width: 720px; }
+  #rl-filter, #rl-panel { width: 680px; }
+  .rl-hint { display: flex; }
+}
+/* 4.9 内容区的留白 */
+.gap4 { border: 1.5px solid var(--ink); border-radius: 8px; overflow: hidden; background: #fff; font-size: 13px; }
+.g4-top { height: 34px; padding: 0 12px; line-height: 34px; border-bottom: 1px solid var(--line2); color: var(--muted); }
+.g4-mid { display: flex; }
+.g4-side { width: 120px; padding: 10px 12px; border-right: 1px solid var(--line2); background: var(--soft2); color: var(--muted); }
+.g4-main { position: relative; flex: 1; display: flex; flex-direction: column; padding: 32px 48px 48px; background: var(--soft); }
+.g4-b { display: flex; align-items: center; padding: 0 12px; border-radius: 6px; background: #fff; border: 1px solid var(--line); color: var(--ink); }
+.g4-b.sm { height: 28px; }
+.g4-b.big { height: 96px; align-items: flex-start; padding-top: 10px; }
+.g4-v { position: relative; align-self: center; height: 32px; padding: 0 8px; font: 600 12px/32px var(--mono); color: var(--bad); }
+.g4-v::before { content: ''; position: absolute; left: -10px; top: 0; bottom: 0; border-left: 1px solid var(--bad); }
+.g4-v.t { position: absolute; left: 50%; top: 0; }
+.g4-v.b { position: absolute; left: 50%; bottom: 8px; height: 40px; line-height: 40px; }
+.g4-v.b::before { top: 0; bottom: 0; }
+.g4-h { position: absolute; top: 50%; width: 48px; text-align: center; font: 600 12px var(--mono); color: var(--bad); transform: translateY(-50%); }
+.g4-h::before { content: ''; position: absolute; left: 0; right: 0; top: -6px; border-top: 1px solid var(--bad); }
+.g4-h.l { left: 0; }
+.g4-h.r { right: 0; }
+@media (max-width: 560px) { .g4-side { width: 64px; } .g4-main { padding: 32px 36px 48px; } .g4-h { width: 36px; } }
+
+/* 菜单尺寸：虚线是侧栏右边缘，菜单比侧栏宽就伸出去（按 0.4 倍画） */
+.dg .mn { position: relative; display: block; height: 26px; }
+.dg .mn .edge { position: absolute; top: -4px; bottom: -4px; border-left: 1px dashed var(--ink); }
+.dg .mn .mw { position: absolute; left: 0; top: 0; bottom: 0; display: flex; align-items: center; padding-left: 2px; background: var(--soft); border-radius: 3px; }
+.dg .mn .it { display: block; border-radius: 2px; background: var(--line2); }
+/* 收起后子菜单：左边一条是侧栏，右边的框是弹层，离侧栏右边缘多远（按 1.5 倍画，负数压在侧栏上） */
+.dg .fly { position: relative; display: block; width: 100%; height: 30px; }
+.dg .fly .sd { position: absolute; left: 0; top: 0; width: 30px; height: 30px; background: var(--soft); border-right: 1.5px solid var(--ink); }
+.dg .fly .pp { position: absolute; top: 4px; width: 46px; height: 22px; border: 1px solid var(--line2); border-radius: 4px; background: rgba(255, 255, 255, 0.85); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
+/* 悬停显示名称：提示框 */
+.dg .tipd { display: inline-flex; align-items: center; }
+.dg .tipd .ar { width: 0; height: 0; border-style: solid; border-color: transparent; }
+.dg .tipd .tp { display: inline-block; padding: 4px 8px; color: #fff; font-style: normal; line-height: 1.4; white-space: nowrap; }
+
+/* 04-2：页面记着的「账」。深色一条：每格一个小拨闸、名字、值；值变了闪一下、拨闸翻一下。虚线的是组件库自己记着的 */
+.ledger { list-style: none; margin: 0; padding: 10px 12px; display: grid; gap: 6px; border-radius: 10px; background: #0a0a0a; color: #fff; }
+.ledger li { position: relative; display: grid; grid-template-columns: 14px minmax(0, 1fr); column-gap: 8px; padding: 6px 8px; border-radius: 7px; transition: box-shadow .2s; }
+.ledger li span { font-size: 12px; color: #a3a3a3; }
+.ledger li b { grid-column: 2; font-size: 15px; font-weight: 600; color: #fff; overflow-wrap: anywhere; }
+.ledger .lv { grid-row: span 2; align-self: center; position: relative; width: 10px; height: 16px; border-radius: 3px; background: #404040; }
+.ledger .lv::after { content: ''; position: absolute; left: 2px; top: 2px; width: 6px; height: 6px; border-radius: 1.5px; background: #fff; transition: top .25s; }
+.ledger .lv.down::after { top: 8px; }
+.ledger li.flash { animation: ledflash .8s ease-out; }
+@keyframes ledflash { 0% { box-shadow: 0 0 0 2px #fff; background: #262626; } 100% { box-shadow: 0 0 0 0 transparent; background: transparent; } }
+.ledger li.bad b { color: #ff8a7a; }
+.ledger.strip { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); margin-bottom: 12px; }
+.ledger.strip li { cursor: default; }
+.ledger.strip li:hover { background: #262626; }
+.ledger.kit { background: #fff; color: #525252; border: 1.5px dashed #a3a3a3; }
+.ledger.kit li span { color: #737373; }
+.ledger.kit li b { color: #0a0a0a; }
+.ledger.kit .lv { background: #e5e5e5; }
+.ledger.kit .lv::after { background: #737373; }
+.ledger.kit li.flash { animation: ledflash2 .8s ease-out; }
+@keyframes ledflash2 { 0% { box-shadow: 0 0 0 2px #0a0a0a; } 100% { box-shadow: 0 0 0 0 transparent; } }
+.led-last { min-height: 1.6em; margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
+.vs2 { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.vs2 .ledger + .ledger { margin-top: 10px; }
+@media (max-width: 760px) { .vs2 { grid-template-columns: 1fr; } }
+
+/* 04-2 一次操作经过的环节：四个站竖着排，左边头像、右边名字和说的话；一个一个亮。拦下的那一站红框、换成举牌的监理；右边一条回程线 */
+.loop { position: relative; list-style: none; margin: 0; padding: 0 34px 34px 0; display: grid; gap: 10px; }
+.loop .stn { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; align-items: center; padding: 8px 12px 8px 8px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; opacity: .35; transition: opacity .3s, border-color .3s; }
+.loop .stn.on { opacity: 1; border-color: var(--ink); }
+.loop .stn.x { border-color: #F24E1E; }
+.loop .stn > .av { width: 76px; border-radius: 8px; overflow: hidden; }
+.loop .stn > .av.alt { display: none; }
+.loop .stn.x > .av:not(.alt) { display: none; }
+.loop .stn.x > .av.alt { display: block; }
+.loop .stn .tx b { display: block; font-size: 14.5px; color: var(--ink); }
+.loop .bubs { display: grid; gap: 6px; margin-top: 6px; }
+.loop .bub { justify-self: start; padding: 4px 10px; border: 1.5px solid var(--ink); border-radius: 10px; font-size: 13.5px; line-height: 1.5; color: var(--ink); background: #fff; }
+.loop .bub.dash { border-style: dashed; border-color: #a3a3a3; color: var(--sub); }
+.loop .bub.bad { border-color: #F24E1E; color: #c2410c; }
+.loop .bub.bad::before { content: '✕ '; font-weight: 700; }
+.loop .bub.same { border-color: var(--line2); color: var(--sub); }
+.loop .bub.new { background: #0a0a0a; border-color: #0a0a0a; color: #fff; }
+.loop .back { position: absolute; right: 0; top: 30px; bottom: 30px; width: 22px; border: 1.5px solid var(--line2); border-left: 0; border-radius: 0 12px 12px 0; list-style: none; }
+.loop .back::after { content: ''; position: absolute; left: -6px; top: -5px; border: 5px solid transparent; border-right: 7px solid var(--line2); }
+.loop .back span { position: absolute; right: 0; bottom: -58px; white-space: nowrap; font-size: 12.5px; color: var(--muted); }
+.loop .back.on { border-color: var(--ink); }
+.loop .back.on::after { border-right-color: var(--ink); }
+.loop .back.on span { color: var(--ink); font-weight: 600; }
+.loop .back.off span { color: var(--faint); }
+.vs2.path { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+
+/* 04-2 侧栏菜单：左边示意的小侧栏（黑白线框、语义图标），组件库说的话是气泡，后果是牌子 */
+#side-steps { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); }
+.mock-side { position: relative; height: 300px; overflow: hidden; background: #fff; font-size: 13px; }
+.mock-side .mh { height: 34px; padding: 0 12px; line-height: 34px; font-weight: 600; border-bottom: 1px solid var(--line); color: var(--ink); }
+.mock-side .mn { width: 180px; height: calc(100% - 34px); padding: 6px; border-right: 1px solid var(--line); box-sizing: border-box; }
+.mock-side.col .mn { width: 52px; }
+.mock-side .mi { height: 32px; padding: 0 10px; gap: 8px; justify-content: flex-start; font-size: 13px; }
+.mock-side .mi svg { flex: none; color: var(--sub); }
+.mock-side .mi em { margin-left: auto; }
+.mock-side .mi.sub { padding-left: 34px; }
+.mock-side .mi.ic { justify-content: center; padding: 0; height: 38px; }
+.mock-side .mock-pop { position: absolute; left: 56px; width: 120px; padding: 4px; border: 1px solid var(--line2); border-radius: 8px; background: #fff; box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.mock-side .mock-pop div { height: 28px; padding: 0 8px; line-height: 28px; border-radius: 4px; color: var(--sub); }
+.mock-side .mock-pop em { display: block; margin: 4px 2px 0; padding: 3px 6px; border: 1px dashed #a3a3a3; border-radius: 6px; font: normal 11.5px/1.5 var(--sans); color: var(--muted); }
+.mock-side .bub { position: absolute; right: 10px; max-width: 46%; padding: 5px 10px; border: 1.5px solid var(--ink); border-radius: 10px; background: #fff; font-size: 13px; color: var(--ink); }
+.mock-side .bub.bad { border-color: #F24E1E; color: #c2410c; }
+.mock-side .pin { position: absolute; left: 190px; margin-top: 4px; padding: 2px 8px; border-radius: 4px; background: #F24E1E; color: #fff; font: 600 12px/1.6 var(--mono); }
+.mock-side.col .pin { left: 60px; }
+.mock-side .pin.ok { background: #0a0a0a; }
+.vs2.side { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.vs2.side .ledger { margin-top: 10px; }
+.fh .tag { font-size: 12px; color: var(--muted); }
+
+
+/* 04-2 对话框：左边示意，灰色遮罩上一个白框；点了遮罩白框淡出 */
+.vs2.dlgv, .vs2.datev { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.vs2.dlgv .ledger, .vs2.datev .ledger { margin-top: 10px; }
+#dlg-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mdlg { display: grid; place-items: center; min-height: 300px; padding: 20px; background: rgba(0, 0, 0, .45); }
+.mdlg .box { width: min(300px, 100%); padding: 16px; border-radius: 8px; background: #fff; transition: opacity .3s; }
+.mdlg.gone .box { opacity: 0; }
+.mdlg .box > b { display: block; margin-bottom: 12px; font-size: 15px; color: var(--ink); }
+.mdlg label { display: block; margin-bottom: 10px; font-size: 12.5px; color: var(--muted); }
+.mdlg label i { display: block; margin-top: 4px; min-height: 30px; padding: 5px 8px; border: 1px solid var(--line2); border-radius: 6px; font-style: normal; font-size: 13px; color: var(--ink); box-sizing: border-box; }
+.mdlg label i.ta { min-height: 52px; }
+.mdlg label i.ta:empty::before { content: attr(data-ph); color: var(--faint); }
+.mdlg .bt { display: flex; justify-content: flex-end; gap: 8px; }
+.mdlg .bt u { padding: 4px 12px; border: 1px solid var(--line2); border-radius: 6px; font-size: 13px; text-decoration: none; color: var(--ink); }
+.mdlg .bt u.pri { background: #0a0a0a; border-color: #0a0a0a; color: #fff; }
+
+/* 04-2 日期范围：左边示意月历，2026 年 6 月；范围两头深色、中间浅灰 */
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; max-width: 280px; }
+.cal b { height: 26px; line-height: 26px; text-align: center; font-size: 12px; font-weight: 400; color: var(--muted); }
+.cal b:first-of-type { grid-column: 1; }
+.cal button { height: 32px; border: 0; border-radius: 6px; background: none; font: 13px var(--sans); color: var(--ink); cursor: pointer; }
+.cal button:hover { background: var(--soft); }
+.cal button.in { border-radius: 0; background: #e5e5e5; }
+.cal button.end { background: #0a0a0a; color: #fff; }
+.cal-say { min-height: 1.6em; margin: 8px 0 0; font-size: 12.5px; color: var(--sub); }
+.fh .tag .lnk { padding: 0; border: 0; background: none; font: inherit; color: var(--ink); text-decoration: underline; cursor: pointer; }
+
+/* 手机上左右两栏都改成上下排（上面几处两栏的写法在这条之前，这里统一收回） */
+@media (max-width: 760px) {
+  .vs2, .vs2.path, .vs2.side, .vs2.dlgv, .vs2.datev { grid-template-columns: minmax(0, 1fr); }
+  .loop { padding-right: 28px; }
+  #side-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+
+/* 04-2 开头、「两种状态」、日期范围的「走一遍」步骤：编号在左，右边上一行哪个库、下一行做什么（矮一半，图才一屏放得下） */
+:is(#one-steps, #own-steps, #date-steps) { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+@media (max-width: 760px) { :is(#one-steps, #own-steps, #date-steps) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+:is(#one-steps, #own-steps, #date-steps) li { display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 8px; row-gap: 1px; align-items: center; padding: 8px 10px; }
+:is(#one-steps, #own-steps, #date-steps) li i { grid-row: span 2; margin: 0; }
+:is(#one-steps, #own-steps, #date-steps) li span { display: block; margin: 0; }

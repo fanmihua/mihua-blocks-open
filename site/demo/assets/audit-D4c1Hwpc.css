@@ -1,0 +1,1 @@
+body{margin:0;background:#fff}.audit{display:flex;align-items:flex-start;gap:48px;padding:48px;width:max-content}.audit__cell{display:flex;flex-direction:column;gap:8px}.audit__cell>p{margin:0;font:12px/1 ui-monospace,monospace;color:#888}.audit__start{width:1px;height:1px;padding:0;border:0;opacity:0}

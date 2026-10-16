@@ -1,0 +1,29 @@
+/*
+ * 控件样张的排布：这是页面布局，归结构层，自己写，不用组件库的 Layout。
+ * 只读 --mh-* 变量。每一行是一个区域（data-region），自动检查按区域量。
+ */
+.ex-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 440px;
+  padding: var(--mh-space-panel);
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-panel);
+  background: var(--mh-surface-base);
+}
+.ex-controls__title {
+  margin: 0;
+  font-size: var(--mh-type-small);
+  color: var(--mh-text-secondary);
+}
+.ex-controls__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* 输入框占满剩下的宽度：每个组件库的输入框默认宽度不一样，这里统一由布局决定 */
+.ex-controls__grow {
+  flex: 1;
+  min-width: 0;
+}

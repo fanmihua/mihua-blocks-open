@@ -1,0 +1,32 @@
+{
+  "name": "@mihua/vue",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Vue views for Mihua Blocks, with kits for Element Plus and TDesign.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./kits/element": "./src/kits/element/index.ts",
+    "./kits/element/styles.css": "./src/kits/element/styles.css",
+    "./kits/tdesign": "./src/kits/tdesign/index.ts",
+    "./kits/tdesign/styles.css": "./src/kits/tdesign/styles.css"
+  },
+  "dependencies": {
+    "@mihua/core": "*",
+    "@mihua/spec": "*"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "optionalDependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "dayjs": "^1.11.23",
+    "element-plus": "^2.14.6",
+    "tdesign-icons-vue-next": "^0.4.11",
+    "tdesign-vue-next": "^1.20.9"
+  },
+  "devDependencies": {
+    "vue": "^3.5.43"
+  }
+}

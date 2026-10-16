@@ -1,0 +1,11 @@
+/*
+ * 页面框架在演示页、检查页里的大小：一个 1200 × 640 的「窗口」。
+ * 框架本身（admin.css）占满它，所以换成整页也一样。
+ */
+.ex-admin {
+  width: 1200px;
+  height: 640px;
+  overflow: hidden;
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-panel);
+}

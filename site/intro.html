@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>一份设计，如何适配不同组件库 · Mihua Blocks 文字版</title>
+  <meta name="description" content="一份 Design.md 交给 AI，换个组件库为什么走样；怎么拆成四层、加一层翻译；这个系列每一篇讲什么。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/intro.css">
+  <link rel="stylesheet" href="assets/layers.css">
+  <link rel="stylesheet" href="assets/ill.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">导读</span></div>
+    <h1>一份设计，如何适配不同组件库</h1>
+    <p class="lead">这个系列从视觉、控件、结构与逻辑四个层面拆解页面，介绍如何统一设计要求、处理组件库差异，并验证最终的实现效果。</p>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <!-- ═════════ 问题 ═════════ -->
+  <section class="part" id="p1">
+    <div class="kick"><span class="no">01</span><span>第一部分</span></div>
+    <h2>理解差异</h2>
+  </section>
+
+  <section class="sec" id="s1">
+    <div class="kick"><span class="no">1</span><span>三步</span></div>
+    <h2>同一个登录框，五个组件库有哪些差异</h2>
+    <figure class="fig">
+      <div class="ctl"><span class="lb">第几步</span><div class="seg" data-ctl="step"><button data-v="native" class="on">1 · 什么都不改</button><button data-v="theme">2 · 给它同一份 Design.md</button><button data-v="aligned">3 · 对齐到控件</button></div></div>
+      <div class="frame"><div class="fh"><span class="lab"><b>五个组件库</b>　登录框 · 黑白规范</span><span class="live-tag">真组件，可以点</span></div>
+        <div class="live" id="step-live" data-live="scene=login&spec=mono&variant=centered&state=initial&mode=native" data-shot="assets/img/02-login-mono-native-antd.png" data-min="300"></div></div>
+      <figcaption>从左到右：Ant Design、Element Plus、shadcn/ui、Arco Design、TDesign。</figcaption>
+    </figure>
+    <div class="stepnote" id="stepnote"></div>
+    <p>从第二步到第三步，差的是什么，就是这个系列要讲的。</p>
+  </section>
+
+  <section class="sec" id="s2">
+    <div class="kick"><span class="no">2</span><span>常见的做法</span></div>
+    <h2>三种常见做法，能解决什么、有哪些局限</h2>
+    <figure class="fig">
+      <div class="way">
+        <div class="wl"><span class="wn">1</span><h4>让 AI 直接生成</h4><p>AI 生成的是 React + Ant Design 的代码，换到 Vue 项目里就无法直接使用。</p><img src="assets/img/intro-ai-react.png" alt="AI 生成的登录框：React + Ant Design"></div>
+        <div class="code" data-code="ref-ai-react"></div>
+      </div>
+      <div class="way">
+        <div class="wl"><span class="wn">2</span><h4>让 AI 去翻译</h4><p>让 AI 把登录框改成 Vue + Element Plus 后，区号 +86 不见了，「获取验证码」按钮也变成了灰色。更换组件库时，原来的设计细节没有完整保留下来。</p><img src="assets/img/intro-ai-vue.png" alt="AI 翻译出来的登录框：Vue + Element Plus"></div>
+        <div class="code" data-code="ref-ai-vue"></div>
+      </div>
+      <div class="way">
+        <div class="wl"><span class="wn">3</span><h4>从设计稿导出代码</h4><p>在 Figma 里让 AI 照着设计稿还原，标签栏只是两段文字加两条线，点击不会切换，也没有使用组件库。</p><img src="assets/img/intro-figma-canvas.png" alt="Figma 里的登录框设计稿"></div>
+        <div class="code" data-code="ref-figma-tabs"></div>
+      </div>
+    </figure>
+    <p>根上的问题是：不同组件库的写法，本来就不一样。</p>
+  </section>
+
+  <!-- ═════════ 做法 ═════════ -->
+  <section class="part" id="p2">
+    <div class="kick"><span class="no">02</span><span>第二部分</span></div>
+    <h2>解决方法</h2>
+  </section>
+
+  <section class="sec" id="s3">
+    <div class="kick"><span class="no">3</span><span>四层</span></div>
+    <h2>将界面拆分为四层</h2>
+    <p class="lead">把登录框像剖面图一样拆开。</p>
+    <figure class="fig"><div class="lay3d" data-lay3d></div></figure>
+    <p>一份 Design.md，只写到了第一层。</p>
+  </section>
+
+  <section class="sec" id="s4">
+    <div class="kick"><span class="no">4</span><span>解耦</span></div>
+    <h2>设计只定义一次，组件库只负责翻译</h2>
+    <p class="lead">先把「我们要的设计」和「某个组件库的写法」分开。</p>
+    <figure class="fig"><div class="decouple" id="decouple"></div></figure>
+    <p>以后再加一个组件库，页面、逻辑、规范都不用动，只写一个套件。</p>
+  </section>
+
+  <section class="sec" id="s6">
+    <div class="kick"><span class="no">5</span><span>值不值得</span></div>
+    <h2>适用场景：什么时候值得这样做</h2>
+    <figure class="fig">
+      <div class="fork">
+        <div class="fq">要接几套组件库、几种技术栈？</div>
+        <div class="fb"><div class="fo"><b>只用一套</b><p>一份 Design.md，加上组件库的主题设置。</p><span class="ok">够了</span></div>
+          <div class="fo dark"><b>好几套技术栈，或者让 AI 往不同项目里生成界面</b><p>设计写一份，每个组件库配一个套件去翻译。</p><span class="ok">值得做这一层</span></div></div>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ═════════ 大纲 ═════════ -->
+  <section class="part" id="p3">
+    <div class="kick"><span class="no">03</span><span>第三部分</span></div>
+    <h2>系列内容</h2>
+  </section>
+
+  <section class="sec" id="s7">
+    <div class="kick"><span class="no">6</span><span>大纲</span></div>
+    <h2>全部文章和附录</h2>
+    <figure class="fig"><div class="outline" id="outline"></div></figure>
+  </section>
+
+  <section class="sec" id="s8">
+    <div class="kick"><span class="no">7</span><span>怎么看</span></div>
+    <h2>视频、文字版、仓库，配合使用</h2>
+    <figure class="fig">
+      <div class="tri">
+        <div class="tri-c"><div class="tri-p tri-v"><div class="vk"><span>组件库差异</span><b>01</b></div><div class="vt">一个后台页面，<br>五个组件库一键切换</div><div class="vg"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><span class="vplay"></span></div>
+          <h4><span class="n">1</span>视频</h4></div>
+        <div class="tri-c"><div class="tri-p tri-s"><img src="assets/img/00-site-thumb.png" alt="文字版第 01 篇的开头"></div>
+          <h4><span class="n">2</span>文字版</h4></div>
+        <div class="tri-c"><div class="tri-p tri-r"><b>mihua-blocks-open/</b><span>designs/</span><span>spec/</span><span>core/</span><span>react/</span><span>vue/</span><span>audit/</span><span>examples/</span><span>docs/</span><span>skills/</span><span class="f">AGENTS.md</span></div>
+          <h4><span class="n">3</span>仓库</h4></div>
+      </div>
+    </figure>
+    <div class="pull"><p>设计只定义一次。</p><p>实现，再按不同的技术栈分别去完成。</p></div>
+    <div class="next"></div>
+  </section>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/data/code.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/ill.js"></script>
+<script src="assets/layers.js"></script>
+<script src="assets/intro.js"></script>
+</body>
+</html>

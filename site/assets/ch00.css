@@ -1,0 +1,74 @@
+/* 第 00 篇：每个目录配的图 */
+/* designs/：三份规范 */
+.d3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.d3-c .lab { margin-bottom: 6px; }
+.d3-c img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.d3-v { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.d3-v span { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 4px; background: var(--soft); font: 12px var(--mono); color: var(--sub); }
+.d3-v i { width: 10px; height: 10px; border-radius: 2px; }
+@media (max-width: 760px) { .d3 { grid-template-columns: repeat(3, 72vw); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; } .d3-c { scroll-snap-align: start; } }
+.browser.sm .bb span { font-size: 11px; }
+/* react/、vue/ */
+.libs.kitrow { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+@media (max-width: 900px) { .libs.kitrow { grid-template-columns: repeat(var(--n), 64vw); } }
+.libs.kitrow img { width: auto; max-width: 100%; height: auto; }
+/* docs/：三份做法说明 */
+.dsteps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .dsteps { grid-template-columns: 1fr; } }
+.dsd { padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.dsd-h { display: grid; grid-template-columns: 18px 1fr; gap: 2px 10px; align-items: center; margin-bottom: 10px; }
+.dsd-h i { grid-row: span 2; width: 18px; height: 22px; border: 1.5px solid var(--ink); border-radius: 2px 6px 2px 2px; background: linear-gradient(var(--ink), var(--ink)) 3px 6px / 9px 1.5px no-repeat, linear-gradient(var(--ink), var(--ink)) 3px 10px / 9px 1.5px no-repeat, linear-gradient(var(--ink), var(--ink)) 3px 14px / 6px 1.5px no-repeat; }
+.dsd-h b { font-size: 14.5px; color: var(--ink); }
+.dsd-h code { justify-self: start; font-size: 11px; }
+/* 步骤：编号圆圈竖着排，竖线穿过圆圈正中，两位数的编号也在圈里 */
+.dsd ol { list-style: none; margin: 0; padding: 0; }
+.dsd li { position: relative; padding: 4px 0 4px 30px; font-size: 13px; line-height: 20px; color: var(--sub); }
+.dsd li::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 1.5px; margin-left: -0.75px; background: var(--line2); }
+.dsd li:first-child::before { top: 14px; }
+.dsd li:last-child::before { bottom: calc(100% - 14px); }
+.dsd li span { position: absolute; z-index: 1; left: 0; top: 4px; display: grid; place-items: center; box-sizing: border-box; width: 20px; height: 20px; border-radius: 50%; background: #fff; border: 1.5px solid var(--line2); font: 600 10px/1 var(--mono); letter-spacing: -0.03em; color: var(--muted); }
+.dsd li.ck { color: var(--ink); font-weight: 600; }
+.dsd li.ck span { background: var(--ink); border-color: var(--ink); color: #fff; }
+/* skills/：跟 AI 说一句，它照着做 */
+.chat { display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 12px; background: var(--soft2); }
+.chat .cu { align-self: flex-end; max-width: 80%; }
+.chat .cu span { display: inline-block; padding: 9px 14px; border-radius: 14px 14px 4px 14px; background: var(--ink); color: #fff; font-size: 14px; line-height: 1.6; }
+.chat .ca { align-self: flex-start; display: flex; flex-direction: column; gap: 6px; max-width: 92%; padding: 12px 16px; border-radius: 14px 14px 14px 4px; background: #fff; border: 1px solid var(--line); }
+.chat .cl { display: flex; gap: 10px; font-size: 13.5px; line-height: 1.6; color: var(--sub); }
+.chat .cl i { flex: none; width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; border: 1.5px solid var(--muted); }
+.chat .cl.ok i { background: var(--ink); border-color: var(--ink); }
+.chat .cl b { font-weight: 600; color: var(--ink); font-family: var(--mono); font-size: 12.5px; }
+/* 根目录：文件夹窗口 */
+.finder { border: 1px solid var(--line2); border-radius: 10px; overflow: hidden; background: #fff; }
+.finder .bb { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--soft2); }
+.finder .bb i { width: 9px; height: 9px; border-radius: 50%; background: var(--line2); }
+.finder .bb span { margin-left: 8px; font: 12px var(--mono); color: var(--muted); }
+.fgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 14px 8px; padding: 18px 14px; }
+.fi { display: flex; flex-direction: column; align-items: center; gap: 6px; font: 11.5px/1.3 var(--mono); color: var(--sub); text-align: center; text-decoration: none; word-break: break-all; }
+.fi i { width: 40px; height: 32px; }
+.fi.d i { background: var(--ink); border-radius: 3px 6px 4px 4px; clip-path: polygon(0 0, 42% 0, 52% 18%, 100% 18%, 100% 100%, 0 100%); }
+.fi.d:hover span { color: var(--ink); text-decoration: underline; }
+.fi.f i { width: 28px; height: 34px; border: 1.5px solid var(--line2); border-radius: 2px 8px 2px 2px; background: #fff; }
+.fi.f.key i { border-color: var(--ink); }
+.fi.f.key span { color: var(--ink); font-weight: 600; }
+/* 0.17 命令 */
+.cmds { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 24px; align-items: start; }
+@media (max-width: 760px) { .cmds { grid-template-columns: 1fr; } }
+.cmd1 > code { display: inline-block; margin-bottom: 10px; font-size: 13px; }
+.cmd1 > q { display: inline-block; margin-bottom: 10px; padding: 7px 14px; border: 1px solid var(--line2); border-radius: 16px 16px 16px 4px; background: #fff; font-size: 14px; color: var(--ink); quotes: '「' '」'; }
+.cmd1 p { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+.pipe { display: flex; flex-wrap: wrap; gap: 6px; }
+.pipe span { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px 10px 10px; border-radius: 8px; background: var(--ink); color: #fff; font-size: 14px; }
+.pipe span b { width: 20px; height: 20px; border-radius: 50%; background: #fff; color: var(--ink); font: 600 11px/20px var(--mono); text-align: center; }
+/* 0.20 做到哪 */
+.scn { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 640px) { .scn { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.scn > div { display: flex; flex-direction: column; gap: 6px; }
+.scn img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--soft2); }
+.scn span { font-size: 13.5px; color: var(--ink); }
+.scn .no { justify-content: center; align-items: center; aspect-ratio: 4 / 3; border: 1.5px dashed var(--line2); border-radius: 8px; }
+.scn .no b { font-size: 15px; color: var(--sub); }
+.scn .no span { color: var(--muted); }
+/* examples/：演示页窄一点，检查页（五格并排）宽一点 */
+.c2.wide-r { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+@media (max-width: 640px) { .c2.wide-r { grid-template-columns: 1fr; } }

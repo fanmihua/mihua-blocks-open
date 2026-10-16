@@ -1,0 +1,87 @@
+/* 组件作用域的基础排版。所有取值来自规范生成的 --mh-* 变量。 */
+.mh-root {
+  font-family: var(--mh-font-sans);
+  font-size: var(--mh-type-body);
+  /* 一行的高度取控件规格里的整数像素（14px 字 → 22px）：带小数的行高会让每个组件库各自取整 */
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-text-body);
+  -webkit-font-smoothing: antialiased;
+}
+.mh-root :where(*, *::before, *::after) {
+  box-sizing: border-box;
+}
+.mh-portal {
+  position: relative;
+  z-index: 1000;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mh-root :where(*) {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+  }
+}
+
+/* 语义图标：React 和 Vue 的 Icon 都画成 .mh-icon；加载图标一直旋转 */
+.mh-icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+}
+.mh-icon--spin {
+  animation: mh-icon-spin 0.9s linear infinite;
+}
+@keyframes mh-icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mh-icon--spin {
+    animation-duration: 2.4s;
+  }
+}
+
+/*
+ * 密码显隐按钮：接上规范时四个套件都用这一个（组件库自带的有的不能用键盘聚焦，有的要输入后才出现）。
+ * 图标来自规范的图标集，大小和颜色取控件规格。
+ */
+.mh-eye {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: calc(var(--mh-c-icon-size) + 8px);
+  height: calc(var(--mh-c-icon-size) + 8px);
+  /* 点击区域比图标大一圈，但不占布局：不把输入框撑高，图标仍贴着控件规格的内边距 */
+  margin: -4px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: var(--mh-c-icon-color);
+  /* 组件库自带的图标按 1em 画，跟着这里的字号走 */
+  font-size: var(--mh-c-icon-size);
+  cursor: pointer;
+}
+.mh-eye:hover {
+  color: var(--mh-text-strong);
+}
+.mh-eye:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--mh-c-focus-ring-color);
+}
+.mh-eye .mh-icon {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+
+/* 套件里的下拉箭头和按钮加载图标：大小、颜色取控件规格 */
+.mh-select-arrow,
+.mh-btn-spinner {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-select-arrow {
+  /* 块级：不落在文字基线上，由外层的居中规则决定位置 */
+  display: block;
+  color: var(--mh-c-icon-color);
+}

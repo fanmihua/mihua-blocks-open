@@ -1,0 +1,1095 @@
+/*
+ * Element Plus 的样式表会在 :root 上声明变量、并带有少量全局规则。
+ * 放进单独的 cascade layer，宿主页面自己的样式优先。
+ */
+@import 'element-plus/dist/index.css' layer(element);
+
+/* 以下只是布局分配，不改变 Element 的外观：
+ * 1. 登录方式切换只需要标签栏，不需要内容区和它下方的留白；
+ * 2. 纵向排列的整行按钮不需要 Element 给「相邻按钮」加的左边距。 */
+.mh-kit-element-tabs .el-tabs__content {
+  display: none;
+}
+.mh-kit-element-tabs .el-tabs__header {
+  margin: 0;
+}
+.mh-kit-element .el-button + .el-button {
+  margin-left: 0;
+}
+
+/* 按钮里的图标框按图标实际大小撑开（Element 的图标框固定 1em，放 20px 的品牌图标会溢出） */
+.mh-kit-element .el-button .el-icon {
+  width: auto;
+  height: auto;
+}
+
+/*
+ * 接上规范时（--aligned），把 Element 的控件对齐到统一设计（控件规格见 @mihua/spec 的 controls.ts）。
+ * 所有取值都读 --mh-c-* 变量，这里只决定「Element 的哪一处对应控件规格的哪一项」。
+ * Element 的尺寸大多写在组件自己声明的 CSS 变量或固定值里，外层变量够不着，所以逐项写在组件上。
+ * 原生模式没有 --aligned，以下规则都不生效。
+ */
+
+/* 复选框：Element 默认 14px 方块、整行 32px 高、勾选后文字加粗变主色 */
+.mh-kit-element--aligned .el-checkbox {
+  --el-checkbox-height: var(--mh-c-text-line);
+  --el-checkbox-input-width: var(--mh-c-checkbox-size);
+  --el-checkbox-input-height: var(--mh-c-checkbox-size);
+  --el-checkbox-border-radius: var(--mh-c-checkbox-radius);
+  --el-checkbox-input-border: 1px solid var(--mh-c-checkbox-border);
+  --el-checkbox-checked-bg-color: var(--mh-c-checkbox-checked);
+  --el-checkbox-checked-input-border-color: var(--mh-c-checkbox-checked);
+  --el-checkbox-checked-icon-color: var(--mh-c-checkbox-mark);
+  --el-checkbox-font-weight: 400;
+  --el-checkbox-checked-text-color: var(--mh-text-body);
+  margin-right: 0;
+}
+.mh-kit-element--aligned .el-checkbox__label {
+  padding-left: var(--mh-c-checkbox-gap);
+  line-height: var(--mh-c-text-line);
+}
+/* 对勾：Element 用旋转的 1px 边框画，换成规范图标集里的对勾（同一份图形生成的 CSS 遮罩）。
+   --icons：规范选了一套图标（icon.set 不是 native）时才换 */
+.mh-kit-element--icons .el-checkbox__inner::after {
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  border: 0;
+  background-color: var(--mh-c-checkbox-mark);
+  -webkit-mask: var(--mh-icon-check) center / contain no-repeat;
+  mask: var(--mh-icon-check) center / contain no-repeat;
+  transform: translate(-50%, -50%) scale(0);
+}
+.mh-kit-element--icons .el-checkbox__input.is-checked .el-checkbox__inner::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 标签栏：高度、间距、2px 指示条、1px 分隔线、未选中与选中的颜色和字重 */
+.mh-kit-element--aligned .mh-kit-element-tabs {
+  --el-tabs-header-height: var(--mh-c-tabs-height);
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__nav-wrap {
+  margin-bottom: 0;
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__nav-wrap::after {
+  height: 1px;
+  background-color: var(--mh-c-tabs-divider);
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__active-bar {
+  height: var(--mh-c-tabs-indicator);
+  background-color: var(--mh-c-tabs-active-color);
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__item {
+  padding: 0 calc(var(--mh-c-tabs-gap) / 2);
+  line-height: var(--mh-c-text-line);
+  font-size: var(--mh-c-text-size);
+  font-weight: var(--mh-c-tabs-weight);
+  color: var(--mh-c-tabs-color);
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__item:nth-child(2) {
+  padding-left: 0;
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__item:last-child {
+  padding-right: 0;
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__item:hover {
+  color: var(--mh-c-tabs-hover-color);
+}
+.mh-kit-element--aligned .mh-kit-element-tabs .el-tabs__item.is-active {
+  font-weight: var(--mh-c-tabs-active-weight);
+  color: var(--mh-c-tabs-active-color);
+}
+
+/*
+ * 尺寸和字号：Element 的大号按钮自己声明 --el-button-size: 40px，大号选择框写死 40px 最小高度，
+ * 大号输入框和复选框写死 14px 字——都不跟 --el-component-size-large / --el-font-size-base 走。
+ */
+.mh-kit-element--aligned .el-button {
+  --el-button-size: var(--mh-size-control);
+  /* 默认按钮的高度 Element 写死 32px（只有大号、小号读 --el-button-size），这里让它也读变量 */
+  height: var(--el-button-size);
+  /* 文字离外边框：Element 默认 15px、大号 19px 内边距（不含 1px 边框），统一成控件规格的两档 */
+  padding-inline: calc(var(--mh-c-button-inset) - 1px);
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .el-button--large {
+  --el-button-size: var(--mh-size-control-large);
+  padding-inline: calc(var(--mh-c-button-inset-large) - 1px);
+}
+.mh-kit-element--aligned .el-select__wrapper {
+  min-height: var(--mh-size-control);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-element--aligned .el-select--large .el-select__wrapper {
+  min-height: var(--mh-size-control-large);
+}
+.mh-kit-element--aligned .el-input,
+.mh-kit-element--aligned .el-input--large {
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .el-checkbox {
+  --el-checkbox-font-size: var(--mh-c-text-size);
+}
+
+/* 输入框、选择框：Element 用 1px 内阴影画边框（没有真边框），所以文字缩进直接等于 inset */
+.mh-kit-element--aligned .el-input,
+.mh-kit-element--aligned .el-select {
+  --el-input-border-color: var(--mh-c-field-border);
+  --el-input-bg-color: var(--mh-c-field-background);
+  --el-input-focus-border-color: var(--mh-c-field-border-focus);
+  --el-select-input-focus-border-color: var(--mh-c-field-border-focus);
+}
+.mh-kit-element--aligned .el-input__wrapper,
+.mh-kit-element--aligned .el-select__wrapper {
+  padding-left: var(--mh-c-field-inset);
+  padding-right: var(--mh-c-field-inset);
+}
+.mh-kit-element--aligned .el-input__wrapper.is-focus,
+.mh-kit-element--aligned .el-select__wrapper.is-focused {
+  box-shadow:
+    0 0 0 1px var(--el-input-focus-border-color) inset,
+    0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 展开下拉时，已选的值保持正文色（Element 会把它变成占位色） */
+.mh-kit-element--aligned .el-select__placeholder.is-transparent {
+  color: var(--mh-text-body);
+}
+
+/* 按钮：字重；图标和文字的间距（Element 是 6px）；次要按钮白底描边，悬停浅灰（Element 会变成主色浅底） */
+.mh-kit-element--aligned .el-button {
+  font-weight: var(--mh-c-button-weight);
+}
+.mh-kit-element--aligned .el-button [class*='el-icon'] + span {
+  margin-left: var(--mh-c-button-icon-gap);
+}
+.mh-kit-element--aligned .el-button:not(.el-button--primary, .is-link, .is-text) {
+  --el-button-bg-color: var(--mh-c-button-secondary-background);
+  --el-button-border-color: var(--mh-c-button-secondary-border);
+  --el-button-text-color: var(--mh-c-button-secondary-color);
+  --el-button-hover-bg-color: var(--mh-c-button-secondary-hover-background);
+  --el-button-hover-border-color: var(--mh-c-button-secondary-border);
+  --el-button-hover-text-color: var(--mh-c-button-secondary-hover-color);
+  --el-button-active-bg-color: var(--mh-c-button-secondary-hover-background);
+  --el-button-active-border-color: var(--mh-c-button-secondary-border);
+  --el-button-active-text-color: var(--mh-c-button-secondary-hover-color);
+}
+
+/* 文字链接：只占一行文字高（Element 默认 2px 内边距、1px 边框、middle 对齐，会把行撑高）；
+ * 颜色是链接色（Element 的链接按钮用主色） */
+.mh-kit-element--aligned .el-button.is-link {
+  --el-button-text-color: var(--mh-c-link-color);
+  --el-button-hover-link-text-color: var(--mh-c-link-hover-color);
+  --el-button-active-color: var(--mh-c-link-hover-color);
+  height: auto;
+  padding: 0;
+  border-width: 0;
+  font-weight: var(--mh-c-link-weight);
+  line-height: var(--mh-c-text-line);
+  vertical-align: top;
+}
+
+/* 下拉：圆角、描边、阴影；选项高度、内边距；选中浅底加粗，悬停浅灰 */
+.mh-kit-element--aligned .el-select__popper.el-popper {
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-element--aligned .el-select-dropdown__list {
+  padding: var(--mh-c-popup-padding);
+}
+.mh-kit-element--aligned .el-select-dropdown__item {
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  font-weight: 400;
+  line-height: var(--mh-c-popup-option-height);
+  color: var(--mh-c-popup-option-color);
+}
+.mh-kit-element--aligned .el-select-dropdown__item.is-hovering {
+  background-color: var(--mh-c-popup-hover-background);
+}
+.mh-kit-element--aligned .el-select-dropdown__item.is-selected {
+  background-color: var(--mh-c-popup-selected-background);
+  font-weight: var(--mh-c-popup-selected-weight);
+  color: var(--mh-c-popup-selected-color);
+}
+
+/*
+ * 图标和加载：下拉箭头、加载图标由套件传入规范图标集里的那一个（见 index.ts）。
+ * Element 的图标框固定 1em，按图标实际大小撑开；加载时 Element 会转动图标框、再盖一层白色遮罩，
+ * 统一成图标自己转、整个按钮按控件规格降低不透明度。
+ */
+.mh-kit-element--aligned .el-select__suffix .el-icon {
+  width: auto;
+  height: auto;
+}
+.mh-kit-element--aligned .el-button.is-loading {
+  opacity: var(--mh-c-button-loading-opacity);
+  cursor: default;
+}
+.mh-kit-element--aligned .el-button.is-loading::before {
+  display: none;
+}
+.mh-kit-element--icons .el-button .el-icon.is-loading {
+  animation: none;
+}
+
+/*
+ * 开关：Element 写死 40×20、圆点 16（离边 1px，另有一圈和底色同色的 1px 边框），
+ * 外面一层写死 32px 高；颜色走 --el-switch-on-color / --el-switch-off-color；
+ * 禁用 0.6 不透明度；键盘聚焦是 2px 的主色轮廓线。
+ */
+.mh-kit-element--aligned .el-switch {
+  --el-switch-on-color: var(--mh-c-switch-on-background);
+  --el-switch-off-color: var(--mh-c-switch-off-background);
+  height: auto;
+}
+.mh-kit-element--aligned .el-switch__core {
+  min-width: var(--mh-c-switch-width);
+  height: var(--mh-c-switch-height);
+  border: 0;
+  border-radius: calc(var(--mh-c-switch-height) / 2);
+}
+.mh-kit-element--aligned .el-switch__core .el-switch__action {
+  left: var(--mh-c-switch-thumb-inset);
+  width: var(--mh-c-switch-thumb);
+  height: var(--mh-c-switch-thumb);
+  background-color: var(--mh-c-switch-thumb-color);
+  box-shadow: var(--mh-c-switch-thumb-shadow);
+}
+.mh-kit-element--aligned .el-switch.is-checked .el-switch__core .el-switch__action {
+  left: calc(100% - var(--mh-c-switch-thumb) - var(--mh-c-switch-thumb-inset));
+}
+.mh-kit-element--aligned .el-switch.is-disabled {
+  opacity: var(--mh-c-switch-disabled-opacity);
+}
+.mh-kit-element--aligned .el-switch__input:focus-visible ~ .el-switch__core {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 导航菜单（ElMenu，竖向）。侧栏收起后，菜单项的名字只在视觉上藏起来、读屏读得到
+ * （Element 用 visibility: hidden 藏，读屏也读不到；原生那一档保留它的做法）。
+ */
+.mh-kit-element--aligned .el-menu--collapse .mh-el-nav-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  visibility: visible;
+}
+
+/*
+ * 对齐：Element 默认每项 56px 高、占满侧栏整宽、直角，一级项左边 20px、子菜单再缩进 20px，
+ * 图标 18px 占 24px 宽，选中只把字变成主色；菜单自己带底色和右边 1px 的线；收起后 64px 宽。
+ * 统一成控件规格：四周留白、36px 圆角的项、上下隔 2px，选中浅底深色字。分隔线归页面布局。
+ */
+.mh-kit-element--aligned .mh-el-nav,
+.mh-kit-element--aligned .mh-el-nav .el-menu--inline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mh-c-nav-item-gap);
+  border: 0;
+  background: none;
+}
+.mh-kit-element--aligned .mh-el-nav {
+  width: auto;
+  padding: var(--mh-c-nav-padding);
+}
+.mh-kit-element--aligned .mh-el-nav .el-sub-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mh-c-nav-item-gap);
+}
+.mh-kit-element--aligned .mh-el-nav :is(.el-menu-item, .el-sub-menu__title) {
+  gap: var(--mh-c-nav-icon-gap);
+  height: var(--mh-c-nav-item-height);
+  padding: 0 var(--mh-c-nav-arrow-inset) 0 var(--mh-c-nav-item-inset);
+  border-radius: var(--mh-c-nav-radius);
+  font-size: var(--mh-c-text-size);
+  font-weight: var(--mh-c-nav-weight);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-nav-color);
+}
+.mh-kit-element--aligned .mh-el-nav .el-menu--inline .el-menu-item {
+  padding-left: var(--mh-c-nav-sub-inset);
+}
+.mh-kit-element--aligned .mh-el-nav .mh-el-nav-icon {
+  width: var(--mh-c-nav-icon-size);
+  height: var(--mh-c-nav-icon-size);
+  margin: 0;
+  font-size: var(--mh-c-nav-icon-size);
+  color: var(--mh-c-nav-icon-color);
+}
+/* 展开箭头：规范图标集的 chevron-down，离右边 arrowInset，展开时朝上 */
+.mh-kit-element--aligned .mh-el-nav .el-sub-menu__icon-arrow {
+  position: static;
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  margin: 0 0 0 auto;
+  font-size: var(--mh-c-icon-size);
+  color: var(--mh-c-icon-color);
+}
+.mh-kit-element--aligned .mh-el-nav-arrow {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  transition: transform var(--mh-motion-duration);
+}
+.mh-kit-element--aligned .el-sub-menu.is-opened > .el-sub-menu__title .mh-el-nav-arrow {
+  transform: rotate(180deg);
+}
+
+/* 悬停：浅灰底、深色字，图标颜色不变 */
+.mh-kit-element--aligned .mh-el-nav :is(.el-menu-item, .el-sub-menu__title):hover {
+  background-color: var(--mh-c-nav-hover-background);
+  color: var(--mh-c-nav-hover-color);
+}
+/* 选中的项：浅底、选中色、字重 500，悬停不变 */
+.mh-kit-element--aligned .mh-el-nav .el-menu-item.is-active,
+.mh-kit-element--aligned .mh-el-nav .el-menu-item.is-active:hover {
+  background-color: var(--mh-c-nav-selected-background);
+  font-weight: var(--mh-c-nav-selected-weight);
+  color: var(--mh-c-nav-selected-color);
+}
+.mh-kit-element--aligned .mh-el-nav .el-menu-item.is-active .mh-el-nav-icon {
+  color: var(--mh-c-nav-selected-color);
+}
+/* 子菜单里有选中的项：标题的字和图标是 parentSelectedColor，不加底色 */
+.mh-kit-element--aligned .mh-el-nav .el-sub-menu.is-active > .el-sub-menu__title,
+.mh-kit-element--aligned .mh-el-nav .el-sub-menu.is-active > .el-sub-menu__title .mh-el-nav-icon {
+  color: var(--mh-c-nav-parent-selected-color);
+}
+.mh-kit-element--aligned .mh-el-nav .el-sub-menu.is-active > .el-sub-menu__title:hover {
+  color: var(--mh-c-nav-hover-color);
+}
+/* 键盘聚焦：外面一圈 3px */
+.mh-kit-element--aligned .mh-el-nav :is(.el-menu-item, .el-sub-menu__title):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/* 收起：每项只剩图标，水平居中；有选中子项的子菜单画成选中的样子 */
+.mh-kit-element--aligned .mh-el-nav.el-menu--collapse :is(.el-menu-item, .el-sub-menu__title) {
+  justify-content: center;
+  padding: 0;
+}
+.mh-kit-element--aligned .mh-el-nav.el-menu--collapse .el-sub-menu.is-active > .el-sub-menu__title,
+.mh-kit-element--aligned
+  .mh-el-nav.el-menu--collapse
+  .el-sub-menu.is-active
+  > .el-sub-menu__title:hover {
+  background-color: var(--mh-c-nav-selected-background);
+  font-weight: var(--mh-c-nav-selected-weight);
+  color: var(--mh-c-nav-selected-color);
+}
+.mh-kit-element--aligned
+  .mh-el-nav.el-menu--collapse
+  .el-sub-menu.is-active
+  > .el-sub-menu__title
+  .mh-el-nav-icon {
+  color: var(--mh-c-nav-selected-color);
+}
+
+/* 收起后悬停弹出的子菜单：外框和选项取下拉（popup）一组 */
+.mh-kit-element--aligned .el-popper.mh-el-nav-flyout {
+  box-sizing: border-box;
+  min-width: var(--mh-c-nav-popup-min-width);
+  padding: var(--mh-c-popup-padding);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-element--aligned .mh-el-nav-flyout .el-menu--popup {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.mh-kit-element--aligned .mh-el-nav-flyout .el-menu-item {
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  font-weight: 400;
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-popup-option-color);
+}
+.mh-kit-element--aligned .mh-el-nav-flyout .el-menu-item:is(:hover, :focus-visible) {
+  outline: none;
+  background-color: var(--mh-c-popup-hover-background);
+}
+.mh-kit-element--aligned .mh-el-nav-flyout .el-menu-item.is-active {
+  background-color: var(--mh-c-popup-selected-background);
+  font-weight: var(--mh-c-popup-selected-weight);
+  color: var(--mh-c-popup-selected-color);
+}
+
+/*
+ * 收起后的文字提示（套件自己渲染的 ElTooltip，effect=dark；位置、没有小箭头由属性给，见 index.ts）。
+ * Element 的深色提示：标题色底、白字、同色 1px 描边，左右 11 上下 5，圆角 4，12/20。
+ * 统一成控件规格的 tooltip 一组：没有描边、没有阴影。
+ */
+.mh-kit-element--aligned .el-popper.mh-el-nav-tooltip {
+  padding: var(--mh-c-tooltip-inset-y) var(--mh-c-tooltip-inset-x);
+  border: 0;
+  border-radius: var(--mh-c-tooltip-radius);
+  background: var(--mh-c-tooltip-background);
+  box-shadow: none;
+  font-size: var(--mh-c-tooltip-font-size);
+  font-weight: 400;
+  line-height: var(--mh-c-tooltip-line);
+  color: var(--mh-c-tooltip-color);
+}
+
+/*
+ * 面包屑：Element 整行 14px、行高 1，能点的上级加粗（700）用标题色，悬停变主色；
+ * 分隔符左右 9px、加粗、占位色。统一成一行文字高、上级次要灰、当前页强调色、分隔符左右 8px。
+ */
+.mh-kit-element--aligned .el-breadcrumb {
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-element--aligned .el-breadcrumb__inner,
+.mh-kit-element--aligned .el-breadcrumb__inner a {
+  font-weight: 400;
+  color: var(--mh-c-breadcrumb-color);
+}
+.mh-kit-element--aligned .el-breadcrumb__inner a {
+  /* 链接的框是一行文字高（聚焦外圈跟着它画），不是字形的高度 */
+  display: inline-block;
+  border-radius: var(--mh-c-breadcrumb-radius);
+  outline: none;
+}
+.mh-kit-element--aligned .el-breadcrumb__inner a:hover {
+  color: var(--mh-c-breadcrumb-hover-color);
+}
+.mh-kit-element--aligned .el-breadcrumb__inner a:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-element--aligned .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+  font-weight: var(--mh-c-breadcrumb-current-weight);
+  color: var(--mh-c-breadcrumb-current-color);
+}
+.mh-kit-element--aligned .el-breadcrumb__separator {
+  margin: 0 var(--mh-c-breadcrumb-separator-gap);
+  font-weight: 400;
+  color: var(--mh-c-breadcrumb-separator-color);
+}
+
+/*
+ * 下拉菜单（用户菜单）：Element 的弹层 4px 圆角、自己的阴影、宽度随内容；项上下 5 左右 16px，
+ * 图标和文字隔 5px，悬停变主色浅底主色字；分隔线上下 6px、只在项之间。
+ */
+/* Element 包在触发按钮外面的 .el-dropdown 自带行高 1、字号和颜色，触发按钮是页面画的，不跟着它变 */
+.mh-kit-element--aligned .el-dropdown {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.mh-kit-element--aligned .el-dropdown__popper.el-popper {
+  box-sizing: border-box;
+  min-width: var(--mh-c-dropdown-min-width);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  background: var(--mh-c-field-background);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-element--aligned .el-dropdown__popper .el-dropdown-menu {
+  padding: var(--mh-c-popup-padding);
+  border-radius: 0;
+  background: none;
+}
+.mh-kit-element--aligned .el-dropdown-menu__item {
+  gap: var(--mh-c-dropdown-icon-gap);
+  height: var(--mh-c-popup-option-height);
+  padding: 0 var(--mh-c-popup-option-inset);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-dropdown-color);
+}
+.mh-kit-element--aligned .el-dropdown-menu__item .el-icon {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  margin: 0;
+  font-size: var(--mh-c-icon-size);
+  color: var(--mh-c-dropdown-icon-color);
+}
+.mh-kit-element--aligned .el-dropdown-menu__item:not(.is-disabled):is(:hover, :focus) {
+  background-color: var(--mh-c-popup-hover-background);
+  color: var(--mh-c-dropdown-color);
+}
+.mh-kit-element--aligned .el-dropdown-menu__item.mh-el-dropdown-danger,
+.mh-kit-element--aligned .el-dropdown-menu__item.mh-el-dropdown-danger:is(:hover, :focus),
+.mh-kit-element--aligned .el-dropdown-menu__item.mh-el-dropdown-danger .el-icon {
+  color: var(--mh-c-dropdown-danger-color);
+}
+/* 分隔线：横跨整个内宽（盖住左右内边距），上下各隔 popup.padding */
+.mh-kit-element--aligned .el-dropdown-menu__item--divided {
+  height: 1px;
+  margin: var(--mh-c-popup-padding) calc(-1 * var(--mh-c-popup-padding));
+  border: 0;
+  background-color: var(--mh-c-dropdown-divider);
+}
+
+/* 头像：Element 默认 40px、灰底（禁用文字色）白字 14px；直径由套件用 size 属性给 */
+.mh-kit-element--aligned .el-avatar {
+  --el-avatar-bg-color: var(--mh-c-avatar-background);
+  --el-avatar-text-color: var(--mh-c-avatar-color);
+  --el-avatar-text-size: var(--mh-c-avatar-font-size);
+  font-weight: var(--mh-c-avatar-weight);
+}
+
+/*
+ * 徽标：Element 18px 高、左右 6px、圆角 10px、外加 1px 白边，右上角往里收 9px（不是中心对准角）。
+ * 统一成 16px 高的胶囊、没有边，中心对准被标注的东西的右上角；外层贴着被标注的东西（不按一行文字撑高）。
+ */
+.mh-kit-element--aligned .el-badge {
+  --el-badge-size: var(--mh-c-badge-height);
+  --el-badge-padding: var(--mh-c-badge-inset);
+  --el-badge-radius: calc(var(--mh-c-badge-height) / 2);
+  --el-badge-font-size: var(--mh-c-badge-font-size);
+  --el-badge-bg-color: var(--mh-c-badge-background);
+  display: inline-flex;
+}
+.mh-kit-element--aligned .el-badge__content {
+  box-sizing: border-box;
+  min-width: var(--mh-c-badge-min-width);
+  border: 0;
+  font-weight: var(--mh-c-badge-weight);
+  line-height: var(--mh-c-badge-height);
+  color: var(--mh-c-badge-color);
+}
+.mh-kit-element--aligned .el-badge__content.is-fixed {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+/*
+ * 表格（Table）。颜色交给 Element 声明在 .el-table 上的组件变量；高度、留白、表头字号字重、
+ * 最后一行下面的线、勾选列、排序按钮、加载中、没有行时的格子 Element 写死在规则里，逐项改。
+ * Element 默认：格子上下 8、左右 12、行高 23（行 40 高），表头 600 字重，勾选的行不换底色，
+ * 表格最下面另画一条 1px 的线（.el-table__inner-wrapper::before）。
+ */
+.mh-kit-element--aligned .el-table {
+  --el-table-border-color: var(--mh-c-table-divider);
+  --el-table-text-color: var(--mh-c-table-color);
+  --el-table-header-text-color: var(--mh-c-table-head-color);
+  --el-table-header-bg-color: var(--mh-c-table-head-background);
+  --el-table-row-hover-bg-color: var(--mh-c-table-hover-background);
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .el-table .el-table__cell {
+  height: var(--mh-c-table-row-height);
+  padding: 0;
+}
+.mh-kit-element--aligned .el-table .cell {
+  padding: 0 var(--mh-c-table-cell-inset);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-element--aligned .el-table thead th.el-table__cell {
+  height: var(--mh-c-table-head-height);
+  font-size: var(--mh-c-table-head-size);
+  font-weight: var(--mh-c-table-head-weight);
+}
+.mh-kit-element--aligned .el-table__body tr:last-child > td.el-table__cell {
+  border-bottom: 0;
+}
+.mh-kit-element--aligned .el-table__inner-wrapper::before {
+  content: none;
+}
+.mh-kit-element--aligned .el-table__body tr.mh-el-row-selected > td.el-table__cell {
+  background-color: var(--mh-c-table-selected-background);
+}
+/* 勾选列：复选框在格子正中（Element 的格子 inline-flex、23px 高，左右还有 12 的留白） */
+.mh-kit-element--aligned .el-table .el-table-column--selection > .cell {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  padding: 0;
+}
+/* 排序按钮（对齐时表头里是套件自己的按钮，不用 Element 的两个小三角） */
+.mh-kit-element--aligned .mh-el-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mh-c-table-sort-gap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-c-table-sort-radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+.mh-kit-element--aligned .mh-el-table-sort:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-element--aligned .mh-el-table-sort > :is(svg, .el-icon) {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  font-size: var(--mh-c-icon-size);
+  color: var(--mh-c-table-sort-color);
+}
+.mh-kit-element--aligned .mh-el-table-sort > svg[data-sorted] {
+  color: var(--mh-c-table-sort-active-color);
+}
+/* 加载中：表格变浅（不盖白色遮罩），图标集的加载图标在表格正中 */
+.mh-kit-element--aligned .mh-el-table {
+  position: relative;
+}
+.mh-kit-element--aligned .mh-el-table--loading .el-table {
+  opacity: var(--mh-c-table-loading-opacity);
+}
+.mh-kit-element--aligned .mh-el-table-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.mh-kit-element--aligned .mh-el-table-loading > svg {
+  width: var(--mh-c-table-loading-icon);
+  height: var(--mh-c-table-loading-icon);
+  color: var(--mh-c-table-loading-color);
+}
+/* 没有行：Element 把空状态画在表格下面的一个框里（至少 60 高、文字只占一半宽、次要灰）；内容由页面给 */
+.mh-kit-element--aligned .el-table__empty-block {
+  min-height: 0;
+}
+.mh-kit-element--aligned .el-table__empty-text {
+  width: 100%;
+  line-height: inherit;
+  color: inherit;
+}
+
+/*
+ * 表头的复选框：部分选中是主色底加白色短横（Element 是主色底加 CSS 画的白条，换成图标集的 minus）；
+ * 没有行时禁用，底色取控件规格。
+ */
+.mh-kit-element--aligned .el-checkbox {
+  --el-checkbox-disabled-input-fill: var(--mh-c-checkbox-disabled-background);
+}
+.mh-kit-element--icons .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  background-color: var(--mh-c-checkbox-mark);
+  -webkit-mask: var(--mh-icon-minus) center / contain no-repeat;
+  mask: var(--mh-icon-minus) center / contain no-repeat;
+  transform: translate(-50%, -50%);
+}
+/* 复选框的键盘聚焦：Element 是 2px 的主色轮廓线，统一成控件规格的外圈（登录框的复选框也一样） */
+.mh-kit-element--aligned .el-checkbox__original:focus-visible + .el-checkbox__inner {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 分页（Pagination）：Element 的方块 32、相邻两项之间没有间隔、圆角 2；当前页主色字 700、没有描边，
+ * 悬停变主色字；「共 N 条」正文色、离上一页 16。
+ */
+.mh-kit-element--aligned .el-pagination {
+  --el-pagination-font-size: var(--mh-c-text-size);
+  --el-pagination-button-width: var(--mh-c-pagination-item-size);
+  --el-pagination-button-height: var(--mh-c-pagination-item-size);
+  --el-pagination-border-radius: var(--mh-c-pagination-radius);
+  --el-pagination-button-color: var(--mh-c-pagination-color);
+  --el-pagination-button-disabled-color: var(--mh-c-pagination-disabled-color);
+  --el-pagination-button-disabled-bg-color: transparent;
+  --el-pagination-bg-color: transparent;
+  --el-pagination-hover-color: var(--mh-c-pagination-color);
+  gap: var(--mh-c-pagination-gap);
+}
+.mh-kit-element--aligned .el-pagination .el-pager {
+  gap: var(--mh-c-pagination-gap);
+}
+.mh-kit-element--aligned .el-pagination .btn-prev {
+  margin-left: calc(var(--mh-c-pagination-total-gap) - var(--mh-c-pagination-gap));
+}
+.mh-kit-element--aligned .el-pagination :is(.el-pager li, .btn-prev, .btn-next) {
+  padding: 0 var(--mh-c-pagination-item-inset);
+  border: 1px solid transparent;
+  outline: none;
+}
+.mh-kit-element--aligned
+  .el-pagination
+  :is(.el-pager li, .btn-prev, .btn-next):not(.is-active, :disabled):hover {
+  background-color: var(--mh-c-pagination-hover-background);
+}
+.mh-kit-element--aligned .el-pagination .el-pager li.is-active {
+  border-color: var(--mh-c-pagination-active-border);
+  background-color: var(--mh-c-pagination-active-background);
+  color: var(--mh-c-pagination-active-color);
+  font-weight: var(--mh-c-pagination-active-weight);
+}
+.mh-kit-element--aligned .el-pagination :is(.el-pager li, .btn-prev, .btn-next):focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 上一页、下一页的图标框：Element 写死 12px、display: block（里面的图标按基线排，往下偏 1.5px） */
+.mh-kit-element--aligned .el-pagination :is(.btn-prev, .btn-next) .el-icon {
+  display: inline-flex;
+  font-size: var(--mh-c-icon-size);
+}
+.mh-kit-element--aligned .el-pagination .el-pagination__total {
+  font-size: var(--mh-c-text-size);
+  color: var(--mh-c-pagination-total-color);
+}
+
+/* 标签（Tag）：Element 24 高、左右 9、1px 同色系描边、字重 400；颜色声明在 .el-tag 自己身上 */
+.mh-kit-element--aligned .el-tag {
+  --el-tag-font-size: var(--mh-c-tag-font-size);
+  --el-tag-border-radius: var(--mh-c-tag-radius);
+  --el-tag-bg-color: var(--mh-c-tag-background);
+  --el-tag-text-color: var(--mh-c-tag-color);
+  height: var(--mh-c-tag-height);
+  padding: 0 var(--mh-c-tag-inset);
+  border: 0;
+  font-weight: var(--mh-c-tag-weight);
+}
+.mh-kit-element--aligned .el-tag.el-tag--success {
+  --el-tag-bg-color: var(--mh-c-tag-success-background);
+  --el-tag-text-color: var(--mh-c-tag-success-color);
+}
+.mh-kit-element--aligned .el-tag.el-tag--warning {
+  --el-tag-bg-color: var(--mh-c-tag-warning-background);
+  --el-tag-text-color: var(--mh-c-tag-warning-color);
+}
+.mh-kit-element--aligned .el-tag.el-tag--danger {
+  --el-tag-bg-color: var(--mh-c-tag-danger-background);
+  --el-tag-text-color: var(--mh-c-tag-danger-color);
+}
+
+/*
+ * 日期范围（ElDatePicker type=daterange）。触发框是 .el-range-editor（也是 .el-input__wrapper，1px 内阴影画边框）：
+ * Element 默认 350 宽、左右 10、日历图标在左边、两个框里的字居中、分隔文字正文色，聚焦只有边框变色。
+ * 统一成和输入框一样：填满外层、左右 field.inset、字靠左、分隔文字左右 separatorGap、日历图标排到最右边。
+ */
+.mh-kit-element--aligned .mh-el-date-range {
+  width: 100%;
+}
+.mh-kit-element--aligned .el-range-editor.el-input__wrapper {
+  --el-input-border-color: var(--mh-c-field-border);
+  --el-input-bg-color: var(--mh-c-field-background);
+  --el-input-focus-border-color: var(--mh-c-field-border-focus);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 var(--mh-c-field-inset);
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .el-range-editor.el-input__wrapper.is-active {
+  box-shadow:
+    0 0 0 1px var(--el-input-focus-border-color) inset,
+    0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-element--aligned .el-range-editor .el-range-input {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  font-size: var(--mh-c-text-size);
+  text-align: left;
+  color: var(--mh-text-body);
+}
+.mh-kit-element--aligned .el-range-editor .el-range-input::placeholder {
+  color: var(--mh-text-placeholder);
+}
+.mh-kit-element--aligned .el-range-editor .el-range-separator {
+  flex: none;
+  padding: 0 var(--mh-c-date-range-separator-gap);
+  font-size: var(--mh-c-text-size);
+  color: var(--mh-c-date-range-separator-color);
+}
+.mh-kit-element--aligned .el-range-editor .el-range__icon {
+  order: 1;
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  margin: 0 0 0 var(--mh-c-date-range-icon-gap);
+  font-size: var(--mh-c-icon-size);
+  color: var(--mh-c-icon-color);
+}
+
+/*
+ * 日期面板（.mh-el-date-popup）。Element：离触发框 12、带小箭头、居中；每个月左右上下 16 的留白、中间一条竖线；
+ * 标题 28 高（年份、月份两个能点的按钮，加按年翻的双箭头）；星期下面一条线；日子是 32×30 的格子里一个 24 的圆，
+ * 范围的浅底画在格子里（开始、结束那天缩进 5px 带半圆角），今天是主色粗体字。
+ * 统一成：外框取 popup 一组、留白 12、两个月隔 24、标题 32、星期 32、日子 32 的方块紧挨着（浅底、主色底都画在方块上）。
+ */
+.mh-kit-element--aligned .mh-el-date-popup.el-popper {
+  border-color: var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-picker-panel {
+  border-radius: var(--mh-c-popup-radius);
+  line-height: normal;
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-range-picker {
+  width: auto;
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-picker-panel__body {
+  display: flex;
+  gap: var(--mh-c-date-panel-month-gap);
+  min-width: 0;
+  padding: var(--mh-c-date-panel-padding);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-picker-panel__body::after {
+  content: none;
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-range-picker__content {
+  display: block;
+  width: auto;
+  padding: 0;
+  border: 0;
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-range-picker__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--mh-c-date-panel-header-height);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-range-picker__header div {
+  margin: 0;
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-range-picker__header-label {
+  padding: 0;
+  font-size: var(--mh-c-text-size);
+  font-weight: var(--mh-c-date-panel-title-weight);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-date-panel-title-color);
+  cursor: default;
+  pointer-events: none;
+}
+.mh-kit-element--aligned
+  .mh-el-date-popup
+  :is(.el-picker-panel__icon-btn.d-arrow-left, .el-picker-panel__icon-btn.d-arrow-right) {
+  display: none;
+}
+.mh-kit-element--aligned
+  .mh-el-date-popup
+  :is(.el-picker-panel__icon-btn.arrow-left, .el-picker-panel__icon-btn.arrow-right) {
+  position: absolute;
+  top: calc((var(--mh-c-date-panel-header-height) - var(--mh-c-date-panel-nav-size)) / 2);
+  display: grid;
+  place-items: center;
+  width: var(--mh-c-date-panel-nav-size);
+  height: var(--mh-c-date-panel-nav-size);
+  margin: 0;
+  padding: 0;
+  border-radius: var(--mh-c-popup-option-radius);
+  color: var(--mh-c-icon-color);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-picker-panel__icon-btn.arrow-left {
+  left: 0;
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-picker-panel__icon-btn.arrow-right {
+  right: 0;
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-picker-panel__icon-btn:hover {
+  background: var(--mh-c-date-panel-hover-background);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-picker-panel__icon-btn svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table {
+  width: calc(var(--mh-c-date-panel-cell-size) * 7);
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table th {
+  width: var(--mh-c-date-panel-cell-size);
+  height: var(--mh-c-date-panel-week-height);
+  padding: 0;
+  border: 0;
+  font-size: var(--mh-c-date-panel-week-size);
+  line-height: var(--mh-c-date-panel-week-height);
+  color: var(--mh-c-date-panel-week-color);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table td {
+  width: var(--mh-c-date-panel-cell-size);
+  height: var(--mh-c-date-panel-cell-size);
+  padding: 0;
+  color: var(--mh-c-date-panel-color);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table td:is(.prev-month, .next-month) {
+  color: var(--mh-c-date-panel-outside-color);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table td .el-date-table-cell {
+  display: grid;
+  place-items: center;
+  height: var(--mh-c-date-panel-cell-size);
+  margin: 0;
+  padding: 0;
+  border-radius: var(--mh-c-date-panel-cell-radius);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table td .el-date-table-cell__text {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  font-weight: inherit;
+  line-height: var(--mh-c-text-line);
+  color: inherit;
+  transform: none;
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table td.today .el-date-table-cell {
+  border: 1px solid var(--mh-c-date-panel-today-border);
+}
+.mh-kit-element--aligned
+  .mh-el-date-popup
+  .el-date-table
+  td.available:not(.in-range, .start-date, .end-date):hover
+  .el-date-table-cell {
+  background: var(--mh-c-date-panel-hover-background);
+}
+.mh-kit-element--aligned .mh-el-date-popup .el-date-table td.in-range .el-date-table-cell {
+  border-radius: 0;
+  background: var(--mh-c-date-panel-range-background);
+}
+.mh-kit-element--aligned
+  .mh-el-date-popup
+  .el-date-table
+  td:is(.start-date, .end-date)
+  .el-date-table-cell {
+  border-radius: var(--mh-c-date-panel-cell-radius);
+  background: var(--mh-c-date-panel-selected-background);
+  color: var(--mh-c-date-panel-selected-color);
+}
+
+/*
+ * 对话框（ElDialog）：Element 宽 50%、离顶部 15vh、留白 16、圆角 4，标题 18px 400、行高 1.5，
+ * 关闭按钮是右上角 48 的方块（悬停变主色），标题和内容、内容和按钮之间各 16；遮罩 50% 的黑。
+ */
+.mh-kit-element--aligned .el-overlay {
+  background-color: var(--mh-c-dialog-mask);
+}
+.mh-kit-element--aligned .el-dialog {
+  --el-dialog-padding-primary: var(--mh-c-dialog-padding);
+  --el-dialog-border-radius: var(--mh-c-dialog-radius);
+  --el-dialog-bg-color: var(--mh-c-dialog-background);
+  --el-dialog-box-shadow: var(--mh-c-dialog-shadow);
+  --el-dialog-title-font-size: var(--mh-c-dialog-title-size);
+  --el-dialog-content-font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .el-dialog__header {
+  padding-bottom: var(--mh-c-dialog-header-gap);
+}
+.mh-kit-element--aligned .el-dialog__header.show-close {
+  padding-right: var(--mh-c-dialog-close-size);
+}
+.mh-kit-element--aligned .el-dialog__title {
+  display: block;
+  font-weight: var(--mh-c-dialog-title-weight);
+  line-height: var(--mh-c-dialog-title-line);
+  color: var(--mh-c-dialog-title-color);
+}
+.mh-kit-element--aligned .el-dialog__body {
+  color: var(--mh-text-body);
+}
+.mh-kit-element--aligned .el-dialog__footer {
+  padding-top: var(--mh-c-dialog-footer-gap);
+}
+.mh-kit-element--aligned .el-dialog__headerbtn {
+  top: var(--mh-c-dialog-close-inset);
+  right: var(--mh-c-dialog-close-inset);
+  display: grid;
+  place-items: center;
+  width: var(--mh-c-dialog-close-size);
+  height: var(--mh-c-dialog-close-size);
+  border-radius: var(--mh-c-popup-option-radius);
+  font-size: var(--mh-c-icon-size);
+}
+.mh-kit-element--aligned .el-dialog__headerbtn .el-dialog__close,
+.mh-kit-element--aligned .el-dialog__headerbtn:is(:hover, :focus) .el-dialog__close {
+  color: var(--mh-c-dialog-close-color);
+}
+.mh-kit-element--aligned .el-dialog__headerbtn:hover {
+  background: var(--mh-c-dialog-close-hover-background);
+}
+.mh-kit-element--aligned .el-dialog__headerbtn:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 单选（ElRadio）：Element 14 的圆、选中是主色底加 4 的白点，文字 500、选中变主色，一项 32 高、右边 30 的外边距。
+ * 统一成 16 的圆、6 的白点，文字正文色 400、一行文字高，圆和字隔 8、两项隔 24。
+ */
+.mh-kit-element--aligned .el-radio {
+  --el-radio-input-width: var(--mh-c-radio-size);
+  --el-radio-input-height: var(--mh-c-radio-size);
+  --el-radio-input-border: 1px solid var(--mh-c-radio-border);
+  --el-radio-input-bg-color: var(--mh-c-field-background);
+  --el-radio-font-size: var(--mh-c-text-size);
+  --el-radio-font-weight: 400;
+  --el-radio-text-color: var(--mh-text-body);
+  --el-radio-checked-text-color: var(--mh-text-body);
+  --el-radio-checked-input-border-color: var(--mh-c-radio-checked);
+  --el-radio-input-border-color-hover: var(--mh-c-radio-checked);
+  height: auto;
+  margin-right: var(--mh-c-radio-option-gap);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-element--aligned .el-radio:last-child {
+  margin-right: 0;
+}
+.mh-kit-element--aligned .el-radio__label,
+.mh-kit-element--aligned .el-radio__input.is-checked + .el-radio__label {
+  padding-left: var(--mh-c-radio-gap);
+  color: var(--mh-text-body);
+}
+.mh-kit-element--aligned .el-radio__input.is-checked .el-radio__inner {
+  border-color: var(--mh-c-radio-checked);
+  background: var(--mh-c-radio-checked);
+}
+.mh-kit-element--aligned .el-radio__inner::after {
+  width: var(--mh-c-radio-dot);
+  height: var(--mh-c-radio-dot);
+  background-color: var(--mh-c-radio-dot-color);
+}
+.mh-kit-element--aligned .el-radio__original:focus-visible + .el-radio__inner {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 多行输入（ElInput type=textarea）：Element 上下 5、左右 11、行高 1.5、默认 2 行，聚焦只有边框变色。
+ * 统一成：文字离上下边缘 textarea.insetBlock（Element 用内阴影画边框，留白就是这个数）、左右 field.inset、
+ * 行高取规范，聚焦加外圈；只能往下拖（Element 默认就是 vertical）。
+ */
+.mh-kit-element--aligned .el-textarea {
+  --el-input-border-color: var(--mh-c-field-border);
+  --el-input-bg-color: var(--mh-c-field-background);
+  --el-input-focus-border-color: var(--mh-c-field-border-focus);
+  font-size: var(--mh-c-text-size);
+}
+.mh-kit-element--aligned .el-textarea__inner {
+  padding: var(--mh-c-textarea-inset-block) var(--mh-c-field-inset);
+  line-height: var(--mh-c-text-line);
+  resize: vertical;
+}
+.mh-kit-element--aligned .el-textarea__inner::placeholder {
+  color: var(--mh-text-placeholder);
+}
+.mh-kit-element--aligned .el-textarea__inner:focus {
+  box-shadow:
+    0 0 0 1px var(--el-input-focus-border-color) inset,
+    0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}

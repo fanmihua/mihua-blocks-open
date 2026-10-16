@@ -1,0 +1,22 @@
+{
+  "name": "@mihua/audit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "自动检查：所有登记的组件库渲染同一个场景，按区域、按部件逐项量取对比。",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    "./page": "./page/harness.ts",
+    "./page/measure": "./page/measure.ts",
+    "./page/types": "./page/types.ts"
+  },
+  "bin": {
+    "mihua-audit": "./run.mjs"
+  },
+  "dependencies": {
+    "@mihua/spec": "*"
+  },
+  "devDependencies": {
+    "vite": "7.3.6"
+  }
+}

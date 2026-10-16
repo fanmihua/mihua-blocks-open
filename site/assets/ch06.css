@@ -1,0 +1,36 @@
+/* 第 06 篇自己的画面 */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; border-top: 1px solid var(--ink); }
+.steps li { display: grid; grid-template-columns: 64px 1fr; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.steps li b { font: 600 12.5px var(--mono); color: var(--muted); padding-top: 2px; }
+.steps li.f { grid-column: 1 / -1; display: block; border-bottom: 0; color: var(--faint); font-size: 12.5px; }
+@media (max-width: 640px) { .steps { grid-template-columns: 1fr; } }
+.prof { border-top: 1px solid var(--ink); }
+.prof .ph { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.prof .ph b { font-size: 16px; color: var(--ink); margin-right: 6px; }
+.prof .pr { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; line-height: 1.7; color: var(--sub); }
+.prof .pr i { font-style: normal; color: var(--muted); font-size: 13.5px; }
+@media (max-width: 640px) { .prof .pr { grid-template-columns: 1fr; gap: 2px; } }
+.recap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.recap a { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border: 1px solid var(--line2); border-radius: 12px; color: inherit; text-decoration: none; }
+.recap a:hover { border-color: var(--ink); }
+.recap a span { font: 600 13px var(--mono); color: var(--faint); }
+.recap a b { font-size: 15px; line-height: 1.5; color: var(--ink); }
+@media (max-width: 760px) { .recap { grid-template-columns: 1fr; } }
+
+/* 6.5 小图：两张卡片的小图、小标题、正文各占一行，左右对齐 */
+#s5 .card { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 10px; }
+.m65 { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; min-height: 104px; margin: -2px 0 12px; padding: 10px; border-radius: 8px; background: var(--soft2); font-size: 12px; }
+.m65 .doc { display: grid; gap: 4px; padding: 10px 14px; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px var(--line2); }
+.m65 .doc b { font: 600 12px var(--mono); color: var(--ink); }
+.m65 .doc .del { color: var(--faint); text-decoration: line-through; }
+.m65 .doc .add { color: var(--ink); }
+.m65 .doc .add::before { content: '+ '; font-family: var(--mono); color: var(--ok); }
+.m65 .doc em { justify-self: end; font: normal 600 11px var(--mono); padding: 1px 7px; border-radius: 4px; background: var(--ink); color: #fff; }
+.m65 .cp { display: grid; gap: 2px; padding: 8px 10px; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px var(--line2); }
+.m65 .cp span { font: 600 11.5px var(--mono); color: var(--ink); }
+.m65 .cp i { font-style: normal; color: var(--bad); }
+.m65 .cp.ok { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.m65 .cp.ok i { color: var(--ink); }
+.m65 .ar { color: var(--muted); font-size: 11.5px; }
+/* 6.9 小图 */
+svg.m9 { display: block; width: 100%; max-width: 220px; height: auto; margin: 0 auto 10px; }

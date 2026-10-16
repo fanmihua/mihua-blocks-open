@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>交给 AI：如何让生成结果符合适配要求 · Mihua Blocks 文字版</title>
+  <meta name="description" content="让 AI 接一个新组件库、加一个控件、或者用到自己的项目里，它凭什么能做对。">
+  <link rel="icon" href="assets/brand/icon.svg">
+  <link rel="stylesheet" href="assets/blog.css">
+  <link rel="stylesheet" href="assets/ch06.css">
+  <link rel="stylesheet" href="assets/ill.css">
+</head>
+<body>
+<header class="bar">
+  <button class="btn-toc" type="button" aria-label="打开目录"><i class="hb"></i>目录</button>
+  <a class="brand" href="index.html">Mihua Blocks<span>文字版</span></a>
+  <span class="sp"></span>
+  <img class="me" src="assets/brand/avatar.png" alt="范米花儿" title="范米花儿">
+  <i class="progress"></i>
+</header>
+<nav class="toc" id="toc" aria-label="本篇目录"></nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="kick"><span class="no">06</span></div>
+    <h1>交给 AI：如何让生成结果符合适配要求</h1>
+    <p class="lead">让 AI 接一个新组件库、或者用到自己的项目里，它凭什么能做对？</p>
+    <div class="series"></div>
+    <div class="series-l"></div>
+    <nav class="intoc" id="intoc"><b>这一篇</b><ol></ol></nav>
+  </header>
+
+  <!-- ═════════ 开头 ═════════ -->
+  <section class="sec" id="s0">
+    <div class="kick"><span class="no">开头</span><span>第五个组件库</span></div>
+    <h2>一个未参与开发的 AI，按照说明接入了第五个组件库</h2>
+    <p class="lead">接 TDesign 时，第一次检查是这样的：</p>
+    <figure class="fig">
+      <div class="nums">
+        <div><div class="big">123<small>/ 161 项</small></div><p>不一样</p></div>
+        <div><div class="big">2764<small>处</small></div><p>第一次检查</p></div>
+        <div><div class="big">0<small>处</small></div><p>改了 5 轮以后</p></div>
+      </div>
+    </figure>
+    <figure class="fig wide">
+      <div class="frame"><div class="fh"><span class="lab"><b>五个组件库</b>　登录框 · 对齐到控件规格</span><span class="live-tag">真组件，可以点</span></div>
+        <div class="live" data-live="scene=login&spec=mono&variant=centered&state=initial&mode=aligned" data-shot="assets/img/02-login-mono-native-antd.png" data-min="300"></div></div>
+      <figcaption>最右边的 TDesign，就是它照着说明接进来的。</figcaption>
+    </figure>
+    <p>这一篇讲最后一件事：交给 AI。</p>
+    <p class="src">开发记录（2026-10-11，接 TDesign）：2764 处 → 控件样张 22 处 → 0；登录框 60 处 → 0，一共 5 轮</p>
+  </section>
+
+  <!-- ═════════ 01 照什么做 ═════════ -->
+  <section class="part" id="p1">
+    <div class="kick"><span class="no">01</span><span>第一部分</span></div>
+    <h2>工作依据</h2>
+  </section>
+
+  <section class="sec" id="s1">
+    <div class="kick"><span class="no">6.1</span><span>写给 AI 的说明</span></div>
+    <h2>仓库根目录的 AI 说明文件</h2>
+    <p class="lead">AI 编程工具打开仓库，会先读它。里面一张表：要做的事，对着一份做法说明。</p>
+    <figure class="fig"><div class="ill" data-ill="manual"></div></figure>
+    <figure class="fig"><div class="code" data-code="agents-table"></div></figure>
+  </section>
+
+  <section class="sec locked" id="s2" hidden><div class="kick"><span class="no">6.2</span></div><h2>每份说明都写明步骤、修改的文件与完成标准</h2></section>
+
+  <section class="sec locked" id="s3" hidden><div class="kick"><span class="no">6.3</span></div><h2>接入新组件库的第一步：调研并建立档案</h2></section>
+
+  <!-- ═════════ 02 凭什么对 ═════════ -->
+  <section class="part locked" id="p2" hidden><div class="kick"><span class="no">02</span></div><h2>AI 能做对的原因</h2></section>
+
+  <section class="sec locked" id="s4" hidden><div class="kick"><span class="no">6.4</span></div><h2>AI 能做对依靠的三个条件</h2></section>
+
+  <section class="sec locked" id="s5" hidden><div class="kick"><span class="no">6.5</span></div><h2>AI 出错时，通过改进说明来修正</h2></section>
+
+  <!-- ═════════ 03 三种用法 ═════════ -->
+  <section class="part locked" id="p3" hidden><div class="kick"><span class="no">03</span></div><h2>三种使用方式</h2></section>
+
+  <section class="sec locked" id="s6" hidden><div class="kick"><span class="no">6.6</span></div><h2>可以直接交给 AI 的三条指令</h2></section>
+
+  <section class="sec locked" id="s7" hidden><div class="kick"><span class="no">6.7</span></div><h2>只借用方法前，先评估是否值得</h2></section>
+
+  <section class="sec locked" id="s8" hidden><div class="kick"><span class="no">6.8</span></div><h2>只借用方法时需要借用的三项内容</h2></section>
+
+  <!-- ═════════ 04 人做什么 ═════════ -->
+  <section class="part locked" id="p4" hidden><div class="kick"><span class="no">04</span></div><h2>人负责的工作</h2></section>
+
+  <section class="sec locked" id="s9" hidden><div class="kick"><span class="no">6.9</span></div><h2>需要人来完成的三件事</h2></section>
+
+  <section class="sec locked" id="s10" hidden><div class="kick"><span class="no">6.10</span></div><h2>系列回顾</h2></section>
+
+  <!-- ═════════ 结尾 ═════════ -->
+  <section class="sec teaser" aria-hidden="true" inert>
+    <div class="kick"><span class="no">6.2</span><span>每一步</span></div>
+    <h2>每份说明都写明步骤、修改的文件与完成标准</h2>
+    
+  </section>
+<!-- ═════════ 课程 ═════════ -->
+  <div class="paywall" id="course">
+    <a class="pw-cv" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener" aria-label="第 06 集完整视频"><span class="pw-ep">第 06 集 · 完整视频</span><i class="pw-lock"></i></a>
+    <h2>后面 9 节在课程里</h2>
+    <p>这一篇后面的 9 节和第 06 集完整视频，在「给设计师的零基础 AI 课」里。</p>
+    <p class="pw-more">完整版文字版还有每段代码的逐行解释和四个附录（组件库档案、适配记录、取舍记录、常用提示词），可以下载到本地看。</p>
+    <div class="buy">
+      <a class="btn" href="https://fanstudio.cn/zh/courses/ai-for-designers?from=learning" target="_blank" rel="noopener">官网购买</a>
+      <a class="btn ghost" href="https://xhslink.com/m/7qrmpq1Hzzh" target="_blank" rel="noopener">小红书店铺</a>
+      <button class="btn ghost wx" type="button" aria-expanded="false">微信小店</button>
+      <div class="wxq" hidden><img src="https://fanstudio.cn/images/courses/ai-course-wechat-shop.jpg" alt="微信小店商品码" loading="lazy"><span>微信扫码，进入课程商品页</span></div>
+    </div>
+  </div>
+
+  <section class="sec" id="end">
+    <div class="ask">
+      <div class="ah"><span>常用的就这四句</span><button class="btn ghost copy" data-copy="#ask06">复制</button></div>
+      <pre id="ask06">照 docs/接入一个新组件库.md，把 Naive UI 接进来。（换成你在用的组件库）
+照 docs/给套件加一个新控件.md，加一个抽屉。
+照 docs/只借方法.md，让我这个 antd 后台和 Design.md 对上。
+做完以后，把所有「待人决定」的取舍列给我。</pre>
+      <p class="small">前两句会改仓库里的文件，最后要跑完整检查。</p>
+    </div>
+    <div class="next"></div>
+  </section>
+
+  <footer class="foot">仓库 mihua-blocks-open</footer>
+</main>
+<script>window.MH_PUBLIC = {"part":["02-visual.html","02-size.html","02-icons.html","03-controls.html","03-nav.html","03-display.html","04-structure.html","05-audit.html","06-ai.html","a1-libraries.html","a2-adaptations.html","a3-tradeoffs.html","a4-prompts.html"]};</script>
+<script src="assets/data/code.js"></script>
+<script src="assets/data/kits.js"></script>
+<script src="assets/data/docs.js"></script>
+<script src="assets/panels.js"></script>
+<script src="assets/blog.js"></script>
+<script src="assets/ill.js"></script>
+<script src="assets/ch06.js"></script>
+</body>
+</html>

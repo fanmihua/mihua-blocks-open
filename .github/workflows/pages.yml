@@ -1,0 +1,37 @@
+# 把网页文字版（site/）发布到 GitHub Pages：main 上 site/ 有改动时自动跑，也能在 Actions 页面手动跑。
+# site/demo 是编好的演示页和检查页，一起发布；site/_tools 是给网页准备材料的脚本，不发布。
+name: 网页文字版
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # 只在公开仓库发布：完整版放在私有仓库，那边不发布
+    if: github.repository == 'fanmihua/mihua-blocks-open'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: 只放网页，不放 _tools
+        run: rsync -a --exclude '_tools' site/ _site/
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v5

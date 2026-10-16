@@ -1,0 +1,203 @@
+/*
+ * 后台页面框架的布局。React 与 Vue 共用这一份：页面布局归结构层（骨架），不归某个框架、也不归组件库。
+ * 这里只管「组件库不该管的东西」：顶栏、侧栏、内容区怎么排，间距多少，顶栏上的图标按钮和用户按钮。
+ * 导航菜单、面包屑、下拉菜单、头像、徽标、按钮由套件交给组件库画，这里一行都不碰。
+ * 不用组件库的 Layout / Grid：每个组件库的 Layout 默认尺寸、留白、底色都不一样（antd 顶栏 64px、
+ * 侧栏 200px，Element 侧栏 300px……），而页面怎么排是设计的决定，不该随组件库变。
+ *
+ * 取值：颜色、字号、圆角读规范（--mh-*）；结构尺寸（顶栏 56、侧栏 220 / 64、内容区留白）是这个页面的布局决定，
+ * 第一版按参照的后台（一个基于 Ant Design 的客户经营后台）定。
+ */
+.mh-admin {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--mh-surface-canvas);
+  color: var(--mh-text-body);
+}
+
+/* —— 顶栏 —— */
+.mh-admin__header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* 56 是内容的高度，下面 1px 分隔线另算（和侧栏一样）：32px 的按钮落在整像素（12px）上。
+     分隔线算进 56 的话按钮在 11.5px，挂在它下面的弹层各组件库取整方向不同（antd 向下取整，Radix 四舍五入） */
+  box-sizing: content-box;
+  height: 56px;
+  /* 左边 18px：Logo 的中心和收起后侧栏的中心对齐（18 + 28 / 2 = 64 / 2） */
+  padding: 0 16px 0 18px;
+  background: var(--mh-surface-base);
+  border-bottom: 1px solid var(--mh-border-default);
+}
+.mh-admin__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  min-width: 0;
+}
+.mh-admin__mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--mh-radius-control);
+  background: var(--mh-action-primary);
+  color: var(--mh-action-on-primary);
+  font-size: var(--mh-type-body);
+  font-weight: 600;
+  line-height: 1;
+}
+.mh-admin__name {
+  font-size: calc(var(--mh-type-body) + 1px);
+  font-weight: 600;
+  color: var(--mh-text-strong);
+  white-space: nowrap;
+}
+.mh-admin__tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 顶栏、侧栏底部的图标按钮（通知、收起侧栏）：页面框架自己的按钮，不是表单控件 */
+.mh-admin__icon-btn {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-radius-control);
+  background: none;
+  color: var(--mh-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--mh-motion-duration);
+}
+.mh-admin__icon-btn:hover {
+  background: var(--mh-surface-hover);
+  color: var(--mh-text-strong);
+}
+.mh-admin__icon-btn .mh-icon {
+  width: var(--mh-size-icon);
+  height: var(--mh-size-icon);
+}
+
+/* 用户按钮：头像 + 名字 + 箭头，点了打开用户菜单（下拉菜单由套件画） */
+.mh-admin__user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px 0 2px;
+  border: 0;
+  border-radius: var(--mh-radius-control);
+  background: none;
+  color: var(--mh-text-body);
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--mh-motion-duration);
+}
+.mh-admin__user:hover,
+.mh-admin__user[aria-expanded='true'] {
+  background: var(--mh-surface-hover);
+}
+.mh-admin__caret {
+  width: var(--mh-size-icon);
+  height: var(--mh-size-icon);
+  color: var(--mh-text-secondary);
+}
+
+.mh-admin :where(.mh-admin__icon-btn, .mh-admin__user):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/* —— 侧栏 + 内容区 —— */
+.mh-admin__body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+.mh-admin__sider {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  /* 220 / 64 是菜单的宽度，右边的分隔线另算 */
+  box-sizing: content-box;
+  width: 220px;
+  background: var(--mh-surface-base);
+  border-right: 1px solid var(--mh-border-default);
+  transition: width var(--mh-motion-duration);
+}
+.mh-admin[data-collapsed] .mh-admin__sider {
+  width: 64px;
+}
+.mh-admin__nav {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* 收起按钮：展开、收起时都在离左边 16px 的地方（收起后正好居中） */
+.mh-admin__sider-foot {
+  flex: none;
+  padding: 12px 16px;
+  border-top: 1px solid var(--mh-border-default);
+}
+
+.mh-admin__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 16px 24px 24px;
+  overflow: auto;
+}
+.mh-admin__page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.mh-admin__title {
+  margin: 0;
+  font-size: var(--mh-type-title);
+  /* 行高取整像素（见 login.css 的说明） */
+  line-height: round(calc(var(--mh-type-title) * 1.35), 1px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--mh-text-strong);
+}
+.mh-admin__desc {
+  margin: 4px 0 0;
+  color: var(--mh-text-secondary);
+}
+.mh-admin__actions {
+  display: flex;
+  flex: none;
+  gap: 8px;
+}
+/* 内容区：客户列表（筛选栏、数据表格、编辑对话框）放在这里；没有内容时是一个占位 */
+.mh-admin__content {
+  flex: 1;
+  min-width: 0;
+}
+.mh-admin__content[data-placeholder] {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+  border: 1px dashed var(--mh-border-control);
+  border-radius: var(--mh-radius-panel);
+  background: var(--mh-surface-base);
+  color: var(--mh-text-secondary);
+}

@@ -1,0 +1,149 @@
+/*
+ * 客户列表的布局。React 与 Vue 共用这一份：区块怎么排、间距多少归结构层，不归组件库。
+ * 这里只管「组件库不该管的东西」：筛选栏、表格卡片、工具条、分页条、空状态、对话框里的表单怎么排；
+ * 输入框、选择框、按钮、表格、分页、标签、开关由套件交给组件库画，这里一行都不碰。
+ *
+ * 取值：颜色、字号、圆角读规范（--mh-*）；间距是这个页面的布局决定，第一版按参照项目定。
+ */
+.mh-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* —— 筛选栏：一张卡片，控件排成一行 —— */
+.mh-list__filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-panel);
+  background: var(--mh-surface-base);
+}
+.mh-list__keyword {
+  width: 220px;
+}
+.mh-list__filter-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* —— 表格卡片：上面一条工具条，下面分页 —— */
+.mh-list__panel {
+  min-width: 0;
+  border: 1px solid var(--mh-border-default);
+  border-radius: var(--mh-radius-panel);
+  background: var(--mh-surface-base);
+  overflow: hidden;
+}
+.mh-list__bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* 至少一个控件高（含上下留白）；实际是一行字加上下留白（黑白 22 + 16 = 38），选中几行时多的「取消选择」是文字链接，也只占一行字高 */
+  min-height: var(--mh-size-control);
+  padding: 8px 16px;
+  color: var(--mh-text-secondary);
+}
+.mh-list__pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px;
+  border-top: 1px solid var(--mh-border-default);
+}
+
+/* —— 格子里的内容 —— */
+.mh-list__name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--mh-text-strong);
+  font-weight: 500;
+}
+.mh-list__num {
+  font-variant-numeric: tabular-nums;
+}
+.mh-list__ops {
+  display: flex;
+  gap: 12px;
+}
+
+/* —— 没有行：空状态和出错，高度固定，表格的格子不留白 —— */
+.mh-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 240px;
+  text-align: center;
+}
+.mh-list__empty-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 8px;
+  color: var(--mh-text-placeholder);
+}
+.mh-list__empty-title {
+  margin: 0;
+  color: var(--mh-text-strong);
+  font-weight: 500;
+}
+.mh-list__empty-desc {
+  margin: 0 0 4px;
+  color: var(--mh-text-secondary);
+  font-size: var(--mh-type-small);
+}
+
+/* —— 筛选栏的日期范围：宽度由页面定，触发框填满 —— */
+.mh-list__range {
+  width: 264px;
+}
+
+/* —— 编辑对话框里的表单：名字在上、控件在下；状态和负责人一行两个 —— */
+.mh-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mh-form__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.mh-form__label {
+  color: var(--mh-text-strong);
+  font-weight: 500;
+}
+.mh-form__required {
+  margin-right: 4px;
+  color: var(--mh-feedback-danger);
+}
+.mh-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.mh-form__error {
+  margin: -4px 0 0;
+  color: var(--mh-feedback-danger);
+  font-size: var(--mh-type-small);
+  line-height: 20px;
+}
+.mh-form__switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mh-form__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--mh-c-dialog-action-gap, 8px);
+}

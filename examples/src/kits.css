@@ -1,0 +1,16 @@
+/*
+ * 组件库的样式表，在这里登记（和 kits.ts 的登记表对应）。
+ *
+ * 层叠顺序：组件库自带的全局样式各放进一个 cascade layer，排在页面自己的样式前面，
+ * 这样组件库的全局重置（html、body、*）改不到页面和套件的样式。
+ * 接一个新组件库：在下面这行加上它的层名，再 @import 它的样式表。
+ */
+@layer theme, base, arco, element, tdesign, components, utilities;
+
+/* shadcn/ui 需要 Tailwind CSS（shadcn 本身就要求宿主项目接入 Tailwind） */
+@import 'tailwindcss';
+@import '@mihua/react/kits/shadcn/styles.css';
+@import '@mihua/react/kits/arco/styles.css';
+@import '@mihua/vue/kits/element/styles.css';
+@import '@mihua/vue/kits/tdesign/styles.css';
+/* antd 的样式在运行时生成，它的套件自己引入了 styles.css，这里不用登记 */

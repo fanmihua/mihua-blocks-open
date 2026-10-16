@@ -1,0 +1,531 @@
+/*
+ * Ant Design 套件接上规范时的样式。antd 的样式在运行时生成，大部分对齐交给主题 token；
+ * 这里只放 token 改不到的：复选框里的对勾是 antd 用方块自己的 ::after（旋转的边框）画的，
+ * 换成规范图标集里的对勾（CSS 遮罩）。
+ * --icons：规范选了一套图标（icon.set 不是 native）时才换。选择器写两个类，压过 antd 运行时生成的同等选择器。
+ */
+.mh-kit-antd.mh-kit-antd--icons .ant-checkbox::after {
+  top: 50%;
+  inset-inline-start: 50%;
+  display: block;
+  width: var(--mh-c-icon-check);
+  height: var(--mh-c-icon-check);
+  border: 0;
+  background-color: var(--mh-c-checkbox-mark);
+  -webkit-mask: var(--mh-icon-check) center / contain no-repeat;
+  mask: var(--mh-icon-check) center / contain no-repeat;
+  transform: translate(-50%, -50%) scale(0);
+}
+.mh-kit-antd.mh-kit-antd--icons .ant-checkbox-checked::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 开关的键盘聚焦：antd 是 4px 的轮廓线（主色浅色），统一成控件规格的外圈 */
+.mh-kit-antd.mh-kit-antd--aligned .ant-switch:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 导航菜单（Menu，根元素带 .mh-nav）。项的高度、外边距、颜色、圆角交给组件 token（index.tsx 的 Menu 一组），
+ * 这里只放 token 改不到的：图标颜色、选中字重、子菜单箭头、收起后有选中项的子菜单、键盘聚焦外圈。
+ * 选择器至少比 antd 运行时生成的同类选择器多一个类（antd 的 hash 类放在 :where 里，不算优先级）。
+ */
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav .ant-menu-item-icon {
+  width: var(--mh-c-nav-icon-size);
+  height: var(--mh-c-nav-icon-size);
+  /* antd 的图标跟着文字变色；统一设计是图标次要灰，选中时和文字一起变 */
+  color: var(--mh-c-nav-icon-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav .ant-menu-item-selected {
+  /* antd 的选中项只变色不加粗 */
+  font-weight: var(--mh-c-nav-selected-weight);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav .ant-menu-item-selected > .ant-menu-item-icon {
+  color: var(--mh-c-nav-selected-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-nav
+  .ant-menu-submenu-selected
+  > .ant-menu-submenu-title
+  > .ant-menu-item-icon {
+  color: var(--mh-c-nav-parent-selected-color);
+}
+/* 子菜单里有选中项时，标题悬停也变成悬停色（antd 保持选中色） */
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-nav.ant-menu-inline
+  .ant-menu-submenu-selected
+  > .ant-menu-submenu-title:hover {
+  color: var(--mh-c-nav-hover-color);
+}
+/* 收起后：有选中项的子菜单画成选中的样子（antd 只把图标变成主色，没有底色），悬停不变 */
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-nav.ant-menu-inline-collapsed
+  > .ant-menu-submenu-selected
+  > .ant-menu-submenu-title,
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-nav.ant-menu-inline-collapsed
+  > .ant-menu-submenu-selected
+  > .ant-menu-submenu-title:hover {
+  background-color: var(--mh-c-nav-selected-background);
+  color: var(--mh-c-nav-selected-color);
+  font-weight: var(--mh-c-nav-selected-weight);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-nav.ant-menu-inline-collapsed
+  > .ant-menu-submenu-selected
+  > .ant-menu-submenu-title
+  > .ant-menu-item-icon {
+  color: var(--mh-c-nav-selected-color);
+}
+/* 键盘聚焦：antd 是一圈 outline，统一成控件规格的外圈 */
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-nav
+  :is(.ant-menu-item, .ant-menu-submenu-title):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 子菜单箭头（规范图标集的 chevron-down）：离菜单项右边缘 nav.arrowInset，展开时朝上 */
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav .mh-nav-arrow {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: var(--mh-c-nav-arrow-inset);
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  color: var(--mh-c-icon-color);
+  transform: translateY(-50%);
+  transition: transform var(--mh-motion-duration);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav .mh-nav-arrow--open {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/*
+ * 收起后悬停弹出的子菜单（.mh-nav-flyout 是 antd 的 .ant-menu-submenu-popup，透明的定位壳；
+ * 看得见的框是里面的 ul）。外框和选项取下拉（popup）一组。
+ * 定位壳贴着菜单项右边缘，左内边距 = 侧栏留白 + 1px 分隔线 + popup.offset（antd 默认 8px）：
+ * 鼠标从菜单项移到弹层，一直在壳里，弹层不会关。
+ */
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav-flyout.ant-menu-submenu-placement-rightTop {
+  padding-inline-start: calc(var(--mh-c-nav-padding) + 1px + var(--mh-c-popup-offset));
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav-flyout > .ant-menu {
+  padding: var(--mh-c-popup-padding);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav-flyout > .ant-menu > .ant-menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--mh-c-popup-option-height);
+  margin: 0;
+  padding: 0 var(--mh-c-popup-option-inset);
+  line-height: var(--mh-c-text-line);
+  color: var(--mh-c-popup-option-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav-flyout > .ant-menu > .ant-menu-item:hover {
+  background-color: var(--mh-c-popup-hover-background);
+  color: var(--mh-c-popup-option-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav-flyout > .ant-menu > .ant-menu-item-selected,
+.mh-kit-antd.mh-kit-antd--aligned .mh-nav-flyout > .ant-menu > .ant-menu-item-selected:hover {
+  background-color: var(--mh-c-popup-selected-background);
+  color: var(--mh-c-popup-selected-color);
+  font-weight: var(--mh-c-popup-selected-weight);
+}
+
+/* 面包屑链接的键盘聚焦：antd 是一圈 outline，统一成控件规格的外圈 */
+.mh-kit-antd.mh-kit-antd--aligned .mh-breadcrumb a.ant-breadcrumb-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/*
+ * 下拉菜单（Dropdown 的菜单，ul 带 .mh-dropdown）：外框在 menu.style 上，选项交给组件 token。
+ * 这里放 token 改不到的：图标颜色、危险项悬停（antd 是红底白字）、分隔线横跨整个内宽。
+ */
+.mh-kit-antd.mh-kit-antd--aligned .mh-dropdown .ant-dropdown-menu-item-icon {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  color: var(--mh-c-dropdown-icon-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-dropdown
+  .ant-dropdown-menu-item-danger
+  .ant-dropdown-menu-item-icon {
+  color: var(--mh-c-dropdown-danger-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-dropdown
+  .ant-dropdown-menu-item.ant-dropdown-menu-item-danger:not(
+    .ant-dropdown-menu-item-disabled
+  ):hover {
+  background-color: var(--mh-c-popup-hover-background);
+  color: var(--mh-c-dropdown-danger-color);
+}
+/* 键盘移到的项用悬停底色表示（antd 的 -active），不再加 outline */
+.mh-kit-antd.mh-kit-antd--aligned .mh-dropdown .ant-dropdown-menu-item:focus-visible {
+  outline: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-dropdown .ant-dropdown-menu-item-divider {
+  margin-inline: calc(-1 * var(--mh-c-popup-padding));
+}
+
+/*
+ * 表格（Table）。颜色、左右留白、勾选列宽交给组件 token（index.tsx 的 Table 一组），这里只放 token 改不到的：
+ * 行高和表头高（antd 用上下内边距撑，行 = 16 + 22 + 16 + 1）、表头字号字重、最后一行下面的线、
+ * 排序按钮（对齐时表头里是套件自己的按钮，不用 antd 的排序）、部分选中的复选框、加载中、没有行时的格子。
+ */
+.mh-kit-antd.mh-kit-antd--aligned .ant-table-thead > tr > th {
+  height: var(--mh-c-table-head-height);
+  padding-block: 0;
+  font-size: var(--mh-c-table-head-size);
+  font-weight: var(--mh-c-table-head-weight);
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-table-tbody > tr > td {
+  height: var(--mh-c-table-row-height);
+  padding-block: 0;
+  line-height: var(--mh-c-text-line);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-table-tbody > tr:last-child > td {
+  border-bottom: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-table-selection-column {
+  padding-inline: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mh-c-table-sort-gap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--mh-c-table-sort-radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-table-sort:focus-visible {
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-table-sort > svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+  color: var(--mh-c-table-sort-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-table-sort > svg[data-sorted] {
+  color: var(--mh-c-table-sort-active-color);
+}
+/* 部分选中：antd 是白底里一个主色小方块（.ant-checkbox::after），统一成主色底加白色短横（规范图标集的 minus） */
+.mh-kit-antd.mh-kit-antd--aligned .ant-checkbox.ant-checkbox-indeterminate {
+  border-color: var(--mh-c-checkbox-checked);
+  background-color: var(--mh-c-checkbox-checked);
+}
+.mh-kit-antd.mh-kit-antd--icons .ant-checkbox.ant-checkbox-indeterminate::after {
+  background-color: var(--mh-c-checkbox-mark);
+  -webkit-mask-image: var(--mh-icon-minus);
+  mask-image: var(--mh-icon-minus);
+  transform: translate(-50%, -50%) scale(1);
+}
+/* 没有行时表头的复选框是禁用的：底色取控件规格 */
+.mh-kit-antd.mh-kit-antd--aligned .ant-checkbox.ant-checkbox-disabled {
+  background-color: var(--mh-c-checkbox-disabled-background);
+}
+/* 勾选列的复选框在格子里正中（antd 的复选框是 inline-flex，跟着一行文字的基线走，表头差 1px） */
+.mh-kit-antd.mh-kit-antd--aligned
+  .ant-table-selection-column
+  :is(.ant-table-selection, td > .ant-checkbox-wrapper) {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+/* 复选框的键盘聚焦：antd 是 ant-checkbox 上一圈轮廓线，统一成控件规格的外圈（登录框的复选框也一样） */
+.mh-kit-antd.mh-kit-antd--aligned .ant-checkbox:has(> .ant-checkbox-input:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+/* 加载中：antd 把表格变成 50% 不透明，再盖一层 40% 的白；加载图标离顶部最多 200px（表格高过 400 就不在中间） */
+.mh-kit-antd.mh-kit-antd--aligned .ant-spin-container.ant-spin-blur {
+  opacity: var(--mh-c-table-loading-opacity);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-spin-container.ant-spin-blur::after {
+  opacity: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-spin-nested-loading > div > .ant-spin {
+  max-height: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-spin-nested-loading > div > .ant-spin .mh-table-spinner {
+  width: var(--mh-c-table-loading-icon);
+  height: var(--mh-c-table-loading-icon);
+  margin: calc(var(--mh-c-table-loading-icon) / -2);
+  color: var(--mh-c-table-loading-color);
+}
+/* 没有行：格子不留白、悬停不变色，内容（空状态、出错）由页面给 */
+.mh-kit-antd.mh-kit-antd--aligned .ant-table-placeholder > td {
+  padding: 0;
+  height: auto;
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-table-placeholder:hover > td {
+  background: transparent;
+}
+
+/* 分页（Pagination）：方块大小、颜色交给组件 token；当前页字重、「共 N 条」、上一页下一页的图标、键盘聚焦在这里 */
+.mh-kit-antd.mh-kit-antd--aligned .ant-pagination .ant-pagination-item-active {
+  font-weight: var(--mh-c-pagination-active-weight);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .ant-pagination
+  .ant-pagination-item:not(.ant-pagination-item-active):hover,
+.mh-kit-antd.mh-kit-antd--aligned
+  .ant-pagination
+  .ant-pagination-prev:not(.ant-pagination-disabled):hover
+  .ant-pagination-item-link,
+.mh-kit-antd.mh-kit-antd--aligned
+  .ant-pagination
+  .ant-pagination-next:not(.ant-pagination-disabled):hover
+  .ant-pagination-item-link {
+  background-color: var(--mh-c-pagination-hover-background);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-pagination .ant-pagination-total-text {
+  margin-inline-end: var(--mh-c-pagination-total-gap);
+  /* antd 的行高比方块矮 2px（30），文字高 1px */
+  line-height: var(--mh-c-pagination-item-size);
+  color: var(--mh-c-pagination-total-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .ant-pagination
+  :is(.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-pagination .ant-pagination-item-link svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+
+/* 标签（Tag）：高度、左右留白、字号字重、圆角；antd 的标签右边还有 8px 外边距 */
+.mh-kit-antd.mh-kit-antd--aligned .ant-tag {
+  height: var(--mh-c-tag-height);
+  margin-inline-end: 0;
+  padding-inline: var(--mh-c-tag-inset);
+  border: 0;
+  border-radius: var(--mh-c-tag-radius);
+  font-size: var(--mh-c-tag-font-size);
+  font-weight: var(--mh-c-tag-weight);
+  line-height: var(--mh-c-tag-height);
+}
+
+/*
+ * 日期范围（RangePicker）。触发框交给输入框那一组 token；这里放：活动框下面的蓝线、分隔文字、日历图标；
+ * 弹层（.mh-date-popup）：小箭头、外框、两个月之间的距离、标题行、星期行、日子方块（antd 是 36 的格子里一个 24 的圆角块，
+ * 范围的浅色带画在格子的 ::before 上），统一成 32 的方块紧挨着，范围的浅底画在方块上。
+ */
+.mh-kit-antd.mh-kit-antd--aligned .ant-picker-range .ant-picker-active-bar {
+  display: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-picker-range .ant-picker-range-separator {
+  padding: 0 var(--mh-c-date-range-separator-gap);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-picker-range .ant-picker-separator {
+  color: var(--mh-c-date-range-separator-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-picker-range .ant-picker-suffix {
+  margin-inline-start: var(--mh-c-date-range-icon-gap);
+  color: var(--mh-c-icon-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-picker-range .ant-picker-suffix svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup {
+  padding: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-range-arrow {
+  display: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-panel-container {
+  padding: var(--mh-c-date-panel-padding);
+  border: 1px solid var(--mh-c-popup-border);
+  border-radius: var(--mh-c-popup-radius);
+  box-shadow: var(--mh-c-popup-shadow);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-panels {
+  gap: var(--mh-c-date-panel-month-gap);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-panel {
+  border: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-date-panel {
+  width: auto;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-header {
+  height: var(--mh-c-date-panel-header-height);
+  align-items: center;
+  padding: 0;
+  border-bottom: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  :is(.ant-picker-header-super-prev-btn, .ant-picker-header-super-next-btn) {
+  display: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  :is(.ant-picker-header-prev-btn, .ant-picker-header-next-btn) {
+  display: grid;
+  place-items: center;
+  width: var(--mh-c-date-panel-nav-size);
+  min-width: 0;
+  height: var(--mh-c-date-panel-nav-size);
+  border-radius: var(--mh-c-popup-option-radius);
+  color: var(--mh-c-icon-color);
+  line-height: 1;
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  :is(.ant-picker-header-prev-btn, .ant-picker-header-next-btn)
+  svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+/* 标题只是文字：antd 的「2026年」「6月」是按钮，点了切到选年、选月（规格只按月翻） */
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-header-view button {
+  pointer-events: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-header-view {
+  line-height: var(--mh-c-date-panel-header-height);
+  font-weight: var(--mh-c-date-panel-title-weight);
+  color: var(--mh-c-date-panel-title-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-body {
+  padding: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-content {
+  width: calc(var(--mh-c-date-panel-cell-size) * 7);
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-content th {
+  width: var(--mh-c-date-panel-cell-size);
+  height: var(--mh-c-date-panel-week-height);
+  padding: 0;
+  font-size: var(--mh-c-date-panel-week-size);
+  line-height: var(--mh-c-date-panel-week-height);
+  color: var(--mh-c-date-panel-week-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-cell {
+  padding: 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-cell::before {
+  display: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-cell .ant-picker-cell-inner {
+  width: var(--mh-c-date-panel-cell-size);
+  min-width: 0;
+  height: var(--mh-c-date-panel-cell-size);
+  border-radius: var(--mh-c-date-panel-cell-radius);
+  font-size: var(--mh-c-text-size);
+  line-height: var(--mh-c-date-panel-cell-size);
+  color: var(--mh-c-date-panel-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  .ant-picker-cell:not(.ant-picker-cell-in-view)
+  .ant-picker-cell-inner {
+  color: var(--mh-c-date-panel-outside-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .mh-date-popup .ant-picker-cell-today .ant-picker-cell-inner {
+  border: 1px solid var(--mh-c-date-panel-today-border);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  .ant-picker-cell-today
+  .ant-picker-cell-inner::before {
+  display: none;
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  .ant-picker-cell-in-view.ant-picker-cell-in-range
+  .ant-picker-cell-inner {
+  border-radius: 0;
+  background: var(--mh-c-date-panel-range-background);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  .ant-picker-cell-in-view:is(.ant-picker-cell-range-start, .ant-picker-cell-range-end)
+  .ant-picker-cell-inner {
+  border-radius: var(--mh-c-date-panel-cell-radius);
+  background: var(--mh-c-date-panel-selected-background);
+  color: var(--mh-c-date-panel-selected-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned
+  .mh-date-popup
+  .ant-picker-cell:not(
+    .ant-picker-cell-in-range,
+    .ant-picker-cell-range-start,
+    .ant-picker-cell-range-end
+  ):hover
+  .ant-picker-cell-inner {
+  background: var(--mh-c-date-panel-hover-background);
+}
+
+/*
+ * 对话框（Modal）：标题字号、行高、颜色、底色、圆角交给 token；留白、标题下面和按钮上面的距离、关闭按钮、
+ * 投影、遮罩在这里。
+ */
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-container {
+  padding: var(--mh-c-dialog-padding);
+  box-shadow: var(--mh-c-dialog-shadow);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-header {
+  margin-bottom: var(--mh-c-dialog-header-gap);
+  padding-inline-end: var(--mh-c-dialog-close-size);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-title {
+  font-weight: var(--mh-c-dialog-title-weight);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-footer {
+  margin-top: var(--mh-c-dialog-footer-gap);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-close {
+  top: var(--mh-c-dialog-close-inset);
+  inset-inline-end: var(--mh-c-dialog-close-inset);
+  width: var(--mh-c-dialog-close-size);
+  height: var(--mh-c-dialog-close-size);
+  border-radius: var(--mh-c-popup-option-radius);
+  color: var(--mh-c-dialog-close-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-close:hover {
+  background: var(--mh-c-dialog-close-hover-background);
+  color: var(--mh-c-dialog-close-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-close svg {
+  width: var(--mh-c-icon-size);
+  height: var(--mh-c-icon-size);
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-modal-mask {
+  background: var(--mh-c-dialog-mask);
+}
+
+/* 单选（Radio）：文字左右各 8 的内边距（统一成只有左边，两项之间的距离交给 token）；键盘聚焦是 antd 的轮廓线，统一成外圈 */
+.mh-kit-antd.mh-kit-antd--aligned .ant-radio-wrapper .ant-radio-label {
+  padding-inline: var(--mh-c-radio-gap) 0;
+}
+.mh-kit-antd.mh-kit-antd--aligned .ant-radio:has(> .ant-radio-input:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 var(--mh-c-focus-ring) var(--mh-c-focus-ring-color);
+}
+
+/* 多行输入（TextArea）：上下留白；能往下拖大 */
+.mh-kit-antd.mh-kit-antd--aligned textarea.ant-input {
+  padding-block: calc(var(--mh-c-textarea-inset-block) - 1px);
+  resize: vertical;
+}

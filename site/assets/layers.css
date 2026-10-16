@@ -1,0 +1,47 @@
+/* 剖面图：四层 */
+.lay3d { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 12px; align-items: center; min-height: 600px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(180deg, #fafaf9, #f1f1ef); overflow: hidden; }
+.lay3d .ll { padding: 28px 0 28px 28px; border-top: 0; }
+.lay3d .ll button { display: grid; grid-template-columns: 34px 54px 1fr; align-items: baseline; width: 100%; padding: 16px 12px; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; cursor: pointer; border-radius: 8px; transition: background 0.2s, opacity 0.2s; }
+.lay3d .ll button:first-child { border-top: 1.5px solid var(--ink); border-radius: 0 0 8px 8px; }
+.lay3d .ll button span { font: 500 13px var(--mono); color: var(--faint); }
+.lay3d .ll button b { font-size: 20px; color: var(--ink); }
+.lay3d .ll button em { font-style: normal; font-size: 14px; line-height: 1.55; color: var(--sub); }
+.lay3d .ll button.on { background: #fff; box-shadow: 0 1px 0 var(--line); }
+.lay3d .ll .hint { margin: 12px 0 0 12px; font-size: 12.5px; color: var(--faint); }
+.lay3d[data-on]:not([data-on="-1"]) .ll button:not(.on) { opacity: 0.45; }
+.lay3d .lv { position: relative; height: 600px; perspective: 2400px; perspective-origin: 50% 40%; }
+.lay3d .tilt { position: absolute; left: 50%; top: 51%; width: 400px; height: 612px; margin: -306px 0 0 -200px; transform: rotateX(56deg) scale(0.47); transform-style: preserve-3d; }
+.lay3d .rig { position: absolute; inset: 0; transform: rotateZ(-34deg); transform-style: preserve-3d; }
+.lay3d .pl { position: absolute; inset: 0; background: #fff; border: 1.5px solid #0a0a0a; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(.3,.7,.2,1), background-color 0.4s, border-color 0.4s; }
+.lay3d .pl[data-i="0"] { transform: translateZ(225px); border-color: transparent; background: none; }
+.lay3d .pl[data-i="1"] { transform: translateZ(75px); }
+.lay3d .pl[data-i="2"] { transform: translateZ(-75px); }
+.lay3d .pl[data-i="3"] { transform: translateZ(-225px); }
+.lay3d .pl img { display: block; width: 400px; height: 612px; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.18)); }
+.lay3d .tg { position: absolute; left: -1.5px; top: -34px; padding: 7px 11px; background: #0a0a0a; color: #fff; font: normal 600 17px/1 var(--mono); white-space: nowrap; }
+.lay3d .ct { position: absolute; background: rgba(0,0,0,0.04); border: 1.5px solid #0a0a0a; }
+.lay3d .ct b { position: absolute; left: 7px; top: 6px; font: 600 13px/1 var(--mono); }
+.lay3d .rg { position: absolute; background: repeating-linear-gradient(135deg, rgba(0,0,0,0.07) 0 2px, transparent 2px 9px); border: 1.5px dashed #0a0a0a; }
+.lay3d .rg b { position: absolute; left: 7px; top: 6px; font: 600 13px/1 var(--mono); background: #fff; padding: 1px 3px; }
+.lay3d .lg { position: absolute; left: 8%; right: 10%; top: 41%; font: 500 19px/1.4 var(--mono); color: #0a0a0a; }
+.lay3d .lg p { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1.5px solid #0a0a0a; font-weight: 700; font-size: 18px; }
+.lay3d .lg div { display: flex; justify-content: space-between; padding: 4px 0; }
+.lay3d .lg span { color: #777; }
+/* 抬起一层：其他层收起内容，只留标签；下面的层留一圈淡边框，上面的层连边框也不画，不压在抬起的那层上 */
+.lay3d .pl > * { transition: opacity 0.4s; }
+.lay3d[data-on]:not([data-on="-1"]) .pl:not(.sel) { background: transparent; border-color: rgba(10, 10, 10, 0.16); }
+.lay3d[data-on]:not([data-on="-1"]) .pl:not(.sel) > :not(.tg) { opacity: 0; }
+.lay3d[data-on]:not([data-on="-1"]) .pl:not(.sel) > .tg { opacity: 0.3; }
+.lay3d[data-on]:not([data-on="-1"]) .pl.up { border-color: transparent; }
+.lay3d[data-on="0"] .pl[data-i="0"] { transform: translateZ(275px); }
+.lay3d[data-on="1"] .pl[data-i="1"] { transform: translateZ(135px); }
+.lay3d[data-on="2"] .pl[data-i="2"] { transform: translateZ(-15px); }
+.lay3d[data-on="3"] .pl[data-i="3"] { transform: translateZ(-165px); }
+@media (max-width: 760px) {
+  .lay3d { grid-template-columns: 1fr; min-height: 0; }
+  .lay3d .ll { padding: 18px 16px 0; }
+  .lay3d .ll button { grid-template-columns: 30px 46px 1fr; padding: 12px 8px; }
+  .lay3d .lv { height: 536px; overflow: hidden; }
+  /* 窄屏只缩平面，层间距缩得少一点，层和层之间才拉得开 */
+  .lay3d .tilt { top: 53%; transform: rotateX(56deg) scale3d(0.4, 0.4, 0.8); }
+}
