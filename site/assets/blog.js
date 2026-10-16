@@ -51,6 +51,7 @@
   const here = location.pathname.split('/').pop() || 'index.html';
   // 线上演示页：双击打开（file://）时 demo/ 跑不起来，演示页入口改指这里
   const DEMO_URL = 'https://fanmihua.github.io/mihua-blocks-open/demo/';
+  const REPO_URL = 'https://github.com/fanmihua/mihua-blocks-open';
   // 公开版（site/_tools/public.mjs 生成时写进 window.MH_PUBLIC）：part 是只公开一部分的页面；完整版里没有这个
   const PART = (window.MH_PUBLIC && window.MH_PUBLIC.part) || [];
   const MH = (window.MH = { ARTICLES, READY, APPENDIX, SERIES, DEMO_URL, PART });
@@ -909,9 +910,11 @@
     const o = b.textContent; b.textContent = '已复制'; b.classList.add('done'); setTimeout(() => { b.textContent = o; b.classList.remove('done'); }, 1500);
   }));
 
-  // ── 演示页入口：顶栏头像左边一个，各页里写了 data-demo 的链接也是；双击打开时改指线上演示页
+  // ── 仓库、演示页入口：顶栏头像左边各一个，各页里写了 data-demo 的链接也是；双击打开时演示页改指线上
   const meImg = $('.bar img.me');
-  if (meImg) meImg.insertAdjacentHTML('beforebegin', '<a class="demo-l" data-demo href="demo/index.html" target="_blank" rel="noopener">演示页</a>');
+  if (meImg) meImg.insertAdjacentHTML('beforebegin', `<a class="bar-l" href="${REPO_URL}" target="_blank" rel="noopener">仓库</a><a class="bar-l" data-demo href="demo/index.html" target="_blank" rel="noopener">演示页</a>`);
+  // 页脚的「仓库 mihua-blocks-open」点了去 GitHub
+  $$('.foot').forEach((f) => { f.innerHTML = f.innerHTML.replace('mihua-blocks-open', `<a href="${REPO_URL}" target="_blank" rel="noopener">mihua-blocks-open</a>`); });
   if (!served) $$('a[data-demo]').forEach((a) => (a.href = DEMO_URL));
 
   // ── 付费墙（公开版才有）：「微信小店」点一下出商品码，再点收起
