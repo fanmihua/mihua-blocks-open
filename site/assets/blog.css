@@ -918,3 +918,12 @@ p.swipe-hint:has(+ .tbl-wrap) { margin: 0 0 8px; }
 .paywall .wxq[hidden] { display: none; }
 .paywall .wxq img { width: 200px; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
 .post.pt h3::after, .apx a.pt b::after { content: ''; display: inline-block; width: 13px; height: 13px; margin-left: 8px; vertical-align: -1px; background: var(--faint); -webkit-mask: var(--lock) center / contain no-repeat; mask: var(--lock) center / contain no-repeat; }
+/* 导读「视频、文字版、仓库」：视频那一格是真封面，点了去小红书看 */
+.tri-vi { display: block; background: #171717; }
+.tri-vi img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.tri-vi .vplay { position: absolute; right: 12px; bottom: 12px; width: 36px; height: 36px; border-radius: 50%; background: rgba(0, 0, 0, 0.6); border: 2px solid #fff; transition: transform 0.15s; }
+.tri-vi .vplay::after { content: ''; position: absolute; left: 13px; top: 9px; border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.tri-vi:hover .vplay { transform: scale(1.06); }
+.tri-c h4 .tri-go { margin-left: auto; font-size: 13px; font-weight: 400; color: var(--sub); text-decoration: none; }
+.tri-c h4 .tri-go::after { content: ' ↗'; color: var(--faint); }
+.tri-c h4 .tri-go:hover { color: var(--ink); text-decoration: underline; }
